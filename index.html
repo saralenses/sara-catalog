@@ -54,6 +54,8 @@ main{max-width:900px;margin:auto;padding:4px 16px 120px}
 .qrow{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
 .rm{margin-top:10px;background:none;border:1px solid #dc2626;color:#dc2626;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer}
 .sumr{display:flex;justify-content:space-between;padding:3px 0}
+.upb{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.upb a{flex:1;min-width:120px;text-align:center;text-decoration:none;padding:11px 8px;border-radius:10px;border:1px solid var(--ac);color:var(--ac);font-weight:650;font-size:14px}
+.ck{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:14px}.ck input{width:20px;height:20px;margin-top:1px}
 #toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(14px + env(safe-area-inset-top,0px));z-index:50;background:var(--wa);color:#fff;padding:11px 16px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:92vw;text-align:center;cursor:pointer}#toast[hidden]{display:none}
 .ci{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.cit{flex:1;font-size:13px}
 .qt{display:flex;gap:8px;align-items:center}.qt button{width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px;cursor:pointer}
@@ -75,7 +77,7 @@ body.locked>:not(#gate):not(script){display:none!important}
 #gate .err{color:#dc2626;font-size:13px;margin-top:8px;min-height:18px}
 #prev{max-width:100%;max-height:160px;border-radius:10px;margin-top:8px;border:1px solid var(--bd)}
 #gate .wa{width:100%;margin-top:14px}
-</style></head><body class="locked">
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head><body class="locked">
 <div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
 <div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
 <form id="fl" autocomplete="on"><label>Mobile number or Admin ID</label><input id="lm" autocapitalize="none" placeholder="10-digit mobile or admin ID"><label>Password</label><input id="lp" type="password"><div class="err" id="le"></div><button class="wa" type="submit">Login</button></form>
@@ -167,7 +169,7 @@ function draw(){
  ot.innerHTML=sel?`<b>${sel.r}</b><br>${sel.m} · ${sel.k} · ₹${sel.p}`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
 document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
 [sphEl,cylEl,xc].forEach(e=>e.onchange=()=>{sel=null;S.a='My power';draw()});
-let cart=[],name='',utr='',isOpen=false,tt;
+let cart=[],name='',utr='',paid=false,isOpen=false,tt;
 const cartEl=document.getElementById('cart');
 const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${xc.checked?' (Cross compound)':''}`:'Power not specified';
 const pr=document.getElementById('pairs');
@@ -186,23 +188,32 @@ function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);document.getElementB
  const tot=cart.reduce((a,c)=>a+c.p*c.q,0),top=`<div class="cph"><button class="chip" data-a="back">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
  if(!cart.length){cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart</h2><div class="empty">Your cart is empty.<br>Select a power and price, then tap Add to cart.</div></div>`;return}
  const items=cart.map((c,i)=>`<div class="it"><div class="n">${i+1}</div><div class="bd"><div class="prod">${c.m} · ${c.k}</div><div class="pwr">${c.power}</div><div class="hint">₹${c.p} per pair</div><div class="qrow"><div class="qt"><button data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>${c.q} pair${c.q===1?'':'s'}</span><button data-i="${i}" data-d="0.5" aria-label="More">+</button></div><b>₹${c.p*c.q}</b></div><button class="rm" data-rm="${i}">Remove item</button></div></div>`).join('');
- const pay=UPI_ID?`<div class="cbx"><div class="cth">Step 1: Pay by UPI</div><a class="add" style="display:block;text-align:center;text-decoration:none" href="upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}">Pay ₹${tot} with UPI app</a><div class="hint" style="margin-top:4px">UPI ID: <b>${UPI_ID}</b> (pay manually if the app does not open)</div><div class="cth" style="margin-top:12px">Step 2: Payment reference</div><input id="utr" inputmode="numeric" maxlength="12" placeholder="12-digit UPI transaction / UTR number (required)" value="${utr}"></div>`:'';
+ const q=`pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}`;
+ const pay=UPI_ID?`<div class="cbx"><div class="cth">Step 1: Pay ₹${tot} by UPI</div><div class="upb"><a href="tez://upi/pay?${q}">Google Pay</a><a href="phonepe://pay?${q}">PhonePe</a><a href="paytmmp://pay?${q}">Paytm</a><a href="upi://pay?${q}">Other UPI app</a></div><div id="qr" data-q="upi://pay?${q}" style="margin:12px auto 0;width:150px"></div><div class="hint" style="text-align:center">Or scan this QR with any UPI app<br>UPI ID: <b>${UPI_ID}</b></div><div class="cth" style="margin-top:12px">Step 2: Confirm payment</div><label class="ck"><input type="checkbox" id="pd" ${paid?'checked':''}> I have completed the UPI payment of ₹${tot}</label><input id="utr" style="margin-top:8px" inputmode="numeric" maxlength="12" placeholder="12-digit UPI reference (optional, helps us confirm faster)" value="${utr}"></div>`:'';
  cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart (${cart.length} item${cart.length===1?'':'s'})</h2>${items}
 <div class="cbx"><div class="sumr"><span>Total pairs</span><b>${cnt}</b></div><div class="sumr" style="font-size:18px"><span>Total amount</span><b>₹${tot}</b></div></div>${pay}
-<div class="cbx"><div class="cth">${UPI_ID?'Step 3: ':''}Send order</div><label class="l" style="font-size:12px;color:var(--mu)">Optical shop name *</label><input id="nm" style="margin-top:4px" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><a class="wa" id="po" href="https://wa.me/${WA}" target="_blank" rel="noopener">Place order on WhatsApp</a><div class="hint" style="margin-top:6px">If WhatsApp does not open, the order text is copied: paste it in a chat with +91 89492 14717.</div></div>
-<button class="clr" id="cl" style="display:block;margin:14px auto 0">Clear entire cart</button></div>`}
-cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'')};
+<div class="cbx"><div class="cth">${UPI_ID?'Step 3: ':''}Send order</div><label class="l" style="font-size:12px;color:var(--mu)">Optical shop name *</label><input id="nm" style="margin-top:4px" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><button class="wa" id="po">Place order</button><div class="err" id="oe"></div></div>
+<button class="clr" id="cl" style="display:block;margin:14px auto 0">Clear entire cart</button></div>`;mkQR()}
+cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'');if(e.target.id==='pd')paid=e.target.checked};
 cartEl.onclick=e=>{const b=e.target;
  if(b.dataset.a==='back'){isOpen=false;renderCart()}
  else if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
  else if(b.dataset.rm!==undefined){cart.splice(+b.dataset.rm,1);renderCart()}
  else if(b.id==='cl'){if(confirm('Remove all items from the cart?')){cart=[];renderCart()}}
- else if(b.id==='po'){if(!name.trim()){const n=document.getElementById('nm');n.style.borderColor='#dc2626';n.placeholder='Optical shop name is required';n.focus();e.preventDefault();return}
-  if(UPI_ID&&!/^\d{12}$/.test(utr.trim())){const u=document.getElementById('utr');u.style.borderColor='#dc2626';u.placeholder='Enter the 12-digit UPI reference after paying';u.focus();e.preventDefault();return}
-  const tot=cart.reduce((a,c)=>a+c.p*c.q,0);
-  let t=`*SINGLE VISION ORDER*\nHello Sara Opticals, I'd like to place an order.\nOptical Shop: ${name.trim()}\n${window.USER&&/^\d{10}$/.test(USER.mobile)?'Mobile: +91 '+USER.mobile+'\n':''}\n*Items:*\n`;
-  t+=cart.map((c,i)=>`${i+1}. ${c.power}\n    Product: ${c.m} - ${c.k}\n    Pairs: ${c.q} (₹${c.p*c.q})`).join('\n')+`\n\nTotal: ₹${tot}`+(UPI_ID?`\nPayment: Paid via UPI (Ref ${utr.trim()})`:'');
-  b.href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;try{navigator.clipboard.writeText(t)}catch(_){}}};
+ else if(b.id==='po'){placeOrder(b)}};
+function mkQR(){const el=document.getElementById('qr');if(!el||!window.QRCode)return;new QRCode(el,{text:el.dataset.q,width:150,height:150})}
+async function placeOrder(b){const E=document.getElementById('oe'),nm=document.getElementById('nm');E.textContent='';
+ if(!name.trim()){nm.style.borderColor='#dc2626';nm.focus();E.textContent='Please enter your optical shop name.';return}
+ if(UPI_ID&&!paid){E.textContent='Please complete the UPI payment and tick the confirmation box.';return}
+ if(!window.USER||!window.PW){E.textContent='Please logout and login again.';return}
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),items=cart.map(c=>({power:c.power,product:c.m+' - '+c.k,pairs:c.q,price:c.p}));
+ b.disabled=true;b.textContent='Placing order…';
+ try{const r=await call({action:'order',mobile:USER.mobile,pw:PW,shop:name.trim(),items,total:tot,utr:utr.trim(),paid});
+  if(!r.ok){E.textContent=r.error||'Could not place order.';b.disabled=false;b.textContent='Place order';return}
+  let t=`*SINGLE VISION ORDER* (${r.id})\nOptical Shop: ${name.trim()}\n\n*Items:*\n`+items.map((c,i)=>`${i+1}. ${c.power}\n    Product: ${c.product}\n    Pairs: ${c.pairs}`).join('\n')+`\n\nTotal: ₹${tot}`;
+  cart=[];utr='';paid=false;document.getElementById('cn').textContent=0;
+  cartEl.innerHTML=`<div class="cpw"><div class="cbx" style="text-align:center;margin-top:30px"><div style="font-size:42px">✅</div><h2>Order placed</h2><div>Order ID: <b>${r.id}</b></div><div class="hint" style="margin-top:6px">Total ₹${tot}. Sara Opticals has received your order and will confirm shortly.</div><a class="wa" style="margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(t)}">Also send a copy on WhatsApp (optional)</a><button class="chip" data-a="back" style="margin-top:12px">Back to catalog</button></div></div>`}
+ catch(x){E.textContent='Network error. Your order was not placed. Please try again.';b.disabled=false;b.textContent='Place order'}}
 draw();
 </script>
 <script>
@@ -212,7 +223,7 @@ const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){r
 async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function call(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
 const MSG={not_found:'This mobile number is not registered. Please register first.',wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.'};
-function enter(u,pw){window.USER=u;name=u.shop;document.body.classList.remove('locked');$('lo').textContent='Logout ('+u.shop+')';try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
+function enter(u,pw){window.USER=u;window.PW=pw;name=u.shop;document.body.classList.remove('locked');$('lo').textContent='Logout ('+u.shop+')';try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
 async function doLogin(m,pw){
  if(API){try{return await call({action:'login',mobile:m,pw})}catch(e){return{ok:false,error:'Network error. Please check your internet and try again.'}}}
  const u=getU()[m];return u&&u.pw===pw?{ok:true,user:u}:{ok:false,error:'wrong'}}
