@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sara Opticals – Single Vision Lens Catalog</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f6f7f9;--card:#fff;--tx:#14213d;--mu:#6b7280;--ac:#0f766e;--acbg:#ccfbf1;--bd:#e5e7eb;--cr:#0369a1;--pg:#7c3aed;--po:#b45309;--wa:#16a34a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1720;--card:#18222e;--tx:#e8edf3;--mu:#9aa6b2;--ac:#2dd4bf;--acbg:#134e4a;--bd:#2a3644;--cr:#7dd3fc;--pg:#c4b5fd;--po:#fbbf24}}
+:root[data-theme="dark"]{--bg:#0f1720;--card:#18222e;--tx:#e8edf3;--mu:#9aa6b2;--ac:#2dd4bf;--acbg:#134e4a;--bd:#2a3644;--cr:#7dd3fc;--pg:#c4b5fd;--po:#fbbf24}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:20px 16px 8px;max-width:900px;margin:auto}
+h1{margin:0;font-size:22px}h1 span{color:var(--ac)}.sub{color:var(--mu);font-size:13px;margin-top:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding:8px 16px 10px;max-width:900px;margin:auto}
+.sel{display:flex;gap:10px}.sel div{flex:1}
+label.l{font-size:12px;color:var(--mu);display:block;margin-bottom:3px}
+select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:16px}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.lbl{font-size:12px;color:var(--mu);margin-right:2px;min-width:52px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:6px 11px;border-radius:99px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+@media (prefers-color-scheme:dark){.chip.on{color:#06201d}}
+input[type=range]{flex:1;min-width:120px;accent-color:var(--ac)}
+.cb{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mu);margin-top:8px}
+main{max-width:900px;margin:auto;padding:4px 16px 120px}
+.count{font-size:13px;color:var(--mu);margin:6px 0 10px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.pw{font-weight:650;font-size:16px}.badge{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--acbg);color:var(--ac);white-space:nowrap}
+.from{font-size:12px;color:var(--mu);margin-top:2px}
+.grp{margin-top:8px}.gn{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.cr{color:var(--cr)}.pg{color:var(--pg)}.po{color:var(--po)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.p{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:5px 9px;font-size:13px;display:flex;gap:6px;cursor:pointer}
+.p b{font-weight:650}.p.min{border-color:var(--ac);background:var(--acbg)}
+.p.on{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme:dark){.p.on{color:#06201d}}
+.empty{text-align:center;color:var(--mu);padding:40px 0}
+.ord{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:9}
+.ordin{max-width:900px;margin:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pq{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mu)}.pq button{width:34px;height:34px;border-radius:50%;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:18px;cursor:pointer}
+.pq input{width:56px;padding:8px 4px;text-align:center;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px}
+.ordin .t{flex:1;font-size:13px;min-width:0}
+.add,.cbtn{padding:12px 14px;border-radius:12px;font-size:15px;font-weight:650;cursor:pointer;white-space:nowrap;border:1px solid var(--ac);background:var(--ac);color:#fff}
+@media (prefers-color-scheme:dark){.add{color:#06201d}}
+.add:disabled{opacity:.45;cursor:not-allowed}
+.cbtn{background:var(--card);color:var(--tx);border-color:var(--bd)}.cbtn span{background:var(--wa);color:#fff;border-radius:99px;padding:1px 7px;font-size:12px;margin-left:4px}
+.cartp{max-height:55vh;overflow:auto;max-width:900px;margin:0 auto 10px;border-bottom:1px solid var(--bd);padding-bottom:10px}.cartp[hidden]{display:none}
+.ci{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.cit{flex:1;font-size:13px}
+.qt{display:flex;gap:8px;align-items:center}.qt button{width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px;cursor:pointer}
+.ln{min-width:56px;text-align:right;font-weight:650}.tot{display:flex;justify-content:space-between;margin:10px 0;font-size:16px}
+#nm{width:100%;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:15px;margin-top:10px}
+.sv{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:8px;background:var(--ac);color:#fff;font-weight:700;letter-spacing:.06em;font-size:13px}
+@media (prefers-color-scheme:dark){.sv{color:#06201d}}
+.cth{font-weight:700;color:var(--ac);letter-spacing:.04em;text-transform:uppercase;font-size:13px;padding:2px 0 6px}
+a.wa{display:block;text-align:center;text-decoration:none}
+.clr{background:none;border:0;color:var(--mu);font-size:12px;text-decoration:underline;cursor:pointer;margin-top:8px}
+.wa{padding:12px 14px;border:0;border-radius:12px;background:var(--wa);color:#fff;font-size:15px;font-weight:650;cursor:pointer;white-space:nowrap}
+.wa:disabled{opacity:.45;cursor:not-allowed}
+footer{max-width:900px;margin:auto;padding:0 16px 30px;color:var(--mu);font-size:12px}
+body.locked>:not(#gate):not(script){display:none!important}
+#gate{display:none;max-width:460px;margin:auto;padding:22px 16px 40px}body.locked #gate{display:block}
+#gate h2{margin:0 0 4px}#gate .tabs{display:flex;gap:8px;margin:14px 0}#gate .tabs .chip{flex:1;text-align:center;padding:10px}
+#gate label{font-size:12px;color:var(--mu);display:block;margin:10px 0 3px}
+#gate input,#gate textarea{width:100%;padding:11px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:16px}
+#gate .err{color:#dc2626;font-size:13px;margin-top:8px;min-height:18px}
+#prev{max-width:100%;max-height:160px;border-radius:10px;margin-top:8px;border:1px solid var(--bd)}
+#gate .wa{width:100%;margin-top:14px}
+</style></head><body class="locked">
+<div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
+<div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
+<form id="fl" autocomplete="on"><label>Mobile number or Admin ID</label><input id="lm" autocapitalize="none" placeholder="10-digit mobile or admin ID"><label>Password</label><input id="lp" type="password"><div class="err" id="le"></div><button class="wa" type="submit">Login</button></form>
+<form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
+<div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
+<header><h1>Sara <span>Opticals</span></h1>
+<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
+<div class="bar">
+<div class="sel"><div><label class="l">SPH</label><select id="sph"></select></div><div><label class="l">CYL</label><select id="cyl"></select></div></div>
+<label class="cb"><input type="checkbox" id="xc"> Cross compound (SPH and CYL of opposite sign)</label>
+<div class="row"><span class="lbl">Show</span><div id="fa"></div></div>
+<div class="row" id="rt"><span class="lbl">Type</span><div id="fc"></div></div>
+<div class="row"><span class="lbl">Lens</span><div id="fm"></div></div>
+<div class="row"><span class="lbl">Coating</span><div id="fk"></div></div>
+<div class="row"><span class="lbl">Max ₹</span><input type="range" id="mx" min="50" max="1200" step="10" value="1200"><b id="mv">Any</b></div>
+</div>
+<main><div class="count" id="ct"></div><div id="out"></div></main>
+<footer>Prices in ₹ per pair as printed on the sheet. Minimum order 0.5 pair. Blank = not offered. Please confirm the final price on WhatsApp.</footer>
+<div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div>
+<script>
+const UPI_ID='', UPI_NAME='Sara Opticals'; // ← put your UPI ID here, e.g. 'saraopticals@okhdfcbank'
+const WA='918949214717'; // Sara Opticals WhatsApp
+const K=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
+const M=[['cr','CR (Regular)',[0,1,2,3,4,5]],['pg','Photogrey',[0,1,2,3]],['po','Polycarbonate',[0,1,2,3,4,5]]];
+const Z6=[0,0,0,0,0,0],Z4=[0,0,0,0];
+// [type,label,[[maxSph,maxCyl]..],CR[6],PG[4],POLY[6]] 0 = not offered
+const D=[
+['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,260],[120,200,400,500],[0,120,250,300,300,350]],
+['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,0],Z4,Z6],
+['Minus','-10.00/-2.00',[[10,2]],[180,220,300,330,0,0],[300,0,400,0],[0,350,0,0,0,350]],
+['Minus','-12.00 SPH',[[12,0]],[240,300,500,0,0,0],Z4,Z6],
+['Minus','-12.00/-2.00, -14.00 SPH',[[12,2],[14,0]],[260,340,700,0,0,0],Z4,Z6],
+['Minus','-14.00/-2.00, -16.00 SPH',[[14,2],[16,0]],[340,380,750,0,0,0],Z4,Z6],
+['Minus','-16.00/-2.00, -18.00 SPH',[[16,2],[18,0]],[450,460,850,0,0,0],Z4,Z6],
+['Minus','-18.00/-2.00, -20.00 SPH',[[18,2],[20,0]],[500,600,980,0,0,0],Z4,Z6],
+['Minus','-20.00/-2.00, -22.00 SPH',[[20,2],[22,0]],[550,640,1200,0,0,0],Z4,Z6],
+['Minus','-4.00/-4.00',[[4,4]],[140,200,250,350,400,350],[0,0,400,600],[0,350,350,500,600,0]],
+['Minus','-6.00/-4.00',[[6,4]],[160,240,300,420,380,400],Z4,Z6],
+['Minus','-8.00/-4.00',[[8,4]],[220,260,400,650,400,0],Z4,[0,400,450,600,0,0]],
+['Minus','-10.00/-4.00',[[10,4]],[260,330,900,0,0,0],Z4,Z6],
+['Minus','-6.00/-6.00',[[6,6]],[300,400,500,500,600,0],[0,0,850,0],Z6],
+['Plus','+4.00/+2.00',[[4,2]],[80,110,110,180,180,280],[150,250,500,0],[0,150,300,350,400,500]],
+['Plus','+6 SPH (55)',[[6,0]],[140,180,300,0,0,0],[0,0,400,0],Z6],
+['Plus','+6.00/+2.00 (60)',[[6,2]],[140,200,200,500,0,0],Z4,Z6],
+['Plus','+8 SPH (55)',[[8,0]],[180,260,500,0,0,0],[250,0,300,400],Z6],
+['Plus','+10 SPH (55)',[[10,0]],[260,300,600,0,0,0],Z4,Z6],
+['Plus','+12.00 SPH (55)',[[12,0]],[300,380,0,0,0,0],Z4,Z6],
+['Plus','+12.00/+2.00, +14.00 SPH',[[12,2],[14,0]],[400,400,0,0,0,0],Z4,Z6],
+['Plus','+14.00/+2.00, +16.00 SPH',[[14,2],[16,0]],[400,450,0,0,0,0],Z4,Z6],
+['Plus','+16.00/+2.00, +18.00 SPH',[[16,2],[18,0]],[480,500,0,0,0,0],Z4,Z6],
+['Plus','+4.00/+4.00',[[4,4]],[180,250,300,0,0,0],Z4,Z6],
+['Plus','+6.00/+4.00',[[6,4]],[230,300,600,0,0,0],Z4,[0,400,500,0,0,0]],
+['Plus','+6.00 cyl',[[4,6]],[380,0,0,0,0,0],Z4,Z6],
+['Cross Comp','Cross Comp -2.00 CYL',[[99,2]],[100,140,180,220,250,350],[250,300,400,0],[0,280,350,0,0,0]],
+['Cross Comp','Cross Comp -4.00 CYL',[[99,4]],[160,220,280,350,400,500],[350,400,0,0],[0,400,0,0,0,0]],
+['Cross Comp','Cross Comp -6.00 CYL',[[99,6]],[300,380,550,0,0,0],Z4,[0,0,0,0,0,500]]
+];
+const f=v=>v===0?'0.00':(v>0?'+':'')+v.toFixed(2);
+const sphEl=document.getElementById('sph'),cylEl=document.getElementById('cyl'),xc=document.getElementById('xc');
+for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));
+for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));
+sphEl.value='0';cylEl.value='0';
+const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null;
+function match(){const s=Math.abs(+sphEl.value),c=Math.abs(+cylEl.value),t=xc.checked?'Cross Comp':(+sphEl.value>0?'Plus':'Minus');
+ return D.find(r=>r[0]===t&&r[2].some(([ms,mc])=>s<=ms&&c<=mc))}
+function chips(id,list,key){const el=document.getElementById(id);el.className='row';el.style.margin=0;
+ el.innerHTML=list.map(v=>`<button class="chip${S[key]===v?' on':''}" data-v="${v}">${v}</button>`).join('');
+ el.onclick=e=>{const v=e.target.dataset.v;if(v){S[key]=v;draw()}}}
+function offers(r){const o=[];M.forEach((m,mi)=>{if(S.m!=='All'&&S.m!==m[1])return;
+ r[3+mi]&&m[2].forEach(i=>{const p=r[3+mi][i];if(!p)return;if(S.k!=='All'&&S.k!==K[i])return;if(S.mx<1200&&p>S.mx)return;o.push({m:m[0],mn:m[1],k:K[i],p})})});return o}
+function draw(){
+ chips('fa',['My power','All ranges'],'a');chips('fc',['All','Minus','Plus','Cross Comp'],'t');
+ chips('fm',['All',...M.map(m=>m[1])],'m');chips('fk',['All',...K],'k');
+ document.getElementById('rt').style.display=S.a==='All ranges'?'flex':'none';
+ document.getElementById('mv').textContent=S.mx>=1200?'Any':'≤ ₹'+S.mx;
+ let rows;if(S.a==='My power'){const r=match();rows=r?[r]:[]}else rows=D.filter(r=>S.t==='All'||r[0]===S.t);
+ let n=0,h='';
+ rows.forEach(r=>{const o=offers(r);if(!o.length)return;n++;const mn=Math.min(...o.map(x=>x.p));
+  h+=`<div class="card"><div class="top"><div><div class="pw">${r[1]}</div><div class="from">from ₹${mn}</div></div><span class="badge">${r[0]}</span></div>`;
+  M.forEach(m=>{const g=o.filter(x=>x.m===m[0]);if(!g.length)return;
+   h+=`<div class="grp"><div class="gn ${m[0]}">${m[1]}</div><div class="chips">`+g.map(x=>{const on=sel&&sel.r===r[1]&&sel.m===x.mn&&sel.k===x.k;
+    return `<button class="p${on?' on':x.p===mn?' min':''}" data-r="${r[1]}" data-m="${x.mn}" data-k="${x.k}" data-p="${x.p}"><span>${x.k}</span><b>₹${x.p}</b></button>`}).join('')+'</div></div>'});
+  h+='</div>'});
+ const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
+ document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
+ document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
+ document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ const ot=document.getElementById('ot');
+ ot.innerHTML=sel?`<b>${sel.r}</b><br>${sel.m} · ${sel.k} · ₹${sel.p}`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
+document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
+[sphEl,cylEl,xc].forEach(e=>e.onchange=()=>{sel=null;S.a='My power';draw()});
+let cart=[],name='',utr='',isOpen=false;
+const cartEl=document.getElementById('cart');
+const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${xc.checked?' (Cross comp)':''}`:'Power not specified';
+const pr=document.getElementById('pairs');
+const getPairs=()=>{let v=parseFloat(pr.value);if(!(v>=0.5))v=0.5;return Math.round(v*2)/2};
+document.getElementById('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
+document.getElementById('pp').onclick=()=>{pr.value=getPairs()+0.5};
+pr.onchange=()=>{pr.value=getPairs()};
+document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs();const power=pw(),id=[power,sel.r,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id);
+ if(ex)ex.q+=n;else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n});sel=null;pr.value=1;draw();renderCart()};
+document.getElementById('cb').onclick=()=>{isOpen=!isOpen;renderCart()};
+function renderCart(){document.getElementById('cn').textContent=cart.reduce((a,c)=>a+c.q,0);
+ cartEl.hidden=!isOpen;if(!isOpen)return;const tot=cart.reduce((a,c)=>a+c.p*c.q,0);
+ cartEl.innerHTML='<div class="cth">Single Vision Order</div>'+(cart.length?cart.map((c,i)=>`<div class="ci"><div class="cit"><b>${c.r}</b><br><span class="hint">${c.power}<br>${c.m} · ${c.k} · ₹${c.p} per pair</span></div><div class="qt"><button data-i="${i}" data-d="-0.5">−</button><span>${c.q} pr</span><button data-i="${i}" data-d="0.5">+</button></div><div class="ln">₹${c.p*c.q}</div></div>`).join('')+`<input id="nm" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><div class="tot"><span>Total</span><b>₹${tot}</b></div>${UPI_ID?`<div class="cth" style="margin-top:6px">Step 1: Pay by UPI</div><a class="add" style="display:block;text-align:center;text-decoration:none" href="upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}">Pay ₹${tot} with UPI app</a><div class="hint" style="margin-top:4px">UPI ID: <b>${UPI_ID}</b> (pay manually if the app does not open)</div><div class="cth" style="margin-top:10px">Step 2: Enter payment reference</div><input id="utr" inputmode="numeric" maxlength="12" placeholder="12-digit UPI transaction / UTR number (required)" value="${utr}"><div class="cth" style="margin-top:10px">Step 3: Send order</div>`:''}<a class="wa" id="po" href="https://wa.me/${WA}" target="_blank" rel="noopener">Place order on WhatsApp</a><div class="hint" style="margin-top:6px">If WhatsApp does not open, the order text is copied: paste it in a chat with +91 89492 14717.</div><button class="clr" id="cl">Clear cart</button>`:'<div class="empty" style="padding:16px">Your cart is empty. Select a price and tap Add to cart.</div>')}
+cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'')};
+cartEl.onclick=e=>{const b=e.target;
+ if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
+ else if(b.id==='cl'){cart=[];renderCart()}
+ else if(b.id==='po'){if(!name.trim()){const n=document.getElementById('nm');n.style.borderColor='#dc2626';n.placeholder='Optical shop name is required';n.focus();e.preventDefault();return}
+  if(UPI_ID&&!/^\d{12}$/.test(utr.trim())){const u=document.getElementById('utr');u.style.borderColor='#dc2626';u.placeholder='Enter the 12-digit UPI reference after paying';u.focus();e.preventDefault();return}
+  const tot=cart.reduce((a,c)=>a+c.p*c.q,0);
+  let t=`*SINGLE VISION ORDER*\nHello Sara Opticals, I'd like to place an order.\nOptical Shop: ${name.trim()}\n${window.USER&&/^\d{10}$/.test(USER.mobile)?'Mobile: +91 '+USER.mobile+'\n':''}`;
+  t+='\n'+cart.map((c,i)=>`${i+1}. ${c.r} (${c.power})\n   ${c.m}, ${c.k}: ₹${c.p}/pair x ${c.q} pair${c.q===1?'':'s'} = ₹${c.p*c.q}`).join('\n')+`\n\nTotal: ₹${tot}`+(UPI_ID?`\nPayment: Paid via UPI (Ref ${utr.trim()})`:'');
+  b.href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;try{navigator.clipboard.writeText(t)}catch(_){}}};
+draw();
+</script>
+<script>
+const API=''; // ← paste your Google Apps Script Web app URL here (leave empty = this-device-only mode)
+const LS='sara_users',SS='sara_session',$=id=>document.getElementById(id);
+const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}};
+async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function call(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
+const MSG={not_found:'This mobile number is not registered. Please register first.',wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.'};
+function enter(u,pw){window.USER=u;name=u.shop;document.body.classList.remove('locked');$('lo').textContent='Logout ('+u.shop+')';try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
+async function doLogin(m,pw){
+ if(API){try{return await call({action:'login',mobile:m,pw})}catch(e){return{ok:false,error:'Network error. Please check your internet and try again.'}}}
+ const u=getU()[m];return u&&u.pw===pw?{ok:true,user:u}:{ok:false,error:'wrong'}}
+function tab(r){$('fl').hidden=r;$('fr').hidden=!r;$('done').hidden=true;$('tl').classList.toggle('on',!r);$('tr').classList.toggle('on',r)}
+$('tl').onclick=()=>tab(false);$('tr').onclick=()=>tab(true);
+$('lo').onclick=()=>{try{localStorage.removeItem(SS)}catch(e){}location.reload()};
+let card='';
+$('rc').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);card=c.toDataURL('image/jpeg',.6);$('prev').src=card;$('prev').hidden=false};im.src=r.result};r.readAsDataURL(f)};
+$('fl').onsubmit=async e=>{e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent='Please wait…';
+ const pw=await hs($('lp').value),r=await doLogin($('lm').value.trim(),pw);b.disabled=false;b.textContent='Login';
+ if(r.ok){enter(r.user,pw)}else $('le').textContent=MSG[r.error]||r.error};
+$('fr').onsubmit=async e=>{e.preventDefault();const v=id=>$(id).value.trim(),m=v('rm'),E=$('re'),b=e.target.querySelector('button[type=submit]');
+ if(!v('rs')||!v('ro')||!v('rc2')){E.textContent='Please fill all required fields.';return}
+ if(!/^[6-9]\d{9}$/.test(m)){E.textContent='Enter a valid 10-digit mobile number.';return}
+ if(v('rg')&&!/^[0-9A-Z]{15}$/i.test(v('rg'))){E.textContent='GST number should be 15 characters.';return}
+ if(!card){E.textContent='Please upload your visiting card photo.';return}
+ if($('rp').value.length<6){E.textContent='Password must be at least 6 characters.';return}
+ const pw=await hs($('rp').value),u={shop:v('rs'),owner:v('ro'),mobile:m,city:v('rc2'),addr:v('ra'),gst:v('rg').toUpperCase()};
+ let status='Approved';b.disabled=true;b.textContent='Registering…';E.textContent='';
+ try{if(API){const r=await call({action:'register',...u,pw,card});if(!r.ok){E.textContent=r.error;b.disabled=false;b.textContent='Register';return}status=r.status}
+  else{const all=getU();if(all[m]){E.textContent='This mobile number is already registered. Please login.';b.disabled=false;b.textContent='Register';return}all[m]={...u,pw};localStorage.setItem(LS,JSON.stringify(all))}}
+ catch(x){E.textContent='Could not register. Please check your internet and try again.';b.disabled=false;b.textContent='Register';return}
+ b.disabled=false;b.textContent='Register';$('fr').hidden=true;$('done').hidden=false;
+ const t=`*NEW REGISTRATION - Sara Opticals catalog*\nShop: ${u.shop}\nOwner: ${u.owner}\nMobile: +91 ${m}\nCity: ${u.city}${u.addr?'\nAddress: '+u.addr:''}${u.gst?'\nGST: '+u.gst:''}`;
+ $('dw').href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+ $('dm').textContent=status==='Approved'?'Welcome, '+u.shop+'! You can start browsing now.':'Thank you! Sara Opticals will verify your shop and approve your login shortly.';
+ $('dc').style.display=status==='Approved'?'block':'none';$('dc').onclick=()=>enter(u,pw)};
+try{const x=JSON.parse(localStorage.getItem(SS)||'null');if(x)doLogin(x.m,x.pw).then(r=>{if(r.ok)enter(r.user,x.pw)})}catch(e){}
+</script></body></html>
