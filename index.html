@@ -88,14 +88,73 @@ body.locked>:not(#gate):not(script){display:none!important}
 .tip{background:var(--acbg);color:var(--ac);border:1px dashed var(--ac);border-radius:12px;padding:12px 14px;font-size:15px;text-align:center;margin:8px 0 4px}
 .tip[hidden]{display:none}
 .ordin .t.hl{background:var(--acbg);color:var(--ac);font-weight:700;font-size:14px;padding:9px 10px;border-radius:10px;text-align:center}
-</style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head><body class="locked">
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style id="maximal">
+:root{--bg:#fff1dc;--card:#fffdf7;--tx:#1d1147;--mu:#6d5f8c;--ac:#c2185b;--acbg:#ffe1ec;--bd:#e2cba6;--cr:#0b7f8c;--pg:#7b1fa2;--po:#b86a00;--wa:#0f7b5f;--ink:#1d1147;--gold:#f2a516;--rose:#d81b60;--line:#1d1147;--sh:#f2a516;
+--pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23c2185b' stroke-opacity='.11' stroke-width='1.2'%3E%3Cpath d='M20 2l18 18-18 18L2 20z'/%3E%3Ccircle cx='20' cy='20' r='5'/%3E%3C/g%3E%3C/svg%3E");
+--patg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23f2a516' stroke-opacity='.22' stroke-width='1.2'%3E%3Cpath d='M20 2l18 18-18 18L2 20z'/%3E%3Ccircle cx='20' cy='20' r='5'/%3E%3C/g%3E%3C/svg%3E")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150c36;--card:#22165a;--tx:#fdf1dc;--mu:#b9abdc;--ac:#ff6fa3;--acbg:#4a1d55;--bd:#3d2f7e;--cr:#5fe0ea;--pg:#d9a6ff;--po:#ffc55c;--line:#f2a516;--sh:#d81b60;--pat:var(--patg)}}
+body{font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;background-color:var(--bg);background-image:var(--pat);background-attachment:fixed}
+h1,h2,.pw,.cth{font-family:"Yeseva One",Georgia,serif;font-weight:400}
+header{position:relative;display:flex;flex-wrap:wrap;gap:10px;align-items:center;width:calc(100% - 24px);margin:12px auto 22px;padding:22px 18px 20px;color:#fff7ea;border:3px double var(--gold);border-bottom:0;border-radius:22px 22px 0 0;
+background:var(--patg),linear-gradient(180deg,#1d1147 0%,#2b1568 65%,#4a1a78 100%)}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:12px;background:radial-gradient(circle at 10px 0,#4a1a78 10px,transparent 10.5px) repeat-x;background-size:20px 12px}
+header::before{content:"";position:absolute;right:14px;top:12px;width:110px;height:54px;opacity:.55;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 54' fill='none' stroke='%23f2a516' stroke-width='3'%3E%3Ccircle cx='28' cy='28' r='22'/%3E%3Ccircle cx='82' cy='28' r='22'/%3E%3Cpath d='M50 24q5-5 10 0M6 22L0 10M104 22l6-12'/%3E%3C/svg%3E") no-repeat}
+header h1,header .sub{flex:0 0 100%;margin:0;position:relative}
+header h1{font-size:38px;line-height:1.05;color:#fff7ea;text-shadow:3px 3px 0 var(--rose)}header h1 span{color:var(--gold)}
+header .sub{color:#e9dcc0;font-size:13px}
+.sv{background:linear-gradient(90deg,#f2a516,#ffd065);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--rose);border-radius:6px;font-weight:800;letter-spacing:.1em;font-size:13px;margin:0}
+header .chip{margin:0!important;border:2px solid var(--gold);background:transparent;color:#fff7ea;font-weight:700}
+#mo{background:#fff7ea;color:var(--ink);box-shadow:3px 3px 0 var(--rose)}
+.bar{background:var(--bg);border-bottom:3px double var(--gold);padding:8px 16px 10px;box-shadow:0 8px 14px -10px rgba(29,17,71,.45)}
+label.l,#gate label{color:var(--ac);font-weight:800;font-size:12px;letter-spacing:.04em}
+select,#gate input,#gate textarea,#nm{border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--tx);font-weight:600}
+.bar select{padding:9px 10px}
+.chip{border:2px solid var(--line);background:var(--card);color:var(--tx);font-weight:600}
+.chip.on{background:var(--rose);color:#fff;border-color:var(--gold);box-shadow:2px 2px 0 var(--line)}
+.tip{background:linear-gradient(90deg,#ffd065,#ffe7a6);color:var(--ink);border:2px dashed var(--ink);border-radius:14px;font-weight:600}
+.count{color:var(--ac);font-weight:700}
+.card,.cbx,.it{background:var(--card);border:2px solid var(--line);border-radius:18px;box-shadow:6px 6px 0 var(--sh);padding:14px 16px;margin-bottom:16px}
+.card{position:relative;border-left:10px solid var(--rose)}
+.pw{font-size:21px;color:var(--tx)}.from{color:var(--ac);font-weight:800;font-size:13px}
+.badge{background:var(--ink);color:var(--gold);border:1px solid var(--gold);font-weight:700;letter-spacing:.05em}
+.gn{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:.1em;margin-top:14px}
+.gn::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,currentColor 0 6px,transparent 6px 11px);opacity:.55}
+.p{border:2px solid var(--line);border-radius:11px;background:var(--card);color:var(--tx);padding:7px 11px;box-shadow:2px 2px 0 var(--line);transition:transform .08s,box-shadow .08s}
+.p:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--line)}
+.p b{font-weight:800}.p.min{background:linear-gradient(180deg,#ffe49a,#ffd065);color:var(--ink);border-color:var(--ink)}
+.p.on{background:var(--rose);color:#fff;border-color:var(--gold)}.p.on::before{content:"✓";font-weight:800}
+.ord{background:linear-gradient(180deg,#2b1568,#1d1147);border-top:3px double var(--gold);box-shadow:0 -10px 20px -12px rgba(29,17,71,.6)}
+.ordin .t{color:#fff7ea}.ordin .t.hl{background:linear-gradient(90deg,#f2a516,#ffd065);color:var(--ink);font-weight:800}
+.pq{color:#e9dcc0}.pq button{background:#2f1c78;color:#fff7ea;border:2px solid var(--gold)}.pq input{background:#fff7ea;color:var(--ink);border:2px solid var(--gold);font-weight:800}
+.add,.wa,a.wa{background:linear-gradient(180deg,#ffc13d,#f29a0a);color:var(--ink);border:2px solid var(--ink);border-radius:13px;font-weight:800;box-shadow:0 4px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.add:active,.wa:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.add:disabled,.wa:disabled{filter:grayscale(.6);opacity:.55;box-shadow:0 2px 0 var(--ink)}
+.cbtn{background:#fff7ea;color:var(--ink);border:2px solid var(--gold)}.cbtn span{background:var(--rose)}
+.cartp{background-color:var(--bg);background-image:var(--pat)}
+.cpw h2{font-size:26px}.cth{color:var(--ac);text-transform:none;letter-spacing:.01em;font-size:17px}
+.it .n{background:var(--ink);color:var(--gold);border:1px solid var(--gold)}
+.qt button{border:2px solid var(--line);background:var(--card);color:var(--tx);font-weight:800}
+.rm{border:2px solid #c62828;color:#c62828;font-weight:700}
+.sumr b,.ln,.tot b{font-family:"Yeseva One",Georgia,serif;font-weight:400}
+.upb a{border:2px solid var(--line);color:var(--tx);background:var(--card);box-shadow:2px 2px 0 var(--sh);font-weight:700}
+#toast{background:var(--ink);color:#fff7ea;border:2px solid var(--gold);box-shadow:4px 4px 0 var(--rose)}
+footer{color:var(--mu)}
+body.locked{background-color:#1d1147;background-image:var(--patg)}
+#gate{width:calc(100% - 28px);margin:5vh auto;padding:28px 20px 32px;background:var(--card);border:3px double var(--gold);border-radius:24px;box-shadow:8px 8px 0 var(--rose)}
+#gate h1{font-family:"Yeseva One",Georgia,serif;font-weight:400;font-size:36px;line-height:1.05;margin:0;text-shadow:2px 2px 0 var(--gold)}
+#gate .sub{color:var(--mu)}#gate .tabs .chip{font-size:15px}
+.err{font-weight:600}
+</style>
+</head><body class="locked">
 <div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
 <div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
 <form id="fl" autocomplete="on"><label>Mobile number or Admin ID</label><input id="lm" autocapitalize="none" placeholder="10-digit mobile or admin ID"><label>Password</label><input id="lp" type="password"><div class="err" id="le"></div><button class="wa" type="submit">Login</button></form>
 <form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
 <div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
 <header><h1>Sara <span>Opticals</span></h1>
-<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="mo" style="margin-left:8px">📦 My orders</button><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
+<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2026</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="mo" style="margin-left:8px">📦 My orders</button><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
 <div class="bar">
 <div class="sel"><div><label class="l">SPH</label><select id="sph"></select></div><div><label class="l">CYL</label><select id="cyl"></select></div></div>
 <div class="hint" id="xh" hidden style="margin-top:6px">Cross compound: SPH is plus only (+0.25 to +5.75). CYL is minus and one step higher than SPH (up to −6.00).</div>
@@ -114,40 +173,43 @@ body.locked>:not(#gate):not(script){display:none!important}
 <script>
 const UPI_ID='paytmqr5j0gs4@ptys', UPI_NAME='Sara Opticals'; // UPI ID for payments
 const WA='918949214717'; // Sara Opticals WhatsApp
-const K=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
-const M=[['cr','CR (Regular)',[0,1,2,3,4,5]],['pg','Photogrey',[0,1,2,3]],['po','Polycarbonate',[0,1,2,3,4,5]]];
-const Z6=[0,0,0,0,0,0],Z4=[0,0,0,0];
-// [type,label,[[maxSph,maxCyl]..],CR[6],PG[4],POLY[6]] 0 = not offered
+const CRN=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','LOW REFLECTION: MARI-BLU','NIGHT DRIVE','O2'];
+const PGN=['HC','HMC','B.CUT','LOW REFLECTION: MARI-BLU','B.CUT BLUE'];
+const PON=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
+const K=[...new Set([...CRN,...PGN,...PON])];
+const M=[['cr','CR (Regular)',CRN],['pg','Photogrey',PGN],['po','Polycarbonate',PON]];
+const Z8=[0,0,0,0,0,0,0,0],Z5=[0,0,0,0,0],Z6=[0,0,0,0,0,0];
+// [type,label,[[maxSph,maxCyl]..],CR[8],PG[5],POLY[6]]  0 = not offered. Source: price sheet effective 15 May 2026
 const D=[
-['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,260],[120,200,400,500],[0,120,250,300,300,350]],
-['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,0],Z4,Z6],
-['Minus','-10.00/-2.00',[[10,2]],[180,220,300,330,0,0],[300,0,400,0],[0,350,0,0,0,350]],
-['Minus','-12.00 SPH',[[12,0]],[240,300,500,0,0,0],Z4,Z6],
-['Minus','-12.00/-2.00, -14.00 SPH',[[12,2],[14,0]],[260,340,700,0,0,0],Z4,Z6],
-['Minus','-14.00/-2.00, -16.00 SPH',[[14,2],[16,0]],[340,380,750,0,0,0],Z4,Z6],
-['Minus','-16.00/-2.00, -18.00 SPH',[[16,2],[18,0]],[450,460,850,0,0,0],Z4,Z6],
-['Minus','-18.00/-2.00, -20.00 SPH',[[18,2],[20,0]],[500,600,980,0,0,0],Z4,Z6],
-['Minus','-20.00/-2.00, -22.00 SPH',[[20,2],[22,0]],[550,640,1200,0,0,0],Z4,Z6],
-['Minus','-4.00/-4.00',[[4,4]],[140,200,250,350,400,350],[0,0,400,600],[0,350,350,500,600,0]],
-['Minus','-6.00/-4.00',[[6,4]],[160,240,300,420,380,400],Z4,Z6],
-['Minus','-8.00/-4.00',[[8,4]],[220,260,400,650,400,0],Z4,[0,400,450,600,0,0]],
-['Minus','-10.00/-4.00',[[10,4]],[260,330,900,0,0,0],Z4,Z6],
-['Minus','-6.00/-6.00',[[6,6]],[300,400,500,500,600,0],[0,0,850,0],Z6],
-['Plus','+4.00/+2.00',[[4,2]],[80,110,110,180,180,280],[150,250,500,0],[0,150,300,350,400,500]],
-['Plus','+6 SPH (55)',[[6,0]],[140,180,300,0,0,0],[0,0,400,0],Z6],
-['Plus','+6.00/+2.00 (60)',[[6,2]],[140,200,200,500,0,0],Z4,Z6],
-['Plus','+8 SPH (55)',[[8,0]],[180,260,500,0,0,0],[250,0,300,400],Z6],
-['Plus','+10 SPH (55)',[[10,0]],[260,300,600,0,0,0],Z4,Z6],
-['Plus','+12.00 SPH (55)',[[12,0]],[300,380,0,0,0,0],Z4,Z6],
-['Plus','+12.00/+2.00, +14.00 SPH',[[12,2],[14,0]],[400,400,0,0,0,0],Z4,Z6],
-['Plus','+14.00/+2.00, +16.00 SPH',[[14,2],[16,0]],[400,450,0,0,0,0],Z4,Z6],
-['Plus','+16.00/+2.00, +18.00 SPH',[[16,2],[18,0]],[480,500,0,0,0,0],Z4,Z6],
-['Plus','+4.00/+4.00',[[4,4]],[180,250,300,0,0,0],Z4,Z6],
-['Plus','+6.00/+4.00',[[6,4]],[230,300,600,0,0,0],Z4,[0,400,500,0,0,0]],
-['Plus','+6.00 cyl',[[4,6]],[380,0,0,0,0,0],Z4,Z6],
-['Cross Comp','Cross Comp -2.00 CYL',[[99,2]],[100,140,180,220,250,350],[250,300,400,0],[0,280,350,0,0,0]],
-['Cross Comp','Cross Comp -4.00 CYL',[[99,4]],[160,220,280,350,400,500],[350,400,0,0],[0,400,0,0,0,0]],
-['Cross Comp','Cross Comp -6.00 CYL',[[99,6]],[300,380,550,0,0,0],Z4,[0,0,0,0,0,500]]
+['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,270,450,260],[120,200,350,450,450],[0,120,250,300,300,350]],
+['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,270,450,0],[300,400,0,0,0],[0,350,0,0,0,0]],
+['Minus','-10.00/-2.00',[[10,2]],[180,220,300,330,0,0,0,0],Z5,Z6],
+['Minus','-12.00 SPH',[[12,0]],[240,300,500,0,0,0,0,0],Z5,Z6],
+['Minus','-12.00/-2.00, -14.00 SPH',[[12,2],[14,0]],[260,340,700,0,0,0,0,0],Z5,Z6],
+['Minus','-14.00/-2.00, -16.00 SPH',[[14,2],[16,0]],[340,380,750,0,0,0,0,0],Z5,Z6],
+['Minus','-16.00/-2.00, -18.00 SPH',[[16,2],[18,0]],[450,460,850,0,0,0,0,0],Z5,Z6],
+['Minus','-18.00/-2.00, -20.00 SPH',[[18,2],[20,0]],[500,600,980,0,0,0,0,0],Z5,Z6],
+['Minus','-20.00/-2.00, -22.00 SPH',[[20,2],[22,0]],[550,640,1200,0,0,0,0,0],Z5,Z6],
+['Minus','-4.00/-4.00',[[4,4]],[160,200,250,300,350,400,550,400],[350,400,500,700,0],[0,350,350,500,600,0]],
+['Minus','-6.00/-4.00',[[6,4]],[180,240,300,350,380,400,550,400],Z5,[0,400,450,600,0,0]],
+['Minus','-8.00/-4.00',[[8,4]],[260,260,400,500,550,0,0,0],Z5,Z6],
+['Minus','-10.00/-4.00',[[10,4]],[340,330,900,0,0,0,0,0],Z5,Z6],
+['Minus','-6.00/-6.00',[[6,6]],[420,400,500,550,600,0,0,0],[0,0,850,0,0],Z6],
+['Plus','+4.00/+2.00',[[4,2]],[80,110,110,180,180,320,500,280],[150,250,500,450,0],[0,150,300,350,350,400]],
+['Plus','+6.00/+2.00 (60)',[[6,2]],[140,200,300,500,0,0,0,0],[0,400,0,0,0],Z6],
+['Plus','+6 SPH (55)',[[6,0]],[180,220,300,0,0,0,0,0],[250,300,400,0,0],Z6],
+['Plus','+8 SPH (55)',[[8,0]],[200,260,400,0,0,0,0,0],Z5,Z6],
+['Plus','+10 SPH (55)',[[10,0]],[260,300,600,0,0,0,0,0],Z5,Z6],
+['Plus','+12.00 SPH (55)',[[12,0]],[300,380,0,0,0,0,0,0],Z5,Z6],
+['Plus','+12.00/+2.00, +14.00 SPH',[[12,2],[14,0]],[400,400,0,0,0,0,0,0],Z5,Z6],
+['Plus','+14.00/+2.00, +16.00 SPH',[[14,2],[16,0]],[400,450,0,0,0,0,0,0],Z5,Z6],
+['Plus','+16.00/+2.00, +18.00 SPH',[[16,2],[18,0]],[480,500,0,0,0,0,0,0],Z5,Z6],
+['Plus','+4.00/+4.00',[[4,4]],[240,250,300,0,0,0,0,0],Z5,[0,400,500,0,0,0]],
+['Plus','+6.00/+4.00',[[6,4]],[360,300,600,0,0,0,0,0],Z5,Z6],
+['Plus','+6.00 cyl',[[4,6]],[460,0,0,0,0,0,0,0],Z5,Z6],
+['Cross Comp','Cross Comp -2.00 CYL',[[99,2]],[100,140,180,220,250,360,750,350],[250,300,400,600,0],[0,280,350,0,500,0]],
+['Cross Comp','Cross Comp -4.00 CYL',[[99,4]],[160,220,280,350,400,0,0,500],[350,400,0,0,0],[0,400,0,0,0,0]],
+['Cross Comp','Cross Comp -6.00 CYL',[[99,6]],[300,380,550,0,0,0,0,0],Z5,Z6]
 ];
 const f=v=>v===0?'0.00':(v>0?'+':'')+v.toFixed(2);
 const sphEl=document.getElementById('sph'),cylEl=document.getElementById('cyl'),xc=document.getElementById('xc');
@@ -165,7 +227,7 @@ function chips(id,list,key){const el=document.getElementById(id);el.className='r
  el.innerHTML=list.map(v=>`<button class="chip${S[key]===v?' on':''}" data-v="${v}">${v}</button>`).join('');
  el.onclick=e=>{const v=e.target.dataset.v;if(v){S[key]=v;draw()}}}
 function offers(r){const o=[];M.forEach((m,mi)=>{if(S.m!=='All'&&S.m!==m[1])return;
- r[3+mi]&&m[2].forEach(i=>{const p=r[3+mi][i];if(!p)return;if(S.k!=='All'&&S.k!==K[i])return;if(S.mx<1200&&p>S.mx)return;o.push({m:m[0],mn:m[1],k:K[i],p})})});return o}
+ m[2].forEach((kn,i)=>{const p=r[3+mi][i];if(!p)return;if(S.k!=='All'&&S.k!==kn)return;if(S.mx<1200&&p>S.mx)return;o.push({m:m[0],mn:m[1],k:kn,p})})});return o}
 function draw(){
  chips('fa',['My power','All ranges'],'a');chips('fc',['All','Minus','Plus','Cross Comp'],'t');
  chips('fm',['All',...M.map(m=>m[1])],'m');chips('fk',['All',...K],'k');
