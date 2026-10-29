@@ -44,7 +44,17 @@ main{max-width:900px;margin:auto;padding:4px 16px 120px}
 @media (prefers-color-scheme:dark){.add{color:#06201d}}
 .add:disabled{opacity:.45;cursor:not-allowed}
 .cbtn{background:var(--card);color:var(--tx);border-color:var(--bd)}.cbtn span{background:var(--wa);color:#fff;border-radius:99px;padding:1px 7px;font-size:12px;margin-left:4px}
-.cartp{max-height:55vh;overflow:auto;max-width:900px;margin:0 auto 10px;border-bottom:1px solid var(--bd);padding-bottom:10px}.cartp[hidden]{display:none}
+.cartp{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px))}.cartp[hidden]{display:none}
+.cpw{max-width:700px;margin:auto}.cph{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cpw h2{margin:14px 0 8px;font-size:20px}
+.cbx{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-top:12px}
+.it{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-top:10px}
+.it .n{width:26px;height:26px;border-radius:50%;background:var(--acbg);color:var(--ac);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none}
+.it .bd{flex:1;min-width:0}.prod{font-weight:650}.pwr{font-size:14px;margin-top:2px}
+.qrow{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.rm{margin-top:10px;background:none;border:1px solid #dc2626;color:#dc2626;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer}
+.sumr{display:flex;justify-content:space-between;padding:3px 0}
+#toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(14px + env(safe-area-inset-top,0px));z-index:50;background:var(--wa);color:#fff;padding:11px 16px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:92vw;text-align:center;cursor:pointer}#toast[hidden]{display:none}
 .ci{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.cit{flex:1;font-size:13px}
 .qt{display:flex;gap:8px;align-items:center}.qt button{width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px;cursor:pointer}
 .ln{min-width:56px;text-align:right;font-weight:650}.tot{display:flex;justify-content:space-between;margin:10px 0;font-size:16px}
@@ -84,9 +94,9 @@ body.locked>:not(#gate):not(script){display:none!important}
 </div>
 <main><div class="count" id="ct"></div><div id="out"></div></main>
 <footer>Prices in ₹ per pair as printed on the sheet. Minimum order 0.5 pair. Blank = not offered. Please confirm the final price on WhatsApp.</footer>
-<div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div>
+<div id="toast" hidden></div><div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div>
 <script>
-const UPI_ID='', UPI_NAME='Sara Opticals'; // ← put your UPI ID here, e.g. 'saraopticals@okhdfcbank'
+const UPI_ID='paytmqr5j0gs4@ptys', UPI_NAME='Sara Opticals'; // UPI ID for payments
 const WA='918949214717'; // Sara Opticals WhatsApp
 const K=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
 const M=[['cr','CR (Regular)',[0,1,2,3,4,5]],['pg','Photogrey',[0,1,2,3]],['po','Polycarbonate',[0,1,2,3,4,5]]];
@@ -157,34 +167,46 @@ function draw(){
  ot.innerHTML=sel?`<b>${sel.r}</b><br>${sel.m} · ${sel.k} · ₹${sel.p}`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
 document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
 [sphEl,cylEl,xc].forEach(e=>e.onchange=()=>{sel=null;S.a='My power';draw()});
-let cart=[],name='',utr='',isOpen=false;
+let cart=[],name='',utr='',isOpen=false,tt;
 const cartEl=document.getElementById('cart');
-const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${xc.checked?' (Cross comp)':''}`:'Power not specified';
+const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${xc.checked?' (Cross compound)':''}`:'Power not specified';
 const pr=document.getElementById('pairs');
 const getPairs=()=>{let v=parseFloat(pr.value);if(!(v>=0.5))v=0.5;return Math.round(v*2)/2};
 document.getElementById('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
 document.getElementById('pp').onclick=()=>{pr.value=getPairs()+0.5};
 pr.onchange=()=>{pr.value=getPairs()};
-document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs();const power=pw(),id=[power,sel.r,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id);
- if(ex)ex.q+=n;else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n});sel=null;pr.value=1;draw();renderCart()};
-document.getElementById('cb').onclick=()=>{isOpen=!isOpen;renderCart()};
-function renderCart(){document.getElementById('cn').textContent=cart.reduce((a,c)=>a+c.q,0);
- cartEl.hidden=!isOpen;if(!isOpen)return;const tot=cart.reduce((a,c)=>a+c.p*c.q,0);
- cartEl.innerHTML='<div class="cth">Single Vision Order</div>'+(cart.length?cart.map((c,i)=>`<div class="ci"><div class="cit"><b>${c.r}</b><br><span class="hint">${c.power}<br>${c.m} · ${c.k} · ₹${c.p} per pair</span></div><div class="qt"><button data-i="${i}" data-d="-0.5">−</button><span>${c.q} pr</span><button data-i="${i}" data-d="0.5">+</button></div><div class="ln">₹${c.p*c.q}</div></div>`).join('')+`<input id="nm" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><div class="tot"><span>Total</span><b>₹${tot}</b></div>${UPI_ID?`<div class="cth" style="margin-top:6px">Step 1: Pay by UPI</div><a class="add" style="display:block;text-align:center;text-decoration:none" href="upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}">Pay ₹${tot} with UPI app</a><div class="hint" style="margin-top:4px">UPI ID: <b>${UPI_ID}</b> (pay manually if the app does not open)</div><div class="cth" style="margin-top:10px">Step 2: Enter payment reference</div><input id="utr" inputmode="numeric" maxlength="12" placeholder="12-digit UPI transaction / UTR number (required)" value="${utr}"><div class="cth" style="margin-top:10px">Step 3: Send order</div>`:''}<a class="wa" id="po" href="https://wa.me/${WA}" target="_blank" rel="noopener">Place order on WhatsApp</a><div class="hint" style="margin-top:6px">If WhatsApp does not open, the order text is copied: paste it in a chat with +91 89492 14717.</div><button class="clr" id="cl">Clear cart</button>`:'<div class="empty" style="padding:16px">Your cart is empty. Select a price and tap Add to cart.</div>')}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
+document.getElementById('toast').onclick=()=>{document.getElementById('toast').hidden=true;isOpen=true;renderCart()};
+document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs(),power=pw(),id=[power,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id),lbl=`${sel.m} · ${sel.k}`;
+ if(ex){ex.q+=n}else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n});
+ sel=null;pr.value=1;draw();renderCart();toast(`✓ Added to cart: ${lbl} × ${n} pair${n===1?'':'s'}. Tap to view cart`)};
+document.getElementById('cb').onclick=()=>{isOpen=true;renderCart()};
+function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);document.getElementById('cn').textContent=cnt;
+ cartEl.hidden=!isOpen;document.body.style.overflow=isOpen?'hidden':'';if(!isOpen)return;
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),top=`<div class="cph"><button class="chip" data-a="back">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
+ if(!cart.length){cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart</h2><div class="empty">Your cart is empty.<br>Select a power and price, then tap Add to cart.</div></div>`;return}
+ const items=cart.map((c,i)=>`<div class="it"><div class="n">${i+1}</div><div class="bd"><div class="prod">${c.m} · ${c.k}</div><div class="pwr">${c.power}</div><div class="hint">₹${c.p} per pair</div><div class="qrow"><div class="qt"><button data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>${c.q} pair${c.q===1?'':'s'}</span><button data-i="${i}" data-d="0.5" aria-label="More">+</button></div><b>₹${c.p*c.q}</b></div><button class="rm" data-rm="${i}">Remove item</button></div></div>`).join('');
+ const pay=UPI_ID?`<div class="cbx"><div class="cth">Step 1: Pay by UPI</div><a class="add" style="display:block;text-align:center;text-decoration:none" href="upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}">Pay ₹${tot} with UPI app</a><div class="hint" style="margin-top:4px">UPI ID: <b>${UPI_ID}</b> (pay manually if the app does not open)</div><div class="cth" style="margin-top:12px">Step 2: Payment reference</div><input id="utr" inputmode="numeric" maxlength="12" placeholder="12-digit UPI transaction / UTR number (required)" value="${utr}"></div>`:'';
+ cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart (${cart.length} item${cart.length===1?'':'s'})</h2>${items}
+<div class="cbx"><div class="sumr"><span>Total pairs</span><b>${cnt}</b></div><div class="sumr" style="font-size:18px"><span>Total amount</span><b>₹${tot}</b></div></div>${pay}
+<div class="cbx"><div class="cth">${UPI_ID?'Step 3: ':''}Send order</div><label class="l" style="font-size:12px;color:var(--mu)">Optical shop name *</label><input id="nm" style="margin-top:4px" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><a class="wa" id="po" href="https://wa.me/${WA}" target="_blank" rel="noopener">Place order on WhatsApp</a><div class="hint" style="margin-top:6px">If WhatsApp does not open, the order text is copied: paste it in a chat with +91 89492 14717.</div></div>
+<button class="clr" id="cl" style="display:block;margin:14px auto 0">Clear entire cart</button></div>`}
 cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'')};
 cartEl.onclick=e=>{const b=e.target;
- if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
- else if(b.id==='cl'){cart=[];renderCart()}
+ if(b.dataset.a==='back'){isOpen=false;renderCart()}
+ else if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
+ else if(b.dataset.rm!==undefined){cart.splice(+b.dataset.rm,1);renderCart()}
+ else if(b.id==='cl'){if(confirm('Remove all items from the cart?')){cart=[];renderCart()}}
  else if(b.id==='po'){if(!name.trim()){const n=document.getElementById('nm');n.style.borderColor='#dc2626';n.placeholder='Optical shop name is required';n.focus();e.preventDefault();return}
   if(UPI_ID&&!/^\d{12}$/.test(utr.trim())){const u=document.getElementById('utr');u.style.borderColor='#dc2626';u.placeholder='Enter the 12-digit UPI reference after paying';u.focus();e.preventDefault();return}
   const tot=cart.reduce((a,c)=>a+c.p*c.q,0);
-  let t=`*SINGLE VISION ORDER*\nHello Sara Opticals, I'd like to place an order.\nOptical Shop: ${name.trim()}\n${window.USER&&/^\d{10}$/.test(USER.mobile)?'Mobile: +91 '+USER.mobile+'\n':''}`;
-  t+='\n'+cart.map((c,i)=>`${i+1}. ${c.r} (${c.power})\n   ${c.m}, ${c.k}: ₹${c.p}/pair x ${c.q} pair${c.q===1?'':'s'} = ₹${c.p*c.q}`).join('\n')+`\n\nTotal: ₹${tot}`+(UPI_ID?`\nPayment: Paid via UPI (Ref ${utr.trim()})`:'');
+  let t=`*SINGLE VISION ORDER*\nHello Sara Opticals, I'd like to place an order.\nOptical Shop: ${name.trim()}\n${window.USER&&/^\d{10}$/.test(USER.mobile)?'Mobile: +91 '+USER.mobile+'\n':''}\n*Items:*\n`;
+  t+=cart.map((c,i)=>`${i+1}. ${c.power}\n    Product: ${c.m} - ${c.k}\n    Pairs: ${c.q} (₹${c.p*c.q})`).join('\n')+`\n\nTotal: ₹${tot}`+(UPI_ID?`\nPayment: Paid via UPI (Ref ${utr.trim()})`:'');
   b.href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;try{navigator.clipboard.writeText(t)}catch(_){}}};
 draw();
 </script>
 <script>
-const API='https://script.google.com/macros/s/AKfycbzSaih3gig3rz16rr87ZPp6Eg5r_VHTs2RtyF9G8rOOROoUf-H-hLDfOjXjEgV8trwd/exec'; // ← paste your Google Apps Script Web app URL here (leave empty = this-device-only mode)
+const API='https://script.google.com/macros/s/AKfycbzSaih3gig3rz16rr87ZPp6Eg5r_VHTs2RtyF9G8rOOROoUf-H-hLDfOjXjEgV8trwd/exec'; // Google Apps Script backend
 const LS='sara_users',SS='sara_session',$=id=>document.getElementById(id);
 const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}};
 async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
