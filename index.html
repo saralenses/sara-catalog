@@ -83,6 +83,11 @@ body.locked>:not(#gate):not(script){display:none!important}
 .ordin .t{flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ordrow{display:flex;gap:8px;align-items:center}.ordrow .add{flex:1;padding:11px 6px}.ordrow .cbtn{padding:10px 12px}
 .pq input{width:46px}.pq button{width:32px;height:32px}
+#mo{background:var(--ac);color:#fff;border-color:var(--ac);font-weight:700;font-size:15px;padding:9px 16px;box-shadow:0 2px 8px rgba(15,118,110,.35)}
+@media (prefers-color-scheme:dark){#mo{color:#06201d}}
+.tip{background:var(--acbg);color:var(--ac);border:1px dashed var(--ac);border-radius:12px;padding:12px 14px;font-size:15px;text-align:center;margin:8px 0 4px}
+.tip[hidden]{display:none}
+.ordin .t.hl{background:var(--acbg);color:var(--ac);font-weight:700;font-size:14px;padding:9px 10px;border-radius:10px;text-align:center}
 </style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head><body class="locked">
 <div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
 <div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
@@ -90,9 +95,10 @@ body.locked>:not(#gate):not(script){display:none!important}
 <form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
 <div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
 <header><h1>Sara <span>Opticals</span></h1>
-<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="mo" style="margin-left:8px">My orders</button><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
+<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="mo" style="margin-left:8px">📦 My orders</button><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
 <div class="bar">
 <div class="sel"><div><label class="l">SPH</label><select id="sph"></select></div><div><label class="l">CYL</label><select id="cyl"></select></div></div>
+<div class="hint" id="xh" hidden style="margin-top:6px">Cross compound: SPH is plus only (+0.25 to +5.75). CYL is minus and one step higher than SPH (up to −6.00).</div>
 <div class="row" style="justify-content:space-between;margin-top:6px"><label class="cb" style="margin:0"><input type="checkbox" id="xc"> Cross compound</label><button class="chip" id="ft">Filters ▾</button></div>
 </div>
 <div class="flt" id="flt" hidden>
@@ -102,7 +108,7 @@ body.locked>:not(#gate):not(script){display:none!important}
 <div class="row"><span class="lbl">Coating</span><div id="fk"></div></div>
 <div class="row"><span class="lbl">Max ₹</span><input type="range" id="mx" min="50" max="1200" step="10" value="1200"><b id="mv">Any</b></div>
 </div>
-<main><div class="count" id="ct"></div><div id="out"></div></main>
+<main><div class="tip" id="tip">👇 <b>Tap a price</b> to select it, then set pairs and tap <b>Add to cart</b></div><div class="count" id="ct"></div><div id="out"></div></main>
 <footer>Prices in ₹ per pair as printed on the sheet. Minimum order 0.5 pair. Blank = not offered. Please confirm the final price on WhatsApp.</footer>
 <div class="cartp" id="ordp" hidden></div><div id="toast" hidden></div><div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="ordrow"><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div></div>
 <script>
@@ -145,9 +151,13 @@ const D=[
 ];
 const f=v=>v===0?'0.00':(v>0?'+':'')+v.toFixed(2);
 const sphEl=document.getElementById('sph'),cylEl=document.getElementById('cyl'),xc=document.getElementById('xc');
-for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));
-for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));
-sphEl.value='0';cylEl.value='0';
+function fillSph(){const cross=xc.checked,keep=+sphEl.value;sphEl.innerHTML='';
+ if(cross){for(let v=0.25;v<=5.75;v+=.25)sphEl.add(new Option(f(v),v));sphEl.value=(keep>0&&keep<=5.75)?keep:0.25}
+ else{for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));sphEl.value=keep}}
+function fillCyl(){const cross=xc.checked,sp=+sphEl.value;cylEl.innerHTML='';
+ if(cross){for(let v=-(sp+.25);v>=-6;v-=.25)cylEl.add(new Option(f(v),v));cylEl.value=-(sp+.25)}
+ else{for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));cylEl.value=0}}
+fillSph();fillCyl();
 const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null;
 function match(){const s=Math.abs(+sphEl.value),c=Math.abs(+cylEl.value),t=xc.checked?'Cross Comp':(+sphEl.value>0?'Plus':'Minus');
  return D.find(r=>r[0]===t&&r[2].some(([ms,mc])=>s<=ms&&c<=mc))}
@@ -172,16 +182,18 @@ function draw(){
  const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
  document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
  document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
- updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ document.getElementById('tip').hidden=!!sel||!h;updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
  const ot=document.getElementById('ot');
- ot.innerHTML=sel?`Selected: <b>${sel.m} · ${sel.k} · ₹${sel.p}</b>`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
+ ot.innerHTML=sel?`Selected: <b>${sel.m} · ${sel.k} · ₹${sel.p}</b>`:'👆 Tap a price above to select it';ot.className=sel?'t':'t hl';document.getElementById('add').disabled=!sel;}
 let fOpen=false;
 function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);document.getElementById('ft').textContent='Filters'+(n?` (${n})`:'')+(fOpen?' ▴':' ▾')}
 document.getElementById('ft').onclick=()=>{fOpen=!fOpen;document.getElementById('flt').hidden=!fOpen;updFt()};
 const ordEl=document.querySelector('.ord'),mainEl=document.querySelector('main');
 new ResizeObserver(()=>{mainEl.style.paddingBottom=(ordEl.offsetHeight+24)+'px'}).observe(ordEl);
 document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
-[sphEl,cylEl,xc].forEach(e=>e.onchange=()=>{sel=null;S.a='My power';draw()});
+xc.onchange=()=>{fillSph();fillCyl();document.getElementById('xh').hidden=!xc.checked;sel=null;S.a='My power';draw()};
+sphEl.onchange=()=>{if(xc.checked)fillCyl();sel=null;S.a='My power';draw()};
+cylEl.onchange=()=>{sel=null;S.a='My power';draw()};
 let cart=[],name='',utr='',paid=false,isOpen=false,tt;
 const cartEl=document.getElementById('cart');
 const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${xc.checked?' (Cross compound)':''}`:'Power not specified';
