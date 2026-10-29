@@ -77,6 +77,12 @@ body.locked>:not(#gate):not(script){display:none!important}
 #gate .err{color:#dc2626;font-size:13px;margin-top:8px;min-height:18px}
 #prev{max-width:100%;max-height:160px;border-radius:10px;margin-top:8px;border:1px solid var(--bd)}
 #gate .wa{width:100%;margin-top:14px}
+.bar{padding:6px 16px 8px}.bar select{padding:9px 10px}.bar label.l{margin-bottom:2px}
+.flt{max-width:900px;margin:0 auto;padding:0 16px 8px}.flt[hidden]{display:none}
+.ordin{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:8px}
+.ordin .t{flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ordrow{display:flex;gap:8px;align-items:center}.ordrow .add{flex:1;padding:11px 6px}.ordrow .cbtn{padding:10px 12px}
+.pq input{width:46px}.pq button{width:32px;height:32px}
 </style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head><body class="locked">
 <div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
 <div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
@@ -84,10 +90,12 @@ body.locked>:not(#gate):not(script){display:none!important}
 <form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
 <div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
 <header><h1>Sara <span>Opticals</span></h1>
-<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
+<div class="sub">Single Vision lens price catalog · CR distributor · Jaipur · Prices effective 15 May 2023</div><div class="sv">SINGLE VISION ORDER</div><button class="chip" id="mo" style="margin-left:8px">My orders</button><button class="chip" id="lo" style="margin-left:8px">Logout</button></header>
 <div class="bar">
 <div class="sel"><div><label class="l">SPH</label><select id="sph"></select></div><div><label class="l">CYL</label><select id="cyl"></select></div></div>
-<label class="cb"><input type="checkbox" id="xc"> Cross compound (SPH and CYL of opposite sign)</label>
+<div class="row" style="justify-content:space-between;margin-top:6px"><label class="cb" style="margin:0"><input type="checkbox" id="xc"> Cross compound</label><button class="chip" id="ft">Filters ▾</button></div>
+</div>
+<div class="flt" id="flt" hidden>
 <div class="row"><span class="lbl">Show</span><div id="fa"></div></div>
 <div class="row" id="rt"><span class="lbl">Type</span><div id="fc"></div></div>
 <div class="row"><span class="lbl">Lens</span><div id="fm"></div></div>
@@ -96,7 +104,7 @@ body.locked>:not(#gate):not(script){display:none!important}
 </div>
 <main><div class="count" id="ct"></div><div id="out"></div></main>
 <footer>Prices in ₹ per pair as printed on the sheet. Minimum order 0.5 pair. Blank = not offered. Please confirm the final price on WhatsApp.</footer>
-<div id="toast" hidden></div><div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div>
+<div class="cartp" id="ordp" hidden></div><div id="toast" hidden></div><div class="ord"><div class="cartp" id="cart" hidden></div><div class="ordin"><div class="t" id="ot">Tap a price to select it.</div><div class="ordrow"><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button><button class="cbtn" id="cb">🛒<span id="cn">0</span></button></div></div></div>
 <script>
 const UPI_ID='paytmqr5j0gs4@ptys', UPI_NAME='Sara Opticals'; // UPI ID for payments
 const WA='918949214717'; // Sara Opticals WhatsApp
@@ -164,9 +172,14 @@ function draw(){
  const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
  document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
  document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
- document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
  const ot=document.getElementById('ot');
- ot.innerHTML=sel?`<b>${sel.r}</b><br>${sel.m} · ${sel.k} · ₹${sel.p}`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
+ ot.innerHTML=sel?`Selected: <b>${sel.m} · ${sel.k} · ₹${sel.p}</b>`:'Tap a price to select it.';document.getElementById('add').disabled=!sel;}
+let fOpen=false;
+function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);document.getElementById('ft').textContent='Filters'+(n?` (${n})`:'')+(fOpen?' ▴':' ▾')}
+document.getElementById('ft').onclick=()=>{fOpen=!fOpen;document.getElementById('flt').hidden=!fOpen;updFt()};
+const ordEl=document.querySelector('.ord'),mainEl=document.querySelector('main');
+new ResizeObserver(()=>{mainEl.style.paddingBottom=(ordEl.offsetHeight+24)+'px'}).observe(ordEl);
 document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
 [sphEl,cylEl,xc].forEach(e=>e.onchange=()=>{sel=null;S.a='My power';draw()});
 let cart=[],name='',utr='',paid=false,isOpen=false,tt;
@@ -230,6 +243,15 @@ async function doLogin(m,pw){
 function tab(r){$('fl').hidden=r;$('fr').hidden=!r;$('done').hidden=true;$('tl').classList.toggle('on',!r);$('tr').classList.toggle('on',r)}
 $('tl').onclick=()=>tab(false);$('tr').onclick=()=>tab(true);
 $('lo').onclick=()=>{try{localStorage.removeItem(SS)}catch(e){}location.reload()};
+const op=$('ordp');
+function closeOrders(){op.hidden=true;document.body.style.overflow=''}
+$('mo').onclick=async()=>{op.hidden=false;document.body.style.overflow='hidden';
+ const top=`<div class="cph"><button class="chip" id="ob">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
+ op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2><div class="empty">Loading your orders…</div></div>`;$('ob').onclick=closeOrders;
+ let r;try{r=await call({action:'myorders',mobile:USER.mobile,pw:PW})}catch(e){r={ok:false,error:'Network error. Please try again.'}}
+ const esc=t=>String(t==null?'':t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+ const h=!r.ok?`<div class="empty">${esc(r.error)}</div>`:!r.orders.length?'<div class="empty">No orders yet.</div>':r.orders.map(o=>`<div class="cbx"><div class="top"><b>${esc(o.id)}</b><span class="badge">${esc(o.status)}</span></div><div class="hint">${esc(o.time)}${USER.admin?' · '+esc(o.shop):''}</div><div style="white-space:pre-line;margin:8px 0;font-size:14px">${esc(o.items)}</div><div class="sumr"><span>${esc(o.pairs)} pairs</span><b>₹${esc(o.total)}</b></div>${o.utr?`<div class="hint">UPI ref: ${esc(o.utr)}</div>`:''}</div>`).join('');
+ op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2>${h}</div>`;$('ob').onclick=closeOrders};
 let card='';
 $('rc').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);card=c.toDataURL('image/jpeg',.6);$('prev').src=card;$('prev').hidden=false};im.src=r.result};r.readAsDataURL(f)};
 $('fl').onsubmit=async e=>{e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent='Please wait…';
