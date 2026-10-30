@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sara Opticals – Single Vision Lens Catalog</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--hd:#1f3b5c;--ac:#1f3b5c;--acx:#1f3b5c;--pw:#b7d0ea;--btn:#3f8a68;--bg:#f3f7fb;--card:#fff;--tx:#1e2f45;--mu:#64748b;--line:#e3eaf2;--soft:#e1eaf4;--tile:#eaf2fb;--red:#b4414c;--redbg:#fbe9eb;--note:#fff6e0;--notefg:#6b5521;--navh:56px}
+@media (prefers-color-scheme:dark){:root{--hd:#142941;--ac:#8fb4e3;--acx:#dbe8f6;--pw:#27406a;--btn:#4a9a78;--bg:#0e1724;--card:#17243a;--tx:#e6edf7;--mu:#9bacc4;--line:#25354f;--soft:#1e2f4c;--tile:#1c3354;--red:#f0a0a8;--redbg:#3a2229;--note:#3a3220;--notefg:#f0dca8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 12px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+b,strong,h1,h2{font-weight:500}button,select,input{font-family:inherit}
+body.locked>:not(#gate):not(script){display:none!important}
+.apbar{background:var(--hd);color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 16px;border-radius:0 0 18px 18px;display:flex;align-items:center;gap:10px}
+.logo{width:32px;height:32px;border-radius:10px;background:var(--pw);color:#1f3b5c;font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.apbar h1{margin:0;font-size:13px;line-height:1.15}.apbar small{display:block;font-size:10px;color:#b7d0ea;margin-top:2px}.sp{flex:1}
+.ib{position:relative;width:34px;height:34px;border-radius:10px;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.ib[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;right:-4px;top:-4px;background:var(--btn);color:#fff;font-size:9px;border-radius:8px;padding:1px 5px}
+.pc{background:var(--card);border-radius:16px;padding:12px;margin:-6px 14px 0;position:relative;box-shadow:0 6px 16px -10px rgba(31,59,92,.35)}
+.pt{font-size:10px;color:var(--mu);letter-spacing:.05em;margin-bottom:8px;font-weight:500}
+.fl{display:flex;gap:10px}.fld{flex:1;background:var(--bg);border-radius:11px;padding:7px 10px}.fld small{font-size:10px;color:var(--mu);display:block}
+.fld select{appearance:none;-webkit-appearance:none;border:0;width:100%;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;font-size:12px;font-weight:500;color:var(--tx);padding:3px 18px 1px 0}
+.seg,#gate .tabs{display:flex;background:var(--soft);border-radius:11px;padding:3px;margin:12px 14px 0}
+.seg .chip,.tabs .chip{flex:1;border:0;background:transparent;color:var(--mu);font-size:10px;font-weight:500;padding:8px 0;border-radius:8px;text-align:center;cursor:pointer}
+.seg .chip.on,.tabs .chip.on{background:var(--card);color:var(--acx);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.flt{margin:10px 14px 0;background:var(--card);border-radius:14px;padding:4px 12px 12px}.flt[hidden]{display:none}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}.lbl{font-size:10px;color:var(--mu);min-width:48px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--tx);padding:5px 10px;border-radius:99px;font-size:10px;cursor:pointer}
+.chip.on{background:var(--hd);border-color:var(--hd);color:#fff}
+input[type=range]{flex:1;min-width:100px;accent-color:var(--ac)}
+main{padding:0 14px 16px}
+.tip{background:var(--pw);color:var(--acx);border-radius:12px;padding:10px 12px;margin:12px 0 4px;font-size:11px;font-weight:500}.tip[hidden]{display:none}
+.note{background:var(--note);color:var(--notefg);border-radius:12px;padding:9px 12px;margin:10px 0 0;font-size:10.5px}.note[hidden]{display:none}
+.count{font-size:10px;color:var(--mu);margin:8px 2px 0}
+.card{margin:10px 0 14px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.pw{font-size:14px;font-weight:500}.from{font-size:10px;color:var(--mu)}
+.badge{background:var(--soft);color:var(--acx);font-size:10px;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.gn{display:inline-block;font-size:9.5px;letter-spacing:.06em;font-weight:500;padding:3px 8px;border-radius:6px;margin:12px 0 6px}
+.gn.cr{background:rgba(59,133,128,.14);color:#2f7a75}.gn.pg{background:rgba(111,98,173,.14);color:#6f62ad}.gn.po{background:rgba(185,127,54,.16);color:#9a6a26}
+@media (prefers-color-scheme:dark){.gn.cr{color:#7cc7c1}.gn.pg{color:#b9aee6}.gn.po{color:#e6c27c}}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.p{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:var(--card);border:2px solid transparent;border-radius:13px;padding:9px 11px;color:var(--tx);font-size:12px;cursor:pointer}
+.p span{font-size:10px;color:var(--mu);font-weight:500;padding-right:44px}.p b{font-size:13px;font-weight:500;margin-top:2px}
+.p.on{border-color:var(--ac);background:var(--tile)}
+.p.on::after{content:"✓";position:absolute;right:9px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--ac);color:var(--bg);font-size:10px;display:flex;align-items:center;justify-content:center}
+.p.min::before{content:"LOWEST";position:absolute;right:8px;top:8px;background:#dff1e7;color:#2f7a55;font-size:8.5px;font-weight:500;padding:2px 6px;border-radius:5px}
+.ord{position:fixed;left:0;right:0;bottom:0;z-index:40}
+.sheet{margin:0 10px 8px;background:var(--card);border-radius:18px;padding:10px 12px;box-shadow:0 10px 26px -8px rgba(31,59,92,.45)}
+.sheet .t{font-size:11px;color:var(--mu)}.sheet .t.hl{color:var(--acx);font-weight:500;text-align:center;padding:3px 0}
+.sl{display:flex;justify-content:space-between;align-items:center;gap:8px}.sl b{font-size:11.5px;display:block}.sl small{display:block;font-size:10px;color:var(--mu)}.sl .pr{font-size:14px;font-weight:500;color:var(--acx);white-space:nowrap}
+.ordrow{display:flex;gap:9px;align-items:center;margin-top:9px}.sheet.empty .ordrow{display:none}
+.pq{display:flex;align-items:center;background:var(--bg);border-radius:11px;font-size:10px;color:var(--mu);padding-right:8px}
+.pq button{width:30px;height:34px;border:0;background:none;color:var(--acx);font-size:16px;cursor:pointer}
+.pq input{width:38px;border:0;background:transparent;text-align:center;font-size:12px;font-weight:500;color:var(--tx);padding:0;-moz-appearance:textfield}
+.add,.wa,a.wa{background:var(--btn);color:#fff;border:0;border-radius:12px;padding:11px 14px;font-size:12px;font-weight:500;cursor:pointer;text-decoration:none;text-align:center}
+.add{flex:1}.add:disabled{opacity:.45}
+body.ov .sheet{display:none}
+.nav{display:flex;background:var(--card);border-top:1px solid var(--line);height:calc(var(--navh) + env(safe-area-inset-bottom,0px));padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:#8a99ad;font-size:10px;font-weight:500;cursor:pointer}
+.nic{position:relative;width:46px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center}
+.ni.on{color:var(--acx)}.ni.on .nic{background:var(--pw)}
+.nic b{position:absolute;right:0;top:-4px;background:var(--btn);color:#fff;font-size:8.5px;border-radius:8px;padding:1px 5px;font-weight:500}
+.cartp{position:fixed;left:0;right:0;top:0;bottom:calc(var(--navh) + env(safe-area-inset-bottom,0px));z-index:30;background:var(--bg);overflow:auto;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 0;display:flex;flex-direction:column}.cartp[hidden]{display:none}
+.cpw{max-width:700px;width:100%;margin:0 auto;padding-bottom:6px;flex:1 0 auto}.cph{display:flex;justify-content:space-between;align-items:center}.cth{font-size:11px;font-weight:500;color:var(--mu)}
+.cpw h2{font-size:16px;margin:10px 0 8px}
+.it{display:flex;gap:10px;background:var(--card);border-radius:14px;padding:11px 12px;margin-top:9px}
+.it .n{width:24px;height:24px;border-radius:8px;background:var(--soft);color:var(--acx);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex:none}
+.it .bd{flex:1;min-width:0}.prod{font-size:12px;font-weight:500}.pwr{font-size:10.5px;color:var(--mu)}.hint{font-size:10px;color:var(--mu)}
+.qrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.qrow>b{font-size:12px}
+.qt{display:flex;align-items:center;background:var(--bg);border-radius:11px;padding:2px}.qt button{width:28px;height:28px;border:0;background:none;color:var(--acx);font-size:16px;cursor:pointer}.qt span{font-size:11px;min-width:56px;text-align:center}
+.rm{margin-top:8px;border:0;background:var(--redbg);color:var(--red);font-size:10px;font-weight:500;padding:5px 10px;border-radius:8px;cursor:pointer}
+.cbx{background:var(--card);border-radius:14px;padding:12px;margin-top:10px}.cbx .cth{margin-bottom:6px}
+.sumr{display:flex;justify-content:space-between;font-size:11.5px;padding:2px 0}.sumr b{font-size:12px}
+.upb{display:flex;gap:7px;margin-top:8px}.upb a{flex:1;text-align:center;color:#fff;font-size:10px;font-weight:500;padding:9px 0;border-radius:10px;text-decoration:none}
+.upb a:nth-child(1){background:#5588cc}.upb a:nth-child(2){background:#7f64a8}.upb a:nth-child(3){background:#4f9bc2}.upb a:nth-child(4){background:#6d7a90}
+.ck{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:11px}.ck input{width:18px;height:18px;accent-color:var(--ac)}
+#nm,#utr{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:10px;padding:10px;font-size:12px;margin-top:6px}
+.err{color:var(--red);font-size:10.5px;min-height:14px;margin-top:6px}
+.clr{display:block;margin:12px auto 4px;background:none;border:0;color:var(--red);font-size:11px;text-decoration:underline;cursor:pointer}
+.co{position:sticky;bottom:0;flex:none;margin:0 -14px;background:var(--card);border-top:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.co small{display:block;font-size:10px;color:var(--mu)}.co b{font-size:15px;color:var(--acx)}.co .wa{padding:11px 26px}
+.empty{text-align:center;color:var(--mu);padding:30px 10px;font-size:11.5px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--hd);color:#fff;border-radius:12px;padding:9px 14px;font-size:11px;font-weight:500;max-width:92vw;text-align:center;cursor:pointer}#toast[hidden]{display:none}
+footer{padding:0 14px 18px;font-size:10px;color:var(--mu)}
+body.locked{background:var(--hd)}
+#gate{max-width:420px;width:calc(100% - 28px);margin:7vh auto;background:var(--card);border-radius:22px;padding:24px 18px 28px}
+#gate h1{font-size:20px;margin:0}#gate h1 span{color:var(--ac)}#gate .sub{font-size:11px;color:var(--mu);margin-top:2px}
+#gate .tabs{margin:14px 0 0}#gate label{display:block;font-size:10px;color:var(--mu);margin:10px 0 3px}
+#gate input,#gate textarea{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:11px;padding:10px;font-size:12px}
+#gate .wa{width:100%;margin-top:14px;padding:12px}#gate .err,#gate .hint{margin-top:6px}#prev{max-width:100%;max-height:140px;border-radius:10px;margin-top:8px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+</style>
+</head>
+<body class="locked">
+<div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
+<div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
+<form id="fl" autocomplete="on"><label>Mobile number or Admin ID</label><input id="lm" autocapitalize="none" placeholder="10-digit mobile or admin ID"><label>Password</label><input id="lp" type="password"><div class="err" id="le"></div><button class="wa" type="submit">Login</button></form>
+<form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
+<div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
+
+<header class="apbar"><div class="logo">S</div><div><h1>Sara Opticals</h1><small>Single Vision Order · Prices 15 May 2026</small></div><div class="sp"></div><button class="ib" id="ft" aria-label="Filters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></header>
+<div class="pc"><div class="pt">YOUR POWER</div><div class="fl"><div class="fld"><small>SPH</small><select id="sph"></select></div><div class="fld"><small>CYL</small><select id="cyl"></select></div></div></div>
+<div id="fm" class="seg"></div>
+<div class="flt" id="flt" hidden>
+<div class="row"><span class="lbl">Show</span><div id="fa"></div></div>
+<div class="row" id="rt"><span class="lbl">Type</span><div id="fc"></div></div>
+<div class="row"><span class="lbl">Coating</span><div id="fk"></div></div>
+<div class="row"><span class="lbl">Max ₹</span><input type="range" id="mx" min="50" max="1200" step="10" value="1200"><b id="mv">Any</b></div>
+</div>
+<main><div class="tip" id="tip">👇 <b>Tap a price</b> to select it, then set pairs and tap <b>Add to cart</b></div><div class="note" id="nt" hidden></div><div class="count" id="ct"></div><div id="out"></div></main>
+<footer>Prices in ₹ per pair as printed on the sheet. Blank = not offered. Minimum order 0.5 pair.</footer>
+<div class="cartp" id="cart" hidden></div><div class="cartp" id="ordp" hidden></div>
+<div class="cartp" id="accp" hidden><div class="cpw"><h2>Account</h2><div class="cbx"><div class="sumr"><span>Shop</span><b id="acs">-</b></div><div class="sumr"><span>Owner</span><b id="aco">-</b></div><div class="sumr"><span>Mobile</span><b id="acm">-</b></div></div><button class="wa" id="lo" style="width:100%;margin-top:14px;background:var(--redbg);color:var(--red)">Logout</button></div></div>
+<div id="toast" hidden></div>
+<div class="ord"><div class="sheet empty" id="sheet"><div class="t hl" id="ot"></div><div class="ordrow"><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button></div></div>
+<nav class="nav"><button class="ni on" id="tcat"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span>Catalog</button><button class="ni" id="tcart"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h10L20 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg><b id="cn">0</b></span>Cart</button><button class="ni" id="mo"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Orders</button><button class="ni" id="tacc"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span>Account</button></nav></div>
+<script>
+const UPI_ID='paytmqr5j0gs4@ptys', UPI_NAME='Sara Opticals'; // UPI ID for payments
+const WA='918949214717'; // Sara Opticals WhatsApp
+const CRN=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','LOW REFLECTION: MARI-BLU','NIGHT DRIVE','O2'];
+const PGN=['HC','HMC','B.CUT','LOW REFLECTION: MARI-BLU','B.CUT BLUE'];
+const PON=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
+const K=[...new Set([...CRN,...PGN,...PON])];
+const M=[['cr','CR (Regular)',CRN],['pg','Photogrey',PGN],['po','Polycarbonate',PON]];
+const Z8=[0,0,0,0,0,0,0,0],Z5=[0,0,0,0,0],Z6=[0,0,0,0,0,0];
+// [type,label,[[maxSph,maxCyl]..],CR[8],PG[5],POLY[6]]  0 = not offered. Source: price sheet effective 15 May 2026
+const D=[
+['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,270,450,260],[120,200,350,450,450],[0,120,250,300,300,350]],
+['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,270,450,0],[300,400,0,0,0],[0,350,0,0,0,0]],
+['Minus','-10.00/-2.00',[[10,2]],[180,220,300,330,0,0,0,0],Z5,Z6],
+['Minus','-12.00 SPH',[[12,0]],[240,300,500,0,0,0,0,0],Z5,Z6],
+['Minus','-12.00/-2.00, -14.00 SPH',[[12,2],[14,0]],[260,340,700,0,0,0,0,0],Z5,Z6],
+['Minus','-14.00/-2.00, -16.00 SPH',[[14,2],[16,0]],[340,380,750,0,0,0,0,0],Z5,Z6],
+['Minus','-16.00/-2.00, -18.00 SPH',[[16,2],[18,0]],[450,460,850,0,0,0,0,0],Z5,Z6],
+['Minus','-18.00/-2.00, -20.00 SPH',[[18,2],[20,0]],[500,600,980,0,0,0,0,0],Z5,Z6],
+['Minus','-20.00/-2.00, -22.00 SPH',[[20,2],[22,0]],[550,640,1200,0,0,0,0,0],Z5,Z6],
+['Minus','-4.00/-4.00',[[4,4]],[160,200,250,300,350,400,550,400],[350,400,500,700,0],[0,350,350,500,600,0]],
+['Minus','-6.00/-4.00',[[6,4]],[180,240,300,350,380,400,550,400],Z5,[0,400,450,600,0,0]],
+['Minus','-8.00/-4.00',[[8,4]],[260,260,400,500,550,0,0,0],Z5,Z6],
+['Minus','-10.00/-4.00',[[10,4]],[340,330,900,0,0,0,0,0],Z5,Z6],
+['Minus','-6.00/-6.00',[[6,6]],[420,400,500,550,600,0,0,0],[0,0,850,0,0],Z6],
+['Plus','+4.00/+2.00',[[4,2]],[80,110,110,180,180,320,500,280],[150,250,500,450,0],[0,150,300,350,350,400]],
+['Plus','+6.00/+2.00 (60)',[[6,2]],[140,200,300,500,0,0,0,0],[0,400,0,0,0],Z6],
+['Plus','+6 SPH (55)',[[6,0]],[180,220,300,0,0,0,0,0],[250,300,400,0,0],Z6],
+['Plus','+8 SPH (55)',[[8,0]],[200,260,400,0,0,0,0,0],Z5,Z6],
+['Plus','+10 SPH (55)',[[10,0]],[260,300,600,0,0,0,0,0],Z5,Z6],
+['Plus','+12.00 SPH (55)',[[12,0]],[300,380,0,0,0,0,0,0],Z5,Z6],
+['Plus','+12.00/+2.00, +14.00 SPH',[[12,2],[14,0]],[400,400,0,0,0,0,0,0],Z5,Z6],
+['Plus','+14.00/+2.00, +16.00 SPH',[[14,2],[16,0]],[400,450,0,0,0,0,0,0],Z5,Z6],
+['Plus','+16.00/+2.00, +18.00 SPH',[[16,2],[18,0]],[480,500,0,0,0,0,0,0],Z5,Z6],
+['Plus','+4.00/+4.00',[[4,4]],[240,250,300,0,0,0,0,0],Z5,[0,400,500,0,0,0]],
+['Plus','+6.00/+4.00',[[6,4]],[360,300,600,0,0,0,0,0],Z5,Z6],
+['Plus','+6.00 cyl',[[4,6]],[460,0,0,0,0,0,0,0],Z5,Z6],
+['Cross Comp','Cross Comp -2.00 CYL',[[99,2]],[100,140,180,220,250,360,750,350],[250,300,400,600,0],[0,280,350,0,500,0]],
+['Cross Comp','Cross Comp -4.00 CYL',[[99,4]],[160,220,280,350,400,0,0,500],[350,400,0,0,0],[0,400,0,0,0,0]],
+['Cross Comp','Cross Comp -6.00 CYL',[[99,6]],[300,380,550,0,0,0,0,0],Z5,Z6]
+];
+const f=v=>v===0?'0.00':(v>0?'+':'')+v.toFixed(2);
+const sphEl=document.getElementById('sph'),cylEl=document.getElementById('cyl');
+for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));
+for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));
+sphEl.value='0';cylEl.value='0';
+const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null;
+let NOTE='',NOTE_SHORT='';
+function match(){const sp=+sphEl.value,cy=+cylEl.value;NOTE='';NOTE_SHORT='';let t,s,c;
+ if(sp>0&&cy<0){
+  if(-cy>sp){t='Cross Comp';s=99;c=-cy;NOTE=`<b>Cross compound</b> · SPH ${f(sp)} is plus and CYL ${f(cy)} is larger, so cross compound prices apply.`;NOTE_SHORT=' (Cross compound)'}
+  else{const ns=+(sp+cy).toFixed(2),nc=-cy;t='Plus';s=ns;c=nc;NOTE=`<b>Power converted</b> (transposed) · SPH ${f(sp)} / CYL ${f(cy)} → SPH ${f(ns)} / CYL ${f(nc)}`;NOTE_SHORT=` → converted SPH ${f(ns)} / CYL ${f(nc)}`}
+ }else{t=sp>0?'Plus':'Minus';s=Math.abs(sp);c=Math.abs(cy)}
+ return D.find(r=>r[0]===t&&r[2].some(([ms,mc])=>s<=ms&&c<=mc))}
+function chips(id,list,key){const el=document.getElementById(id);if(id!=='fm'){el.className='row';el.style.margin=0}else el.className='seg';
+ el.innerHTML=list.map(v=>`<button class="chip${S[key]===v?' on':''}" data-v="${v}">${v}</button>`).join('');
+ el.onclick=e=>{const v=e.target.dataset.v;if(v){S[key]=v;draw()}}}
+function offers(r){const o=[];M.forEach((m,mi)=>{if(S.m!=='All'&&S.m!==m[1])return;
+ m[2].forEach((kn,i)=>{const p=r[3+mi][i];if(!p)return;if(S.k!=='All'&&S.k!==kn)return;if(S.mx<1200&&p>S.mx)return;o.push({m:m[0],mn:m[1],k:kn,p})})});return o}
+function draw(){
+ chips('fa',['My power','All ranges'],'a');chips('fc',['All','Minus','Plus','Cross Comp'],'t');
+ chips('fm',['All',...M.map(m=>m[1])],'m');chips('fk',['All',...K],'k');
+ document.getElementById('rt').style.display=S.a==='All ranges'?'flex':'none';
+ document.getElementById('mv').textContent=S.mx>=1200?'Any':'≤ ₹'+S.mx;
+ let rows;const nt=document.getElementById('nt');nt.hidden=true;
+ if(S.a==='My power'){const r=match();rows=r?[r]:[];if(NOTE){nt.hidden=false;nt.innerHTML=NOTE}}else rows=D.filter(r=>S.t==='All'||r[0]===S.t);
+ let n=0,h='';
+ rows.forEach(r=>{const o=offers(r);if(!o.length)return;n++;const mn=Math.min(...o.map(x=>x.p));
+  h+=`<div class="card ty-${r[0].replace(' ','')}"><div class="top"><div><div class="pw">${r[1]}</div><div class="from">from ₹${mn}</div></div><span class="badge">${r[0]}</span></div>`;
+  M.forEach(m=>{const g=o.filter(x=>x.m===m[0]);if(!g.length)return;
+   h+=`<div class="grp g-${m[0]}"><div class="gn ${m[0]}">${m[1]}</div><div class="chips">`+g.map(x=>{const on=sel&&sel.r===r[1]&&sel.m===x.mn&&sel.k===x.k;
+    return `<button class="p${on?' on':x.p===mn?' min':''}" data-r="${r[1]}" data-m="${x.mn}" data-k="${x.k}" data-p="${x.p}"><span>${x.k}</span><b>₹${x.p}</b></button>`}).join('')+'</div></div>'});
+  h+='</div>'});
+ const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
+ document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
+ document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
+ document.getElementById('tip').hidden=!!sel||!h;updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ const ot=document.getElementById('ot');
+ ot.innerHTML=sel?`<div class="sl"><div><b>${sel.m} · ${sel.k}</b><small>${pw()}</small></div><span class="pr">₹${sel.p}</span></div>`:'👆 Tap a price above to select it';ot.className=sel?'t':'t hl';document.getElementById('sheet').classList.toggle('empty',!sel);document.getElementById('add').disabled=!sel;}
+let fOpen=false;
+function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);document.getElementById('ft').dataset.n=n||''}
+document.getElementById('ft').onclick=()=>{fOpen=!fOpen;document.getElementById('flt').hidden=!fOpen;updFt()};
+const ordEl=document.querySelector('.ord'),mainEl=document.querySelector('main');
+new ResizeObserver(()=>{mainEl.style.paddingBottom=(ordEl.offsetHeight+24)+'px'}).observe(ordEl);
+document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
+sphEl.onchange=cylEl.onchange=()=>{sel=null;S.a='My power';draw()};
+let cart=[],name='',utr='',paid=false,isOpen=false,tt;
+const cartEl=document.getElementById('cart');
+const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${NOTE_SHORT}`:'Power not specified';
+const pr=document.getElementById('pairs');
+const getPairs=()=>{let v=parseFloat(pr.value);if(!(v>=0.5))v=0.5;return Math.round(v*2)/2};
+document.getElementById('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
+document.getElementById('pp').onclick=()=>{pr.value=getPairs()+0.5};
+pr.onchange=()=>{pr.value=getPairs()};
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
+document.getElementById('toast').onclick=()=>{document.getElementById('toast').hidden=true;isOpen=true;renderCart()};
+document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs(),power=pw(),id=[power,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id),lbl=`${sel.m} · ${sel.k}`;
+ if(ex){ex.q+=n}else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n});
+ sel=null;pr.value=1;draw();renderCart();toast(`✓ Added to cart: ${lbl} × ${n} pair${n===1?'':'s'}. Tap to view cart`)};
+
+function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);document.getElementById('cn').textContent=cnt;
+ cartEl.hidden=!isOpen;if(isOpen)document.getElementById('toast').hidden=true;document.body.style.overflow=isOpen?'hidden':'';if(!isOpen)return;
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),top=`<div class="cph"><button class="chip" data-a="back">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
+ if(!cart.length){cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart</h2><div class="empty">Your cart is empty.<br>Select a power and price, then tap Add to cart.</div></div>`;return}
+ const items=cart.map((c,i)=>`<div class="it"><div class="n">${i+1}</div><div class="bd"><div class="prod">${c.m} · ${c.k}</div><div class="pwr">${c.power}</div><div class="hint">₹${c.p} per pair</div><div class="qrow"><div class="qt"><button data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>${c.q} pair${c.q===1?'':'s'}</span><button data-i="${i}" data-d="0.5" aria-label="More">+</button></div><b>₹${c.p*c.q}</b></div><button class="rm" data-rm="${i}">Remove item</button></div></div>`).join('');
+ const q=`pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}`;
+ const pay=UPI_ID?`<div class="cbx"><div class="cth">Step 1: Pay ₹${tot} by UPI</div><div class="upb"><a href="tez://upi/pay?${q}">Google Pay</a><a href="phonepe://pay?${q}">PhonePe</a><a href="paytmmp://pay?${q}">Paytm</a><a href="upi://pay?${q}">Other UPI app</a></div><div id="qr" data-q="upi://pay?${q}" style="margin:12px auto 0;width:150px"></div><div class="hint" style="text-align:center">Or scan this QR with any UPI app<br>UPI ID: <b>${UPI_ID}</b></div><div class="cth" style="margin-top:12px">Step 2: Confirm payment</div><label class="ck"><input type="checkbox" id="pd" ${paid?'checked':''}> I have completed the UPI payment of ₹${tot}</label><input id="utr" style="margin-top:8px" inputmode="numeric" maxlength="12" placeholder="12-digit UPI reference (optional, helps us confirm faster)" value="${utr}"></div>`:'';
+ cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart (${cart.length} item${cart.length===1?'':'s'})</h2>${items}
+<div class="cbx"><div class="sumr"><span>Total pairs</span><b>${cnt}</b></div><div class="sumr" style="font-size:18px"><span>Total amount</span><b>₹${tot}</b></div></div>${pay}
+<div class="cbx"><div class="cth">${UPI_ID?'Step 3: ':''}Send order</div><label class="l" style="font-size:12px;color:var(--mu)">Optical shop name *</label><input id="nm" style="margin-top:4px" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><div class="err" id="oe"></div></div>
+<button class="clr" id="cl" style="display:block;margin:14px auto 0">Clear entire cart</button></div><div class="co"><div><small>Total</small><b>₹${tot}</b></div><button class="wa" id="po">Place order</button></div>`;mkQR()}
+cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'');if(e.target.id==='pd')paid=e.target.checked};
+cartEl.onclick=e=>{const b=e.target;
+ if(b.dataset.a==='back'){isOpen=false;renderCart()}
+ else if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
+ else if(b.dataset.rm!==undefined){cart.splice(+b.dataset.rm,1);renderCart()}
+ else if(b.id==='cl'){if(confirm('Remove all items from the cart?')){cart=[];renderCart()}}
+ else if(b.id==='po'){placeOrder(b)}};
+function mkQR(){const el=document.getElementById('qr');if(!el||!window.QRCode)return;new QRCode(el,{text:el.dataset.q,width:150,height:150})}
+async function placeOrder(b){const E=document.getElementById('oe'),nm=document.getElementById('nm');E.textContent='';
+ if(!name.trim()){nm.style.borderColor='#dc2626';nm.focus();E.textContent='Please enter your optical shop name.';return}
+ if(UPI_ID&&!paid){E.textContent='Please complete the UPI payment and tick the confirmation box.';return}
+ if(!window.USER||!window.PW){E.textContent='Please logout and login again.';return}
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),items=cart.map(c=>({power:c.power,product:c.m+' - '+c.k,pairs:c.q,price:c.p}));
+ b.disabled=true;b.textContent='Placing order…';
+ try{const r=await call({action:'order',mobile:USER.mobile,pw:PW,shop:name.trim(),items,total:tot,utr:utr.trim(),paid});
+  if(!r.ok){E.textContent=r.error||'Could not place order.';b.disabled=false;b.textContent='Place order';return}
+  let t=`*SINGLE VISION ORDER* (${r.id})\nOptical Shop: ${name.trim()}\n\n*Items:*\n`+items.map((c,i)=>`${i+1}. ${c.power}\n    Product: ${c.product}\n    Pairs: ${c.pairs}`).join('\n')+`\n\nTotal: ₹${tot}`;
+  cart=[];utr='';paid=false;document.getElementById('cn').textContent=0;
+  cartEl.innerHTML=`<div class="cpw"><div class="cbx" style="text-align:center;margin-top:30px"><div style="font-size:42px">✅</div><h2>Order placed</h2><div>Order ID: <b>${r.id}</b></div><div class="hint" style="margin-top:6px">Total ₹${tot}. Sara Opticals has received your order and will confirm shortly.</div><a class="wa" style="margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(t)}">Also send a copy on WhatsApp (optional)</a><button class="chip" data-a="back" style="margin-top:12px">Back to catalog</button></div></div>`}
+ catch(x){E.textContent='Network error. Your order was not placed. Please try again.';b.disabled=false;b.textContent='Place order'}}
+draw();
+</script>
+<script>
+const API='https://script.google.com/macros/s/AKfycbzSaih3gig3rz16rr87ZPp6Eg5r_VHTs2RtyF9G8rOOROoUf-H-hLDfOjXjEgV8trwd/exec'; // Google Apps Script backend
+const LS='sara_users',SS='sara_session',$=id=>document.getElementById(id);
+const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}};
+async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function call(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
+const MSG={not_found:'This mobile number is not registered. Please register first.',wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.'};
+function enter(u,pw){window.USER=u;window.PW=pw;name=u.shop;document.body.classList.remove('locked');$('acs').textContent=u.shop;$('aco').textContent=u.owner||'-';$('acm').textContent=u.mobile;try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
+async function doLogin(m,pw){
+ if(API){try{return await call({action:'login',mobile:m,pw})}catch(e){return{ok:false,error:'Network error. Please check your internet and try again.'}}}
+ const u=getU()[m];return u&&u.pw===pw?{ok:true,user:u}:{ok:false,error:'wrong'}}
+function tab(r){$('fl').hidden=r;$('fr').hidden=!r;$('done').hidden=true;$('tl').classList.toggle('on',!r);$('tr').classList.toggle('on',r)}
+$('tl').onclick=()=>tab(false);$('tr').onclick=()=>tab(true);
+$('lo').onclick=()=>{try{localStorage.removeItem(SS)}catch(e){}location.reload()};
+const op=$('ordp');
+function closeOrders(){op.hidden=true;document.body.style.overflow=''}
+$('mo').onclick=async()=>{op.hidden=false;document.body.style.overflow='hidden';
+ const top=`<div class="cph"><button class="chip" id="ob">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
+ op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2><div class="empty">Loading your orders…</div></div>`;$('ob').onclick=closeOrders;
+ let r;try{r=await call({action:'myorders',mobile:USER.mobile,pw:PW})}catch(e){r={ok:false,error:'Network error. Please try again.'}}
+ const esc=t=>String(t==null?'':t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+ const h=!r.ok?`<div class="empty">${esc(r.error)}</div>`:!r.orders.length?'<div class="empty">No orders yet.</div>':r.orders.map(o=>`<div class="cbx"><div class="top"><b>${esc(o.id)}</b><span class="badge">${esc(o.status)}</span></div><div class="hint">${esc(o.time)}${USER.admin?' · '+esc(o.shop):''}</div><div style="white-space:pre-line;margin:8px 0;font-size:14px">${esc(o.items)}</div><div class="sumr"><span>${esc(o.pairs)} pairs</span><b>₹${esc(o.total)}</b></div>${o.utr?`<div class="hint">UPI ref: ${esc(o.utr)}</div>`:''}</div>`).join('');
+ op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2>${h}</div>`;$('ob').onclick=closeOrders};
+let card='';
+$('rc').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);card=c.toDataURL('image/jpeg',.6);$('prev').src=card;$('prev').hidden=false};im.src=r.result};r.readAsDataURL(f)};
+$('fl').onsubmit=async e=>{e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent='Please wait…';
+ const pw=await hs($('lp').value),r=await doLogin($('lm').value.trim(),pw);b.disabled=false;b.textContent='Login';
+ if(r.ok){enter(r.user,pw)}else $('le').textContent=MSG[r.error]||r.error};
+$('fr').onsubmit=async e=>{e.preventDefault();const v=id=>$(id).value.trim(),m=v('rm'),E=$('re'),b=e.target.querySelector('button[type=submit]');
+ if(!v('rs')||!v('ro')||!v('rc2')){E.textContent='Please fill all required fields.';return}
+ if(!/^[6-9]\d{9}$/.test(m)){E.textContent='Enter a valid 10-digit mobile number.';return}
+ if(v('rg')&&!/^[0-9A-Z]{15}$/i.test(v('rg'))){E.textContent='GST number should be 15 characters.';return}
+ if(!card){E.textContent='Please upload your visiting card photo.';return}
+ if($('rp').value.length<6){E.textContent='Password must be at least 6 characters.';return}
+ const pw=await hs($('rp').value),u={shop:v('rs'),owner:v('ro'),mobile:m,city:v('rc2'),addr:v('ra'),gst:v('rg').toUpperCase()};
+ let status='Approved';b.disabled=true;b.textContent='Registering…';E.textContent='';
+ try{if(API){const r=await call({action:'register',...u,pw,card});if(!r.ok){E.textContent=r.error;b.disabled=false;b.textContent='Register';return}status=r.status}
+  else{const all=getU();if(all[m]){E.textContent='This mobile number is already registered. Please login.';b.disabled=false;b.textContent='Register';return}all[m]={...u,pw};localStorage.setItem(LS,JSON.stringify(all))}}
+ catch(x){E.textContent='Could not register. Please check your internet and try again.';b.disabled=false;b.textContent='Register';return}
+ b.disabled=false;b.textContent='Register';$('fr').hidden=true;$('done').hidden=false;
+ const t=`*NEW REGISTRATION - Sara Opticals catalog*\nShop: ${u.shop}\nOwner: ${u.owner}\nMobile: +91 ${m}\nCity: ${u.city}${u.addr?'\nAddress: '+u.addr:''}${u.gst?'\nGST: '+u.gst:''}`;
+ $('dw').href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+ $('dm').textContent=status==='Approved'?'Welcome, '+u.shop+'! You can start browsing now.':'Thank you! Sara Opticals will verify your shop and approve your login shortly.';
+ $('dc').style.display=status==='Approved'?'block':'none';$('dc').onclick=()=>enter(u,pw)};
+try{const x=JSON.parse(localStorage.getItem(SS)||'null');if(x)doLogin(x.m,x.pw).then(r=>{if(r.ok)enter(r.user,x.pw)})}catch(e){}
+</script>
+<script>
+const T={cat:$('tcat'),cart:$('tcart'),ord:$('mo'),acc:$('tacc')},accp=$('accp');
+function closeAll(){isOpen=false;renderCart();op.hidden=true;accp.hidden=true;document.body.style.overflow=''}
+function syncTabs(){const o=!cartEl.hidden?'cart':!op.hidden?'ord':!accp.hidden?'acc':'cat';Object.entries(T).forEach(([k,e])=>e.classList.toggle('on',k===o));document.body.classList.toggle('ov',o!=='cat')}
+[cartEl,op,accp].forEach(e=>new MutationObserver(syncTabs).observe(e,{attributes:true,attributeFilter:['hidden']}));
+T.cat.onclick=closeAll;
+T.cart.onclick=()=>{closeAll();isOpen=true;renderCart()};
+const origOrd=T.ord.onclick;T.ord.onclick=()=>{closeAll();origOrd()};
+T.acc.onclick=()=>{closeAll();accp.hidden=false;document.body.style.overflow='hidden'};
+const cnEl=$('cn');const hideCn=()=>{cnEl.style.display=cnEl.textContent.trim()==='0'?'none':''};
+new MutationObserver(hideCn).observe(cnEl,{childList:true,characterData:true,subtree:true});hideCn();syncTabs();
+</script>
+</body></html>
