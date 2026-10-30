@@ -161,11 +161,11 @@ for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));
 for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));
 sphEl.value='0';cylEl.value='0';
 const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null;
-let NOTE='',NOTE_SHORT='';
-function match(){const sp=+sphEl.value,cy=+cylEl.value;NOTE='';NOTE_SHORT='';let t,s,c;
+let NOTE='',NOTE_SHORT='',PWR={};
+function match(){const sp=+sphEl.value,cy=+cylEl.value;NOTE='';NOTE_SHORT='';PWR={mode:'normal',sph:sp,cyl:cy,ns:null,nc:null};let t,s,c;
  if(sp>0&&cy<0){
-  if(-cy>sp){t='Cross Comp';s=99;c=-cy;NOTE=`<b>Cross compound</b> · SPH ${f(sp)} is plus and CYL ${f(cy)} is larger, so cross compound prices apply.`;NOTE_SHORT=' (Cross compound)'}
-  else{const ns=+(sp+cy).toFixed(2),nc=-cy;t='Plus';s=ns;c=nc;NOTE=`<b>Power converted</b> (transposed) · SPH ${f(sp)} / CYL ${f(cy)} → SPH ${f(ns)} / CYL ${f(nc)}`;NOTE_SHORT=` → converted SPH ${f(ns)} / CYL ${f(nc)}`}
+  if(-cy>sp){t='Cross Comp';s=99;c=-cy;PWR.mode='cross';NOTE=`<b>Cross compound</b> · SPH ${f(sp)} is plus and CYL ${f(cy)} is larger, so cross compound prices apply.`;NOTE_SHORT=' (Cross compound)'}
+  else{const ns=+(sp+cy).toFixed(2),nc=-cy;t='Plus';s=ns;c=nc;PWR.mode='converted';PWR.ns=ns;PWR.nc=nc;NOTE=`<b>Power converted</b> (transposed) · SPH ${f(sp)} / CYL ${f(cy)} → SPH ${f(ns)} / CYL ${f(nc)}`;NOTE_SHORT=` → converted SPH ${f(ns)} / CYL ${f(nc)}`}
  }else{t=sp>0?'Plus':'Minus';s=Math.abs(sp);c=Math.abs(cy)}
  return D.find(r=>r[0]===t&&r[2].some(([ms,mc])=>s<=ms&&c<=mc))}
 function chips(id,list,key){const el=document.getElementById(id);if(id!=='fm'){el.className='row';el.style.margin=0}else el.className='seg';
@@ -211,7 +211,7 @@ pr.onchange=()=>{pr.value=getPairs()};
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
 document.getElementById('toast').onclick=()=>{document.getElementById('toast').hidden=true;isOpen=true;renderCart()};
 document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs(),power=pw(),id=[power,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id),lbl=`${sel.m} · ${sel.k}`;
- if(ex){ex.q+=n}else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n});
+ if(ex){ex.q+=n}else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n,sph:S.a==='My power'?PWR.sph:null,cyl:S.a==='My power'?PWR.cyl:null,mode:PWR.mode,ns:PWR.ns,nc:PWR.nc});
  sel=null;pr.value=1;draw();renderCart();toast(`✓ Added to cart: ${lbl} × ${n} pair${n===1?'':'s'}. Tap to view cart`)};
 
 function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);document.getElementById('cn').textContent=cnt;
@@ -233,11 +233,14 @@ cartEl.onclick=e=>{const b=e.target;
  else if(b.id==='cl'){if(confirm('Remove all items from the cart?')){cart=[];renderCart()}}
  else if(b.id==='po'){placeOrder(b)}};
 function mkQR(){const el=document.getElementById('qr');if(!el||!window.QRCode)return;new QRCode(el,{text:el.dataset.q,width:150,height:150})}
+const fmP=v=>(v>0?'+':v<0?'-':'')+Math.abs(v).toFixed(2);
+function fpow(S,C){S=+S;C=+C;if(S===0&&C===0)return 'Plano';if(S===0)return fmP(C)+' cyl';if(C===0)return fmP(S)+' sph';return fmP(S)+'/'+fmP(C)}
+function sheetPower(c){if(c.sph==null)return 'Power not specified';let t=fpow(c.sph,c.cyl);if(c.mode==='converted')t+=' (converted '+fpow(c.ns,c.nc)+')';else if(c.mode==='cross')t+=' (cross compound)';return t}
 async function placeOrder(b){const E=document.getElementById('oe'),nm=document.getElementById('nm');E.textContent='';
  if(!name.trim()){nm.style.borderColor='#dc2626';nm.focus();E.textContent='Please enter your optical shop name.';return}
  if(UPI_ID&&!paid){E.textContent='Please complete the UPI payment and tick the confirmation box.';return}
  if(!window.USER||!window.PW){E.textContent='Please logout and login again.';return}
- const tot=cart.reduce((a,c)=>a+c.p*c.q,0),items=cart.map(c=>({power:c.power,product:c.m+' - '+c.k,pairs:c.q,price:c.p}));
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),items=cart.map(c=>({power:sheetPower(c),product:(c.m==='CR (Regular)'?'CR':c.m)+' - '+c.k,pairs:c.q,price:c.p}));
  b.disabled=true;b.textContent='Placing order…';
  try{const r=await call({action:'order',mobile:USER.mobile,pw:PW,shop:name.trim(),items,total:tot,utr:utr.trim(),paid});
   if(!r.ok){E.textContent=r.error||'Could not place order.';b.disabled=false;b.textContent='Place order';return}
