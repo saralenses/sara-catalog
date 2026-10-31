@@ -35,6 +35,7 @@ main{padding:0 14px 16px}
 .pw{font-size:14px;font-weight:500}.from{font-size:10px;color:var(--mu)}
 .badge{background:var(--soft);color:var(--acx);font-size:10px;padding:3px 9px;border-radius:99px;white-space:nowrap}
 .gn{display:inline-block;font-size:9.5px;letter-spacing:.06em;font-weight:500;padding:3px 8px;border-radius:6px;margin:12px 0 6px}
+.gn.m3,.gn.m4,.gn.m5,.gn.m6,.gn.m7{background:rgba(100,116,139,.15);color:var(--mu)}
 .gn.cr{background:rgba(59,133,128,.14);color:#2f7a75}.gn.pg{background:rgba(111,98,173,.14);color:#6f62ad}.gn.po{background:rgba(185,127,54,.16);color:#9a6a26}
 @media (prefers-color-scheme:dark){.gn.cr{color:#7cc7c1}.gn.pg{color:#b9aee6}.gn.po{color:#e6c27c}}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px}
@@ -47,6 +48,8 @@ main{padding:0 14px 16px}
 .sheet{margin:0 10px 8px;background:var(--card);border-radius:18px;padding:10px 12px;box-shadow:0 10px 26px -8px rgba(31,59,92,.45)}
 .sheet .t{font-size:11px;color:var(--mu)}.sheet .t.hl{color:var(--acx);font-weight:500;text-align:center;padding:3px 0}
 .sl{display:flex;justify-content:space-between;align-items:center;gap:8px}.sl b{font-size:11.5px;display:block}.sl small{display:block;font-size:10px;color:var(--mu)}.sl .pr{font-size:14px;font-weight:500;color:var(--acx);white-space:nowrap}
+.sl>div{flex:1;min-width:0}
+.xq{border:0;background:var(--soft);color:var(--mu);width:26px;height:26px;border-radius:50%;font-size:11px;cursor:pointer;flex:none}
 .ordrow{display:flex;gap:9px;align-items:center;margin-top:9px}.sheet.empty .ordrow{display:none}
 .pq{display:flex;align-items:center;background:var(--bg);border-radius:11px;font-size:10px;color:var(--mu);padding-right:8px}
 .pq button{width:30px;height:34px;border:0;background:none;color:var(--acx);font-size:16px;cursor:pointer}
@@ -98,7 +101,7 @@ body:not(.locked) #gate{display:none!important}
 <form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
 <div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
 
-<header class="apbar"><div class="logo">S</div><div><h1>Sara Opticals</h1><small>Single Vision Order · Prices 15 May 2026</small></div><div class="sp"></div><button class="ib" id="ft" aria-label="Filters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></header>
+<header class="apbar"><div class="logo">S</div><div><h1>Sara Opticals</h1><small>Single Vision Order</small></div><div class="sp"></div><button class="ib" id="ft" aria-label="Filters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></header>
 <div class="pc"><div class="pt">YOUR POWER</div><div class="fl"><div class="fld"><small>SPH</small><select id="sph"></select></div><div class="fld"><small>CYL</small><select id="cyl"></select></div></div></div>
 <div id="fm" class="seg"></div>
 <div class="flt" id="flt" hidden>
@@ -108,7 +111,7 @@ body:not(.locked) #gate{display:none!important}
 <div class="row"><span class="lbl">Max ₹</span><input type="range" id="mx" min="50" max="1200" step="10" value="1200"><b id="mv">Any</b></div>
 </div>
 <main><div class="tip" id="tip">👇 <b>Tap a price</b> to select it, then set pairs and tap <b>Add to cart</b></div><div class="note" id="nt" hidden></div><div class="count" id="ct"></div><div id="out"></div></main>
-<footer>Prices in ₹ per pair as printed on the sheet. Blank = not offered. Minimum order 0.5 pair.</footer>
+<footer>Prices in ₹ per pair as printed on the sheet. Blank = not offered. Minimum order 0.5 pair.<br><span id="pu"></span></footer>
 <div class="cartp" id="cart" hidden></div><div class="cartp" id="ordp" hidden></div>
 <div class="cartp" id="accp" hidden><div class="cpw"><h2>Account</h2><div class="cbx"><div class="sumr"><span>Shop</span><b id="acs">-</b></div><div class="sumr"><span>Owner</span><b id="aco">-</b></div><div class="sumr"><span>Mobile</span><b id="acm">-</b></div></div><button class="wa" id="lo" style="width:100%;margin-top:14px;background:var(--redbg);color:var(--red)">Logout</button></div></div>
 <div id="toast" hidden></div>
@@ -120,11 +123,11 @@ const WA='918949214717'; // Sara Opticals WhatsApp
 const CRN=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','LOW REFLECTION: MARI-BLU','NIGHT DRIVE','O2'];
 const PGN=['HC','HMC','B.CUT','LOW REFLECTION: MARI-BLU','B.CUT BLUE'];
 const PON=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
-const K=[...new Set([...CRN,...PGN,...PON])];
-const M=[['cr','CR (Regular)',CRN],['pg','Photogrey',PGN],['po','Polycarbonate',PON]];
+let K=[...new Set([...CRN,...PGN,...PON])];
+let M=[['cr','CR (Regular)',CRN],['pg','Photogrey',PGN],['po','Polycarbonate',PON]];
 const Z8=[0,0,0,0,0,0,0,0],Z5=[0,0,0,0,0],Z6=[0,0,0,0,0,0];
 // [type,label,[[maxSph,maxCyl]..],CR[8],PG[5],POLY[6]]  0 = not offered. Source: price sheet effective 15 May 2026
-const D=[
+let D=[
 ['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,270,450,260],[120,200,350,450,450],[0,120,250,300,300,350]],
 ['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,270,450,0],[300,400,0,0,0],[0,350,0,0,0,0]],
 ['Minus','-10.00/-2.00',[[10,2]],[180,220,300,330,0,0,0,0],Z5,Z6],
@@ -190,9 +193,24 @@ function draw(){
  const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
  document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
  document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
- document.getElementById('tip').hidden=!!sel||!h;updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{sel={r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ document.getElementById('tip').hidden=!!sel||!h;updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{const same=sel&&sel.r===b.dataset.r&&sel.m===b.dataset.m&&sel.k===b.dataset.k;sel=same?null:{r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
  const ot=document.getElementById('ot');
- ot.innerHTML=sel?`<div class="sl"><div><b>${sel.m} · ${sel.k}</b><small>${pw()}</small></div><span class="pr">₹${sel.p}</span></div>`:'👆 Tap a price above to select it';ot.className=sel?'t':'t hl';document.getElementById('sheet').classList.toggle('empty',!sel);document.getElementById('add').disabled=!sel;}
+ ot.innerHTML=sel?`<div class="sl"><div><b>${sel.m} · ${sel.k}</b><small>${pw()}</small></div><span class="pr">₹${sel.p}</span><button class="xq" id="xs" aria-label="Deselect">✕</button></div>`:'👆 Tap a price above to select it';ot.className=sel?'t':'t hl';document.getElementById('sheet').classList.toggle('empty',!sel);document.getElementById('add').disabled=!sel;}
+const MKEYS=['cr','pg','po'];let PSIG='';
+function applyPrices(d){
+ const sig=JSON.stringify([d.materials,d.rows]);if(sig===PSIG){document.getElementById('pu').textContent='Prices updated '+d.updated;return}
+ PSIG=sig;
+ M=d.materials.map((m,i)=>[MKEYS[i]||('m'+i),m.name,m.coatings]);
+ K=[...new Set(M.flatMap(m=>m[2]))];
+ D=d.rows.map(r=>[r[0],r[1],r[2],...r[3]]);
+ if(S.m!=='All'&&!M.some(m=>m[1]===S.m))S.m='All';
+ if(S.k!=='All'&&!K.includes(S.k))S.k='All';
+ sel=null;document.getElementById('pu').textContent='Prices updated '+d.updated;draw();
+ let ch=false;cart.forEach(c=>{const r=D.find(x=>x[1]===c.r),mi=M.findIndex(m=>m[1]===c.m);if(!r||mi<0)return;const ki=M[mi][2].indexOf(c.k);if(ki<0)return;const p=r[3+mi][ki];if(p&&p!==c.p){c.p=p;ch=true}});
+ if(ch){renderCart();toast('Prices were updated in your cart')}}
+async function loadPrices(){if(!window.USER||!window.PW)return;
+ try{const r=await call({action:'prices',mobile:USER.mobile,pw:PW});if(r&&r.ok&&r.rows&&r.rows.length)applyPrices(r)}catch(e){}
+ if(!window.PI){window.PI=setInterval(loadPrices,120000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadPrices()})}}
 let fOpen=false;
 function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);document.getElementById('ft').dataset.n=n||''}
 document.getElementById('ft').onclick=()=>{fOpen=!fOpen;document.getElementById('flt').hidden=!fOpen;updFt()};
@@ -203,6 +221,7 @@ sphEl.onchange=cylEl.onchange=()=>{sel=null;S.a='My power';draw()};
 let cart=[],name='',utr='',paid=false,isOpen=false,tt;
 const cartEl=document.getElementById('cart');
 const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${NOTE_SHORT}`:'Power not specified';
+document.getElementById('ot').onclick=e=>{if(e.target.id==='xs'){sel=null;draw()}};
 const pr=document.getElementById('pairs');
 const getPairs=()=>{let v=parseFloat(pr.value);if(!(v>=0.5))v=0.5;return Math.round(v*2)/2};
 document.getElementById('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
@@ -257,7 +276,7 @@ const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){r
 async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function call(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
 const MSG={not_found:'This mobile number is not registered. Please register first.',wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.'};
-function enter(u,pw){window.USER=u;window.PW=pw;name=u.shop;document.body.classList.remove('locked');$('acs').textContent=u.shop;$('aco').textContent=u.owner||'-';$('acm').textContent=u.mobile;try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
+function enter(u,pw){window.USER=u;window.PW=pw;setTimeout(loadPrices,0);name=u.shop;document.body.classList.remove('locked');$('acs').textContent=u.shop;$('aco').textContent=u.owner||'-';$('acm').textContent=u.mobile;try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
 async function doLogin(m,pw){
  if(API){try{return await call({action:'login',mobile:m,pw})}catch(e){return{ok:false,error:'Network error. Please check your internet and try again.'}}}
  const u=getU()[m];return u&&u.pw===pw?{ok:true,user:u}:{ok:false,error:'wrong'}}
