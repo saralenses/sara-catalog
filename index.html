@@ -1,132 +1,206 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sara Opticals – Single Vision Lens Catalog</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<title>Sara Opticals – Single Vision Order</title>
+<meta name="theme-color" content="#1f3b5c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Sara Opticals">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Lbzmrw8cNVfskXS9ohZ6KVWZuuFKmdSAvUNyqSzsu88='; style-src 'unsafe-inline'; img-src 'self' data: blob:; connect-src https://script.google.com https://script.googleusercontent.com; manifest-src 'self'; worker-src 'self'; form-action 'none'; base-uri 'none'">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+
 <style>
 :root{--hd:#1f3b5c;--ac:#1f3b5c;--acx:#1f3b5c;--pw:#b7d0ea;--btn:#3f8a68;--bg:#f3f7fb;--card:#fff;--tx:#1e2f45;--mu:#64748b;--line:#e3eaf2;--soft:#e1eaf4;--tile:#eaf2fb;--red:#b4414c;--redbg:#fbe9eb;--note:#fff6e0;--notefg:#6b5521;--navh:56px}
 @media (prefers-color-scheme:dark){:root{--hd:#142941;--ac:#8fb4e3;--acx:#dbe8f6;--pw:#27406a;--btn:#4a9a78;--bg:#0e1724;--card:#17243a;--tx:#e6edf7;--mu:#9bacc4;--line:#25354f;--soft:#1e2f4c;--tile:#1c3354;--red:#f0a0a8;--redbg:#3a2229;--note:#3a3220;--notefg:#f0dca8}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:400 12px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 calc(12px*var(--fz,1))/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 b,strong,h1,h2{font-weight:500}button,select,input{font-family:inherit}
 body.locked>:not(#gate):not(script){display:none!important}
 .apbar{background:var(--hd);color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 16px;border-radius:0 0 18px 18px;display:flex;align-items:center;gap:10px}
-.logo{width:32px;height:32px;border-radius:10px;background:var(--pw);color:#1f3b5c;font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.apbar h1{margin:0;font-size:13px;line-height:1.15}.apbar small{display:block;font-size:10px;color:#b7d0ea;margin-top:2px}.sp{flex:1}
+.logo{width:32px;height:32px;border-radius:10px;background:var(--pw);color:#1f3b5c;font-weight:500;font-size:calc(15px*var(--fz,1));display:flex;align-items:center;justify-content:center;flex:none}
+.apbar h1{margin:0;font-size:calc(13px*var(--fz,1));line-height:1.15}.apbar small{display:block;font-size:calc(10px*var(--fz,1));color:#b7d0ea;margin-top:2px}.sp{flex:1}
 .ib{position:relative;width:34px;height:34px;border-radius:10px;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.ib[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;right:-4px;top:-4px;background:var(--btn);color:#fff;font-size:9px;border-radius:8px;padding:1px 5px}
+.ib[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;right:-4px;top:-4px;background:var(--btn);color:#fff;font-size:calc(9px*var(--fz,1));border-radius:8px;padding:1px 5px}
 .pc{background:var(--card);border-radius:16px;padding:12px;margin:-6px 14px 0;position:relative;box-shadow:0 6px 16px -10px rgba(31,59,92,.35)}
-.pt{font-size:10px;color:var(--mu);letter-spacing:.05em;margin-bottom:8px;font-weight:500}
-.fl{display:flex;gap:10px}.fld{flex:1;background:var(--bg);border-radius:11px;padding:7px 10px}.fld small{font-size:10px;color:var(--mu);display:block}
-.fld select{appearance:none;-webkit-appearance:none;border:0;width:100%;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;font-size:12px;font-weight:500;color:var(--tx);padding:3px 18px 1px 0}
+.pt{font-size:calc(10px*var(--fz,1));color:var(--mu);letter-spacing:.05em;margin-bottom:8px;font-weight:500}
+.fl{display:flex;gap:10px}.fld{flex:1;background:var(--bg);border-radius:11px;padding:7px 10px}.fld small{font-size:calc(10px*var(--fz,1));color:var(--mu);display:block}
+.fld select{appearance:none;-webkit-appearance:none;border:0;width:100%;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;font-size:calc(12px*var(--fz,1));font-weight:500;color:var(--tx);padding:3px 18px 1px 0}
 .seg,#gate .tabs{display:flex;background:var(--soft);border-radius:11px;padding:3px;margin:12px 14px 0}
-.seg .chip,.tabs .chip{flex:1;border:0;background:transparent;color:var(--mu);font-size:10px;font-weight:500;padding:8px 0;border-radius:8px;text-align:center;cursor:pointer}
+.seg .chip,.tabs .chip{flex:1;border:0;background:transparent;color:var(--mu);font-size:calc(10px*var(--fz,1));font-weight:500;padding:8px 0;border-radius:8px;text-align:center;cursor:pointer}
 .seg .chip.on,.tabs .chip.on{background:var(--card);color:var(--acx);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .flt{margin:10px 14px 0;background:var(--card);border-radius:14px;padding:4px 12px 12px}.flt[hidden]{display:none}
-.row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}.lbl{font-size:10px;color:var(--mu);min-width:48px}
-.chip{border:1px solid var(--line);background:var(--card);color:var(--tx);padding:5px 10px;border-radius:99px;font-size:10px;cursor:pointer}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}.lbl{font-size:calc(10px*var(--fz,1));color:var(--mu);min-width:48px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--tx);padding:5px 10px;border-radius:99px;font-size:calc(10px*var(--fz,1));cursor:pointer}
 .chip.on{background:var(--hd);border-color:var(--hd);color:#fff}
 input[type=range]{flex:1;min-width:100px;accent-color:var(--ac)}
 main{padding:0 14px 16px}
-.tip{background:var(--pw);color:var(--acx);border-radius:12px;padding:10px 12px;margin:12px 0 4px;font-size:11px;font-weight:500}.tip[hidden]{display:none}
-.note{background:var(--note);color:var(--notefg);border-radius:12px;padding:9px 12px;margin:10px 0 0;font-size:10.5px}.note[hidden]{display:none}
-.count{font-size:10px;color:var(--mu);margin:8px 2px 0}
+.tip{background:var(--pw);color:var(--acx);border-radius:12px;padding:10px 12px;margin:12px 0 4px;font-size:calc(11px*var(--fz,1));font-weight:500}.tip[hidden]{display:none}
+.note{background:var(--note);color:var(--notefg);border-radius:12px;padding:9px 12px;margin:10px 0 0;font-size:calc(10.5px*var(--fz,1))}.note[hidden]{display:none}
+.count{font-size:calc(10px*var(--fz,1));color:var(--mu);margin:8px 2px 0}
 .card{margin:10px 0 14px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.pw{font-size:14px;font-weight:500}.from{font-size:10px;color:var(--mu)}
-.badge{background:var(--soft);color:var(--acx);font-size:10px;padding:3px 9px;border-radius:99px;white-space:nowrap}
-.gn{display:inline-block;font-size:9.5px;letter-spacing:.06em;font-weight:500;padding:3px 8px;border-radius:6px;margin:12px 0 6px}
+.pw{font-size:calc(14px*var(--fz,1));font-weight:500}.from{font-size:calc(10px*var(--fz,1));color:var(--mu)}
+.badge{background:var(--soft);color:var(--acx);font-size:calc(10px*var(--fz,1));padding:3px 9px;border-radius:99px;white-space:nowrap}
+.gn{display:inline-block;font-size:calc(9.5px*var(--fz,1));letter-spacing:.06em;font-weight:500;padding:3px 8px;border-radius:6px;margin:12px 0 6px}
 .gn.m3,.gn.m4,.gn.m5,.gn.m6,.gn.m7{background:rgba(100,116,139,.15);color:var(--mu)}
 .gn.cr{background:rgba(59,133,128,.14);color:#2f7a75}.gn.pg{background:rgba(111,98,173,.14);color:#6f62ad}.gn.po{background:rgba(185,127,54,.16);color:#9a6a26}
 @media (prefers-color-scheme:dark){.gn.cr{color:#7cc7c1}.gn.pg{color:#b9aee6}.gn.po{color:#e6c27c}}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.p{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:var(--card);border:2px solid transparent;border-radius:13px;padding:9px 11px;color:var(--tx);font-size:12px;cursor:pointer}
-.p span{font-size:10px;color:var(--mu);font-weight:500;padding-right:44px}.p b{font-size:13px;font-weight:500;margin-top:2px}
+.p{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:var(--card);border:2px solid transparent;border-radius:13px;padding:9px 11px;color:var(--tx);font-size:calc(12px*var(--fz,1));cursor:pointer}
+.p span{font-size:calc(10px*var(--fz,1));color:var(--mu);font-weight:500;padding-right:44px}.p b{font-size:calc(13px*var(--fz,1));font-weight:500;margin-top:2px}
 .p.on{border-color:var(--ac);background:var(--tile)}
-.p.on::after{content:"✓";position:absolute;right:9px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--ac);color:var(--bg);font-size:10px;display:flex;align-items:center;justify-content:center}
-.p.min::before{content:"LOWEST";position:absolute;right:8px;top:8px;background:#dff1e7;color:#2f7a55;font-size:8.5px;font-weight:500;padding:2px 6px;border-radius:5px}
+.p.on::after{content:"✓";position:absolute;right:9px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--ac);color:var(--bg);font-size:calc(10px*var(--fz,1));display:flex;align-items:center;justify-content:center}
+.p.min::before{content:"LOWEST";position:absolute;right:8px;top:8px;background:#dff1e7;color:#2f7a55;font-size:calc(8.5px*var(--fz,1));font-weight:500;padding:2px 6px;border-radius:5px}
 .ord{position:fixed;left:0;right:0;bottom:0;z-index:40}
 .sheet{margin:0 10px 8px;background:var(--card);border-radius:18px;padding:10px 12px;box-shadow:0 10px 26px -8px rgba(31,59,92,.45)}
-.sheet .t{font-size:11px;color:var(--mu)}.sheet .t.hl{color:var(--acx);font-weight:500;text-align:center;padding:3px 0}
-.sl{display:flex;justify-content:space-between;align-items:center;gap:8px}.sl b{font-size:11.5px;display:block}.sl small{display:block;font-size:10px;color:var(--mu)}.sl .pr{font-size:14px;font-weight:500;color:var(--acx);white-space:nowrap}
+.sheet .t{font-size:calc(11px*var(--fz,1));color:var(--mu)}.sheet .t.hl{color:var(--acx);font-weight:500;text-align:center;padding:3px 0}
+.sl{display:flex;justify-content:space-between;align-items:center;gap:8px}.sl b{font-size:calc(11.5px*var(--fz,1));display:block}.sl small{display:block;font-size:calc(10px*var(--fz,1));color:var(--mu)}.sl .pr{font-size:calc(14px*var(--fz,1));font-weight:500;color:var(--acx);white-space:nowrap}
 .sl>div{flex:1;min-width:0}
-.xq{border:0;background:var(--soft);color:var(--mu);width:26px;height:26px;border-radius:50%;font-size:11px;cursor:pointer;flex:none}
+.xq{border:0;background:var(--soft);color:var(--mu);width:26px;height:26px;border-radius:50%;font-size:calc(11px*var(--fz,1));cursor:pointer;flex:none}
 .ordrow{display:flex;gap:9px;align-items:center;margin-top:9px}.sheet.empty .ordrow{display:none}
-.pq{display:flex;align-items:center;background:var(--bg);border-radius:11px;font-size:10px;color:var(--mu);padding-right:8px}
-.pq button{width:30px;height:34px;border:0;background:none;color:var(--acx);font-size:16px;cursor:pointer}
-.pq input{width:38px;border:0;background:transparent;text-align:center;font-size:12px;font-weight:500;color:var(--tx);padding:0;-moz-appearance:textfield}
-.add,.wa,a.wa{background:var(--btn);color:#fff;border:0;border-radius:12px;padding:11px 14px;font-size:12px;font-weight:500;cursor:pointer;text-decoration:none;text-align:center}
+.pq{display:flex;align-items:center;background:var(--bg);border-radius:11px;font-size:calc(10px*var(--fz,1));color:var(--mu);padding-right:8px}
+.pq button{width:30px;height:34px;border:0;background:none;color:var(--acx);font-size:calc(16px*var(--fz,1));cursor:pointer}
+.pq input{width:38px;border:0;background:transparent;text-align:center;font-size:calc(12px*var(--fz,1));font-weight:500;color:var(--tx);padding:0;-moz-appearance:textfield}
+.add,.wa,a.wa{background:var(--btn);color:#fff;border:0;border-radius:12px;padding:11px 14px;font-size:calc(12px*var(--fz,1));font-weight:500;cursor:pointer;text-decoration:none;text-align:center}
 .add{flex:1}.add:disabled{opacity:.45}
 body.ov .sheet{display:none}
 .nav{display:flex;background:var(--card);border-top:1px solid var(--line);height:calc(var(--navh) + env(safe-area-inset-bottom,0px));padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:#8a99ad;font-size:10px;font-weight:500;cursor:pointer}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:#8a99ad;font-size:calc(10px*var(--fz,1));font-weight:500;cursor:pointer}
 .nic{position:relative;width:46px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center}
 .ni.on{color:var(--acx)}.ni.on .nic{background:var(--pw)}
-.nic b{position:absolute;right:0;top:-4px;background:var(--btn);color:#fff;font-size:8.5px;border-radius:8px;padding:1px 5px;font-weight:500}
+.nic b{position:absolute;right:0;top:-4px;background:var(--btn);color:#fff;font-size:calc(8.5px*var(--fz,1));border-radius:8px;padding:1px 5px;font-weight:500}
 .cartp{position:fixed;left:0;right:0;top:0;bottom:calc(var(--navh) + env(safe-area-inset-bottom,0px));z-index:30;background:var(--bg);overflow:auto;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 0;display:flex;flex-direction:column}.cartp[hidden]{display:none}
-.cpw{max-width:700px;width:100%;margin:0 auto;padding-bottom:6px;flex:1 0 auto}.cph{display:flex;justify-content:space-between;align-items:center}.cth{font-size:11px;font-weight:500;color:var(--mu)}
-.cpw h2{font-size:16px;margin:10px 0 8px}
+.cpw{max-width:700px;width:100%;margin:0 auto;padding-bottom:6px;flex:1 0 auto}.cph{display:flex;justify-content:space-between;align-items:center}.cth{font-size:calc(11px*var(--fz,1));font-weight:500;color:var(--mu)}
+.cpw h2{font-size:calc(16px*var(--fz,1));margin:10px 0 8px}
 .it{display:flex;gap:10px;background:var(--card);border-radius:14px;padding:11px 12px;margin-top:9px}
-.it .n{width:24px;height:24px;border-radius:8px;background:var(--soft);color:var(--acx);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex:none}
-.it .bd{flex:1;min-width:0}.prod{font-size:12px;font-weight:500}.pwr{font-size:10.5px;color:var(--mu)}.hint{font-size:10px;color:var(--mu)}
-.qrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.qrow>b{font-size:12px}
-.qt{display:flex;align-items:center;background:var(--bg);border-radius:11px;padding:2px}.qt button{width:28px;height:28px;border:0;background:none;color:var(--acx);font-size:16px;cursor:pointer}.qt span{font-size:11px;min-width:56px;text-align:center}
-.rm{margin-top:8px;border:0;background:var(--redbg);color:var(--red);font-size:10px;font-weight:500;padding:5px 10px;border-radius:8px;cursor:pointer}
+.it .n{width:24px;height:24px;border-radius:8px;background:var(--soft);color:var(--acx);font-size:calc(11px*var(--fz,1));font-weight:500;display:flex;align-items:center;justify-content:center;flex:none}
+.it .bd{flex:1;min-width:0}.prod{font-size:calc(12px*var(--fz,1));font-weight:500}.pwr{font-size:calc(10.5px*var(--fz,1));color:var(--mu)}.hint{font-size:calc(10px*var(--fz,1));color:var(--mu)}
+.qrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.qrow>b{font-size:calc(12px*var(--fz,1))}
+.qt{display:flex;align-items:center;background:var(--bg);border-radius:11px;padding:2px}.qt button{width:28px;height:28px;border:0;background:none;color:var(--acx);font-size:calc(16px*var(--fz,1));cursor:pointer}.qt span{font-size:calc(11px*var(--fz,1));min-width:56px;text-align:center}
+.rm{margin-top:8px;border:0;background:var(--redbg);color:var(--red);font-size:calc(10px*var(--fz,1));font-weight:500;padding:5px 10px;border-radius:8px;cursor:pointer}
 .cbx{background:var(--card);border-radius:14px;padding:12px;margin-top:10px}.cbx .cth{margin-bottom:6px}
-.sumr{display:flex;justify-content:space-between;font-size:11.5px;padding:2px 0}.sumr b{font-size:12px}
-.upb{display:flex;gap:7px;margin-top:8px}.upb a{flex:1;text-align:center;color:#fff;font-size:10px;font-weight:500;padding:9px 0;border-radius:10px;text-decoration:none}
+.sumr{display:flex;justify-content:space-between;font-size:calc(11.5px*var(--fz,1));padding:2px 0}.sumr b{font-size:calc(12px*var(--fz,1))}
+.upb{display:flex;gap:7px;margin-top:8px}.upb a{flex:1;text-align:center;color:#fff;font-size:calc(10px*var(--fz,1));font-weight:500;padding:9px 0;border-radius:10px;text-decoration:none}
 .upb a:nth-child(1){background:#5588cc}.upb a:nth-child(2){background:#7f64a8}.upb a:nth-child(3){background:#4f9bc2}.upb a:nth-child(4){background:#6d7a90}
-.ck{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:11px}.ck input{width:18px;height:18px;accent-color:var(--ac)}
-#nm,#utr{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:10px;padding:10px;font-size:12px;margin-top:6px}
-.err{color:var(--red);font-size:10.5px;min-height:14px;margin-top:6px}
-.clr{display:block;margin:12px auto 4px;background:none;border:0;color:var(--red);font-size:11px;text-decoration:underline;cursor:pointer}
+.ck{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:calc(11px*var(--fz,1))}.ck input{width:18px;height:18px;accent-color:var(--ac)}
+#nm,#utr{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:10px;padding:10px;font-size:calc(12px*var(--fz,1));margin-top:6px}
+.err{color:var(--red);font-size:calc(10.5px*var(--fz,1));min-height:14px;margin-top:6px}
+.clr{display:block;margin:12px auto 4px;background:none;border:0;color:var(--red);font-size:calc(11px*var(--fz,1));text-decoration:underline;cursor:pointer}
 .co{position:sticky;bottom:0;flex:none;margin:0 -14px;background:var(--card);border-top:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.co small{display:block;font-size:10px;color:var(--mu)}.co b{font-size:15px;color:var(--acx)}.co .wa{padding:11px 26px}
-.empty{text-align:center;color:var(--mu);padding:30px 10px;font-size:11.5px}
-#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--hd);color:#fff;border-radius:12px;padding:9px 14px;font-size:11px;font-weight:500;max-width:92vw;text-align:center;cursor:pointer}#toast[hidden]{display:none}
-footer{padding:0 14px 18px;font-size:10px;color:var(--mu)}
+.co small{display:block;font-size:calc(10px*var(--fz,1));color:var(--mu)}.co b{font-size:calc(15px*var(--fz,1));color:var(--acx)}.co .wa{padding:11px 26px}
+.empty{text-align:center;color:var(--mu);padding:30px 10px;font-size:calc(11.5px*var(--fz,1))}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--hd);color:#fff;border-radius:12px;padding:9px 14px;font-size:calc(11px*var(--fz,1));font-weight:500;max-width:92vw;text-align:center;cursor:pointer}#toast[hidden]{display:none}
+footer{padding:0 14px 18px;font-size:calc(10px*var(--fz,1));color:var(--mu)}
 body.locked{background:var(--hd)}
 body:not(.locked) #gate{display:none!important}
 #gate{max-width:420px;width:calc(100% - 28px);margin:7vh auto;background:var(--card);border-radius:22px;padding:24px 18px 28px}
-#gate h1{font-size:20px;margin:0}#gate h1 span{color:var(--ac)}#gate .sub{font-size:11px;color:var(--mu);margin-top:2px}
-#gate .tabs{margin:14px 0 0}#gate label{display:block;font-size:10px;color:var(--mu);margin:10px 0 3px}
-#gate input,#gate textarea{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:11px;padding:10px;font-size:12px}
+#gate h1{font-size:calc(20px*var(--fz,1));margin:0}#gate h1 span{color:var(--ac)}#gate .sub{font-size:calc(11px*var(--fz,1));color:var(--mu);margin-top:2px}
+#gate .tabs{margin:14px 0 0}#gate label{display:block;font-size:calc(10px*var(--fz,1));color:var(--mu);margin:10px 0 3px}
+#gate input,#gate textarea{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:11px;padding:10px;font-size:calc(12px*var(--fz,1))}
 #gate .wa{width:100%;margin-top:14px;padding:12px}#gate .err,#gate .hint{margin-top:6px}#prev{max-width:100%;max-height:140px;border-radius:10px;margin-top:8px}
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-</style>
-</head>
-<body class="locked">
-<div id="gate"><h1>Sara <span>Opticals</span></h1><div class="sub">Single Vision lens catalog for registered optical shops · Jaipur</div>
-<div class="tabs"><button class="chip on" id="tl">Login</button><button class="chip" id="tr">Register</button></div>
-<form id="fl" autocomplete="on"><label>Mobile number or Admin ID</label><input id="lm" autocapitalize="none" placeholder="10-digit mobile or admin ID"><label>Password</label><input id="lp" type="password"><div class="err" id="le"></div><button class="wa" type="submit">Login</button></form>
-<form id="fr" hidden><label>Optical shop name *</label><input id="rs"><label>Owner / contact person *</label><input id="ro"><label>Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label>City *</label><input id="rc2"><label>Shop address</label><textarea id="ra" rows="2"></textarea><label>GST number (optional)</label><input id="rg" maxlength="15"><label>Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label>Create password * (min 6 characters)</label><input id="rp" type="password"><div class="err" id="re"></div><button class="wa" type="submit">Register</button></form>
-<div id="done" hidden><h2>Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px">Send details to Sara Opticals on WhatsApp</a><p class="hint">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)">Continue</button></div></div>
+:root{--fz:1.333}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.logo{background:#000;padding:0;overflow:hidden}.logo img{width:100%;height:100%;object-fit:cover;display:block}
+.gbrand{background:#000;border-radius:16px;padding:10px 12px;margin-bottom:10px}.gbrand img{width:100%;display:block}
+.sheet.empty{display:none}
+.glang{display:flex;gap:6px;justify-content:flex-end;margin-bottom:6px}.glang .chip{font-size:calc(10px*var(--fz,1));padding:4px 10px}.glang .chip.on,.seg2 button.on{background:var(--hd);color:#fff;border-color:var(--hd)}
+.ni em{font-style:normal}
+.eye{flex:1;display:flex;background:var(--bg);border-radius:11px;padding:3px}
+.eye button{flex:1;border:0;background:transparent;color:var(--mu);font-size:calc(10px*var(--fz,1));font-weight:500;border-radius:8px;cursor:pointer}
+.eye button.on{background:var(--card);color:var(--acx);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.seg2{display:flex;gap:6px;flex-wrap:wrap}.seg2 button{border:1px solid var(--line);background:var(--card);color:var(--tx);padding:7px 14px;border-radius:10px;font-size:calc(11px*var(--fz,1));cursor:pointer}
+.qbox{margin-top:12px}.qbox textarea,#sdays,.stsel{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:10px;padding:9px;font-size:calc(11.5px*var(--fz,1));margin-bottom:8px}
+.stsel{width:auto;margin:0;padding:5px 8px;font-size:calc(10.5px*var(--fz,1))}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.acts .chip,.wal{text-decoration:none;font-size:calc(10px*var(--fz,1));display:inline-block;margin-top:8px}.acts .chip{margin-top:0}.wal.on{background:var(--btn);color:#fff;border-color:var(--btn)}
+.kpis{display:flex;gap:8px;margin:10px 0}.kpis div{flex:1;background:var(--card);border-radius:12px;padding:10px;text-align:center}.kpis small{display:block;font-size:calc(10px*var(--fz,1));color:var(--mu)}.kpis b{font-size:calc(16px*var(--fz,1))}
+.badge.st-Approved,.badge.st-Delivered,.badge.st-Confirmed{background:#dff1e7;color:#2f7a55}.badge.st-Pending,.badge.st-New{background:#fdf0d3;color:#8a6414}.badge.st-Blocked,.badge.st-Cancelled{background:var(--redbg);color:var(--red)}.badge.st-Dispatched{background:#dbe8f6;color:#1f3b5c}
+.imgm{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}.imgm[hidden]{display:none}.imgm img{max-width:100%;max-height:70vh;border-radius:12px;display:block;margin:0 auto 12px}.imgm>div{text-align:center}
+.legal{font-size:calc(11.5px*var(--fz,1));line-height:1.6}.lnk{color:var(--acx);font-size:calc(12px*var(--fz,1));text-decoration:underline}
+#gate a#lgl{color:var(--ac);text-decoration:underline}
+.ck{display:flex;gap:8px;align-items:flex-start;font-size:calc(11px*var(--fz,1))}
 
-<header class="apbar"><div class="logo">S</div><div><h1>Sara Opticals</h1><small>Single Vision Order</small></div><div class="sp"></div><button class="ib" id="ft" aria-label="Filters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></header>
-<div class="pc"><div class="pt">YOUR POWER</div><div class="fl"><div class="fld"><small>SPH</small><select id="sph"></select></div><div class="fld"><small>CYL</small><select id="cyl"></select></div></div></div>
+.seg .chip{font-size:calc(9px*var(--fz,1));padding:8px 4px;white-space:nowrap}.eye button{font-size:calc(9px*var(--fz,1))}
+
+.pfov{position:fixed;inset:0;z-index:90;background:#cfd8e3;overflow:auto;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 20px}.pfov[hidden]{display:none}
+.pfbar{display:flex;justify-content:space-between;gap:10px;align-items:center;max-width:720px;margin:0 auto 10px}.pfbar .add{flex:none;padding:9px 16px}
+.pfpage{max-width:720px;margin:auto;background:#fff;color:#111;padding:16px;border-radius:6px;font-size:calc(11px*var(--fz,1));line-height:1.45;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.pft{text-align:center;font-size:calc(15px*var(--fz,1));letter-spacing:.08em;border-bottom:2px solid #111;padding-bottom:8px;margin-bottom:8px}
+.pfh{border:1px solid #111;padding:8px 10px;margin-bottom:8px}.pfh b{font-size:calc(13px*var(--fz,1))}
+.pfg{display:flex;border:1px solid #111;margin-bottom:8px}.pfg div{flex:1;padding:6px 8px;border-right:1px solid #111}.pfg div:last-child{border:0}.pfg span{display:block;font-size:calc(9px*var(--fz,1));color:#555}
+.pftb{width:100%;border-collapse:collapse;font-size:calc(11px*var(--fz,1))}.pftb th,.pftb td{border:1px solid #111;padding:5px 6px;text-align:left;vertical-align:top}.pftb th{background:#eee}.pftb .r{text-align:right;white-space:nowrap}
+.pfn{margin-top:10px;font-size:calc(10px*var(--fz,1))}
+@media print{body>*:not(#pf){display:none!important}#pf:not([hidden]){position:static;display:block!important;background:#fff;overflow:visible;padding:0}.pfbar{display:none!important}.pfpage{box-shadow:none;max-width:none;padding:0;font-size:calc(12px*var(--fz,1))}}
+
+.pfpage{overflow-x:auto;padding:14px 10px}.pftb{font-size:calc(9px*var(--fz,1))}.pftb th,.pftb td{padding:4px 4px}.pftb th:first-child,.pftb td:first-child{width:7%}
+@media print{.pftb{font-size:calc(11px*var(--fz,1))}}
+
+.hp{position:absolute;left:-5000px;width:1px;height:1px;opacity:0}
+#chg input{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--tx);border-radius:10px;padding:10px;font-size:calc(12px*var(--fz,1));margin-top:6px}#chg label{font-size:calc(10px*var(--fz,1));color:var(--mu);display:block;margin-top:10px}
+.infob{background:var(--card);color:var(--tx);padding:16px;border-radius:14px;margin-bottom:12px;max-width:340px;line-height:1.6;font-size:calc(12px*var(--fz,1))}
+#offb{position:fixed;top:0;left:0;right:0;z-index:99;background:#b4414c;color:#fff;text-align:center;padding:6px 10px;font-size:calc(11px*var(--fz,1))}#offb[hidden]{display:none}
+#fp{display:inline-block;margin-top:10px;font-size:calc(11px*var(--fz,1))}
+
+.ni[hidden]{display:none!important}
+</style></head>
+<body class="locked">
+<div id="gate">
+<div class="glang"><button class="chip" data-lang="en">English</button><button class="chip" data-lang="hi">हिन्दी</button></div>
+<h1 class="sr">Sara Opticals</h1><div class="gbrand"><img alt="Sara Opticals" src="data:image/png;base64,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"></div><div class="sub" data-t="Single Vision lens catalog for registered optical shops · Jaipur">Single Vision lens catalog for registered optical shops · Jaipur</div>
+<div class="tabs"><button class="chip on" id="tl" data-t="Login">Login</button><button class="chip" id="tr" data-t="Register">Register</button></div>
+<form id="fl" autocomplete="on"><label data-t="Mobile number or Admin ID">Mobile number or Admin ID</label><input id="lm" autocapitalize="none" data-tp="10-digit mobile or admin ID" placeholder="10-digit mobile or admin ID"><label data-t="Password">Password</label><input id="lp" type="password"><div class="err" id="le"></div><a id="fp" class="lnk" target="_blank" rel="noopener" href="https://wa.me/918949214717?text=Hello%20Sara%20Opticals%2C%20I%20forgot%20my%20password." data-t="Forgot password?">Forgot password?</a><button class="wa" type="submit" data-t="Login">Login</button></form>
+<form id="fr" hidden><label data-t="Optical shop name *">Optical shop name *</label><input id="rs"><label data-t="Owner / contact person *">Owner / contact person *</label><input id="ro"><label data-t="Mobile number (WhatsApp) *">Mobile number (WhatsApp) *</label><input id="rm" inputmode="numeric" maxlength="10"><label data-t="City *">City *</label><input id="rc2"><label data-t="Shop address">Shop address</label><textarea id="ra" rows="2"></textarea><label data-t="GST number (optional)">GST number (optional)</label><input id="rg" maxlength="15"><label data-t="Visiting card photo *">Visiting card photo *</label><input id="rc" type="file" accept="image/*"><img id="prev" hidden alt="Visiting card"><label data-t="Create password * (min 8 characters)">Create password * (min 8 characters)</label><input id="rp" type="password" autocomplete="new-password"><input id="rweb" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="ck" style="margin-top:12px"><input type="checkbox" id="rtm"><span><span data-t="I agree to the">I agree to the</span> <a href="#" id="lgl" data-t="Terms and Privacy Policy">Terms and Privacy Policy</a></span></label>
+<div class="err" id="re"></div><button class="wa" type="submit" data-t="Register">Register</button></form>
+<div id="done" hidden><h2 data-t="Registration received">Registration received</h2><p id="dm" class="sub"></p><a class="wa" id="dw" target="_blank" rel="noopener" style="margin-top:12px" data-t="Send details to Sara Opticals on WhatsApp">Send details to Sara Opticals on WhatsApp</a><p class="hint" data-t="Please attach your visiting card photo in that chat so we can verify your shop.">Please attach your visiting card photo in that chat so we can verify your shop.</p><button class="wa" id="dc" style="background:var(--ac)" data-t="Continue">Continue</button></div></div>
+
+<header class="apbar"><div class="logo"><img alt="Sara Opticals" src="data:image/png;base64,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YoWL7Nixo1fv3rqtOVEQJV7iyW/LxsTFZma+hreYzHa+/fZbHFlstSEmXKhr165FRUXX0b+LFy+++eabjz76aFxcnMlkwvdtNts999zzxBNPbN++HcMhcxBK6XPPPXezPnQT8R4A3n33XWYFaEoer3fb37ZNmjixc+fOeseMiY0ZN27cF3/9orq65joutn//fmSGrTzihacdHR3NWLK+r0gpbWxs/Omnn86ePXvu3LnS0lKmDnRM/J66urrU1FS4Nmd5GxdQGRkZmCtwdIL1Q2pra/Pz8w8ePJibm1tYWIjtqhtp6vvvv48Hc0dmqHBRnueXLVtWWVnJtvd4PHpNsUELnGtgxOfgwYMJCQl/2HL8Qx317dsXAyJGNDZ13PToxIULF8aPH693iDs17Iard+rUaeXKlehxf4icnBycwm350TFOMHny5AMHDtyomhvHPAoKCpYsWYJNn9sYdyO3oSNBELChYTQaBw8enJKSkpCQEBMT07FjR0mSCCF+v99ut5eWlp48eXLv3r14E4uabfnYkn5YLSEhYdSoUUOGDImPj4+IiDAYDDzPK4pit9uvXLly6tSp/fv3Hz16FHsmtze+RVqS/vWtJkmSbDabyWTied7lctXX13u93utGRFrX3/VzB0aj0Wq1ms1mo9Hodrux09QqA4CkVTwObftmv21d1dxIQZrevYXzG6QVwxP7LwrUlv8qU787bt3G/yY0gAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAArjT+H9bScXFd43ruQAAAABJRU5ErkJggg=="></div><div><h1>Sara Opticals</h1><small data-t="Single Vision Order">Single Vision Order</small></div><div class="sp"></div><button class="ib" id="ft" aria-label="Filters"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></header>
+<div class="pc"><div class="pt" data-t="YOUR POWER">YOUR POWER</div>
+<div class="fl"><div class="fld"><small>SPH</small><select id="sph"></select></div><div class="fld"><small>CYL</small><select id="cyl"></select></div></div>
+<div class="fl" style="margin-top:8px;align-items:stretch"><div class="fld" id="axf" hidden style="flex:0 0 36%"><small data-t="AXIS (optional)">AXIS (optional)</small><select id="axis"></select></div><div class="eye" id="eye"><button class="on" data-e="Both" data-t="Both">Both</button><button data-e="R" data-t="Right">Right</button><button data-e="L" data-t="Left">Left</button></div></div></div>
 <div id="fm" class="seg"></div>
 <div class="flt" id="flt" hidden>
-<div class="row"><span class="lbl">Show</span><div id="fa"></div></div>
-<div class="row" id="rt"><span class="lbl">Type</span><div id="fc"></div></div>
-<div class="row"><span class="lbl">Coating</span><div id="fk"></div></div>
+<div class="row"><span class="lbl" data-t="Show">Show</span><div id="fa"></div></div>
+<div class="row" id="rt"><span class="lbl" data-t="Type">Type</span><div id="fc"></div></div>
+<div class="row"><span class="lbl" data-t="Coating">Coating</span><div id="fk"></div></div>
 <div class="row"><span class="lbl">Max ₹</span><input type="range" id="mx" min="50" max="1200" step="10" value="1200"><b id="mv">Any</b></div>
 </div>
-<main><div class="tip" id="tip">👇 <b>Tap a price</b> to select it, then set pairs and tap <b>Add to cart</b></div><div class="note" id="nt" hidden></div><div class="count" id="ct"></div><div id="out"></div></main>
-<footer>Prices in ₹ per pair as printed on the sheet. Blank = not offered. Minimum order 0.5 pair.<br><span id="pu"></span></footer>
-<div class="cartp" id="cart" hidden></div><div class="cartp" id="ordp" hidden></div>
-<div class="cartp" id="accp" hidden><div class="cpw"><h2>Account</h2><div class="cbx"><div class="sumr"><span>Shop</span><b id="acs">-</b></div><div class="sumr"><span>Owner</span><b id="aco">-</b></div><div class="sumr"><span>Mobile</span><b id="acm">-</b></div></div><button class="wa" id="lo" style="width:100%;margin-top:14px;background:var(--redbg);color:var(--red)">Logout</button></div></div>
+<main><div class="tip" id="tip">👇 <b data-t="Tap a price">Tap a price</b> <span data-t="to select it, then set pairs and tap Add to cart">to select it, then set pairs and tap Add to cart</span></div><div class="note" id="nt" hidden></div><div class="count" id="ct"></div><div id="out"></div></main>
+<footer><span data-t="Prices in ₹ per pair. Blank = not offered. Minimum order 0.5 pair.">Prices in ₹ per pair. Blank = not offered. Minimum order 0.5 pair.</span><br><span id="pu"></span></footer>
+<div class="cartp" id="cart" hidden></div><div class="cartp" id="ordp" hidden></div><div class="cartp" id="admp" hidden></div>
+<div class="cartp" id="accp" hidden><div class="cpw"><h2 data-t="Account">Account</h2>
+<div class="cbx"><div class="sumr"><span data-t="Shop">Shop</span><b id="acs">-</b></div><div class="sumr"><span data-t="Owner">Owner</span><b id="aco">-</b></div><div class="sumr"><span data-t="Mobile">Mobile</span><b id="acm">-</b></div></div>
+<div class="cbx"><div class="cth" data-t="Language">Language</div><div class="seg2" id="lg"><button data-lang="en">English</button><button data-lang="hi">हिन्दी</button></div>
+</div>
+<div class="cbx" id="instbox"><div class="cth" data-t="Install app">Install app</div><div class="hint" id="insthint"></div><button class="add" id="instbtn" style="width:100%;margin-top:8px" hidden data-t="Install on this phone">Install on this phone</button></div>
+<div class="cbx"><button class="chip" id="cpbtn" data-t="Change password">Change password</button> <button class="chip" id="delbtn" data-t="Request deletion of my data">Request deletion of my data</button><div style="margin-top:10px"><a href="#" id="lg2" class="lnk" data-t="Terms and Privacy Policy">Terms and Privacy Policy</a></div></div>
+<button class="wa" id="lo" style="width:100%;margin-top:14px;background:var(--redbg);color:var(--red)" data-t="Logout">Logout</button></div></div>
+<div class="cartp" id="legal" hidden><div class="cpw"><div class="cph"><button class="chip" id="legb" data-t="← Back">← Back</button></div><h2 data-t="Terms and Privacy Policy">Terms and Privacy Policy</h2><div class="cbx legal" id="legtxt"></div></div></div>
+<div class="pfov" id="pf" hidden><div class="pfbar"><button class="chip" id="pfx" data-t="Close">Close</button><button class="add" id="pfp" data-t="Print / Save as PDF">Print / Save as PDF</button></div><div class="pfpage" id="pfbody"></div></div>
+<div class="cartp" id="chg" hidden style="z-index:95;bottom:0"><div class="cpw"><h2 data-t="Change password">Change password</h2><div class="cbx"><div class="hint" id="chgnote"></div><label data-t="Current password">Current password</label><input id="cp0" type="password" autocomplete="current-password"><label data-t="New password (min 8 characters)">New password (min 8 characters)</label><input id="cp1" type="password" autocomplete="new-password"><label data-t="Confirm new password">Confirm new password</label><input id="cp2" type="password" autocomplete="new-password"><div class="err" id="cpe"></div><button class="wa" id="cps" style="width:100%;margin-top:12px" data-t="Save new password">Save new password</button><button class="chip" id="cpc" style="margin-top:10px" data-t="Cancel">Cancel</button></div></div></div>
+<div class="imgm" id="infom" hidden><div><div class="infob" id="infot"></div><button class="add" id="infox" data-t="Close">Close</button></div></div>
+<div id="offb" hidden data-t="You are offline. Check your internet connection.">You are offline. Check your internet connection.</div>
+<div class="imgm" id="imgm" hidden><div><img id="imgv" alt=""><button class="add" id="imgx" data-t="Close">Close</button></div></div>
 <div id="toast" hidden></div>
-<div class="ord"><div class="sheet empty" id="sheet"><div class="t hl" id="ot"></div><div class="ordrow"><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button>pairs</div><button class="add" id="add" disabled>Add to cart</button></div></div>
-<nav class="nav"><button class="ni on" id="tcat"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span>Catalog</button><button class="ni" id="tcart"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h10L20 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg><b id="cn">0</b></span>Cart</button><button class="ni" id="mo"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Orders</button><button class="ni" id="tacc"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span>Account</button></nav></div>
+<div class="ord"><div class="sheet empty" id="sheet"><div class="t hl" id="ot"></div><div class="ordrow"><div class="pq"><button id="pm" aria-label="Less">−</button><input id="pairs" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"><button id="pp" aria-label="More">+</button><span data-t="pairs">pairs</span></div><button class="add" id="add" disabled data-t="Add to cart">Add to cart</button></div></div>
+<nav class="nav"><button class="ni on" id="tcat"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><em data-t="Catalog">Catalog</em></button><button class="ni" id="tcart"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h10L20 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg><b id="cn">0</b></span><em data-t="Cart">Cart</em></button><button class="ni" id="tord"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><em data-t="Orders">Orders</em></button><button class="ni" id="tadm" hidden><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><em data-t="Admin">Admin</em></button><button class="ni" id="tacc"><span class="nic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><em data-t="Account">Account</em></button></nav></div>
 <script>
-const UPI_ID='paytmqr5j0gs4@ptys', UPI_NAME='Sara Opticals'; // UPI ID for payments
-const WA='918949214717'; // Sara Opticals WhatsApp
+const API='https://script.google.com/macros/s/AKfycbzSaih3gig3rz16rr87ZPp6Eg5r_VHTs2RtyF9G8rOOROoUf-H-hLDfOjXjEgV8trwd/exec';
+const UPI_ID='paytmqr5j0gs4@ptys',UPI_NAME='Sara Opticals',WA='918949214717';
+const SELLER={name:'SARA OPTICALS',addr:'B-34, BASEMENT LAKOTHI SHOPPING CENTRE, TONK ROAD, JAIPUR-3',gstin:'08CLJPC7095R1Z7'};
+const GST_RATE=5; // shown in the proforma note: GST is added at final billing
+const $=id=>document.getElementById(id);
+const LSG=k=>{try{return localStorage.getItem(k)}catch(e){return null}},LSS=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}},LSR=k=>{try{localStorage.removeItem(k)}catch(e){}};
+const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* ---------- language (English / Hindi) ---------- */
+const HI={'Catalog':'कैटलॉग','Cart':'कार्ट','Orders':'ऑर्डर','Admin':'एडमिन','Account':'खाता','YOUR POWER':'आपका पावर','AXIS (optional)':'एक्सिस (वैकल्पिक)','Both':'दोनों','Right':'दायाँ','Left':'बायाँ','Right eye':'दायीं आँख','Left eye':'बायीं आँख','Show':'दिखाएं','Type':'प्रकार','Coating':'कोटिंग','All':'सभी','My power':'मेरा पावर','All ranges':'सभी रेंज','Minus':'माइनस','Plus':'प्लस','Cross Comp':'क्रॉस कम्पाउंड','Tap a price':'कीमत पर टैप करें','to select it, then set pairs and tap Add to cart':'चुनने के लिए, फिर जोड़ी तय करें और कार्ट में जोड़ें दबाएं','Add to cart':'कार्ट में जोड़ें','pairs':'जोड़ी','pair':'जोड़ी','Total':'कुल','Total pairs':'कुल जोड़ी','Total amount':'कुल राशि','Place order':'ऑर्डर करें','Placing order…':'ऑर्डर हो रहा है…','Your cart':'आपका कार्ट','Remove item':'हटाएं','Clear entire cart':'पूरा कार्ट खाली करें','Remove all items from the cart?':'कार्ट से सभी आइटम हटाएं?','← Back to catalog':'← कैटलॉग पर वापस','← Back':'← वापस','Single Vision Order':'सिंगल विज़न ऑर्डर','Your cart is empty.':'आपका कार्ट खाली है।','Select a power and price, then tap Add to cart.':'पावर और कीमत चुनें, फिर कार्ट में जोड़ें दबाएं।','per pair':'प्रति जोड़ी','Step 1: Pay ₹{a} by UPI':'चरण 1: UPI से ₹{a} भुगतान करें','Or scan this QR with any UPI app':'या किसी भी UPI ऐप से यह QR स्कैन करें','UPI ID':'UPI आईडी','Step 2: Confirm payment':'चरण 2: भुगतान की पुष्टि','I have completed the UPI payment of ₹{a}':'मैंने ₹{a} का UPI भुगतान पूरा कर लिया है','12-digit UPI reference (optional, helps us confirm faster)':'12 अंकों का UPI रेफरेंस (वैकल्पिक, जल्दी पुष्टि में मदद)','Step 3: Send order':'चरण 3: ऑर्डर भेजें','Send order':'ऑर्डर भेजें','Optical shop name *':'ऑप्टिकल शॉप का नाम *','Optical shop name (required)':'ऑप्टिकल शॉप का नाम (ज़रूरी)','Please enter your optical shop name.':'कृपया अपनी ऑप्टिकल शॉप का नाम लिखें।','Please complete the UPI payment and tick the confirmation box.':'कृपया UPI भुगतान पूरा करें और पुष्टि बॉक्स पर टिक करें।','Please logout and login again.':'कृपया लॉगआउट करके फिर लॉगिन करें।','Network error. Your order was not placed. Please try again.':'नेटवर्क में समस्या। आपका ऑर्डर नहीं हुआ। कृपया दोबारा कोशिश करें।','Could not place order.':'ऑर्डर नहीं हो सका।','Some prices have changed. Your cart was updated, please review it and place the order again.':'कुछ कीमतें बदल गई हैं। आपका कार्ट अपडेट हो गया है, कृपया जाँचकर दोबारा ऑर्डर करें।','Order placed':'ऑर्डर हो गया','Order ID':'ऑर्डर आईडी','Sara Opticals has received your order and will confirm shortly.':'सारा ऑप्टिकल्स को आपका ऑर्डर मिल गया है, जल्द पुष्टि करेंगे।','Also send a copy on WhatsApp (optional)':'WhatsApp पर कॉपी भी भेजें (वैकल्पिक)','Back to catalog':'कैटलॉग पर वापस','My orders':'मेरे ऑर्डर','Loading your orders…':'आपके ऑर्डर लोड हो रहे हैं…','No orders yet.':'अभी कोई ऑर्डर नहीं।','Network error. Please try again.':'नेटवर्क में समस्या। कृपया दोबारा कोशिश करें।','Added to cart':'कार्ट में जोड़ा गया','Tap to view cart':'कार्ट देखने के लिए टैप करें','Please select the axis':'कृपया एक्सिस चुनें','Switch to "My power" to select items for ordering':'ऑर्डर के लिए "मेरा पावर" पर जाएं','Prices were updated in your cart':'आपके कार्ट में कीमतें अपडेट हुईं','Power not specified':'पावर नहीं बताया','converted':'बदला हुआ','Cross compound':'क्रॉस कम्पाउंड','Power converted (transposed)':'पावर बदला गया (ट्रांसपोज़)','SPH {a} is plus and CYL {b} is larger, so cross compound prices apply.':'SPH {a} प्लस है और CYL {b} बड़ा है, इसलिए क्रॉस कम्पाउंड कीमतें लागू हैं।','Showing range for':'रेंज दिख रही है:','power ranges shown':'पावर रेंज दिख रही हैं','from':'से','No lenses match these filters.':'इन फ़िल्टर से कोई लेंस नहीं मिला।','Selected':'चुना गया','👆 Tap a price above to select it':'👆 चुनने के लिए ऊपर कीमत पर टैप करें','This power is not on our price list.':'यह पावर हमारी रेट लिस्ट में नहीं है।','Request a quote':'कोटेशन मांगें','Note (optional)':'नोट (वैकल्पिक)','Quote requested. We will contact you on WhatsApp.':'कोटेशन का अनुरोध भेज दिया। हम WhatsApp पर संपर्क करेंगे।','Language':'भाषा','Text size':'टेक्स्ट साइज़','Install app':'ऐप इंस्टॉल करें','Install on this phone':'इस फ़ोन पर इंस्टॉल करें','Shop':'दुकान','Owner':'मालिक','Mobile':'मोबाइल','Terms and Privacy Policy':'नियम और गोपनीयता नीति','Logout':'लॉगआउट','Close':'बंद करें','Proforma':'प्रोफॉर्मा','View proforma':'प्रोफॉर्मा देखें','PROFORMA INVOICE':'प्रोफॉर्मा इनवॉइस','Print / Save as PDF':'प्रिंट / PDF सेव करें','Billed to':'बिल किसे','Order No':'ऑर्डर नं.','Date':'तारीख','S.N.':'क्र.','Goods / Services supplied':'माल / सेवाएं','Qty':'मात्रा','Rate':'दर','Amount (₹)':'राशि (₹)','Grand Total':'कुल योग','Final bill will be issued at the time of final order.':'अंतिम बिल अंतिम ऑर्डर के समय जारी किया जाएगा।','GST@{a}% will be charged extra on the above pricing.':'ऊपर की कीमतों पर GST@{a}% अलग से लगेगा।','Login':'लॉगिन','Register':'रजिस्टर','Password':'पासवर्ड','Mobile number or Admin ID':'मोबाइल नंबर या एडमिन आईडी','10-digit mobile or admin ID':'10 अंकों का मोबाइल या एडमिन आईडी','Single Vision lens catalog for registered optical shops · Jaipur':'पंजीकृत ऑप्टिकल दुकानों के लिए सिंगल विज़न लेंस कैटलॉग · जयपुर','Owner / contact person *':'मालिक / संपर्क व्यक्ति *','Mobile number (WhatsApp) *':'मोबाइल नंबर (WhatsApp) *','City *':'शहर *','Shop address':'दुकान का पता','GST number (optional)':'GST नंबर (वैकल्पिक)','Visiting card photo *':'विज़िटिंग कार्ड की फोटो *','I agree to the':'मैं सहमत हूँ:','Registration received':'रजिस्ट्रेशन मिल गया','Send details to Sara Opticals on WhatsApp':'WhatsApp पर सारा ऑप्टिकल्स को जानकारी भेजें','Please attach your visiting card photo in that chat so we can verify your shop.':'कृपया उस चैट में अपने विज़िटिंग कार्ड की फोटो भेजें ताकि हम आपकी दुकान सत्यापित कर सकें।','Continue':'आगे बढ़ें','Please wait…':'कृपया प्रतीक्षा करें…','Registering…':'रजिस्टर हो रहा है…','Please fill all required fields.':'कृपया सभी ज़रूरी जानकारी भरें।','Enter a valid 10-digit mobile number.':'सही 10 अंकों का मोबाइल नंबर लिखें।','GST number should be 15 characters.':'GST नंबर 15 अक्षरों का होना चाहिए।','Please upload your visiting card photo.':'कृपया विज़िटिंग कार्ड की फोटो अपलोड करें।','Password must be at least 8 characters.':'पासवर्ड कम से कम 8 अक्षर का हो।','Please accept the Terms and Privacy Policy.':'कृपया नियम और गोपनीयता नीति स्वीकार करें।','Mobile number or password is incorrect.':'मोबाइल नंबर या पासवर्ड गलत है।','Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.':'आपका रजिस्ट्रेशन सारा ऑप्टिकल्स की मंज़ूरी का इंतज़ार कर रहा है। हम WhatsApp पर बताएंगे।','This account is blocked. Please contact Sara Opticals.':'यह खाता बंद है। कृपया सारा ऑप्टिकल्स से संपर्क करें।','Too many attempts. Please wait 15 minutes and try again.':'बहुत ज़्यादा कोशिशें। कृपया 15 मिनट रुककर दोबारा कोशिश करें।','Network error. Please check your internet and try again.':'नेटवर्क में समस्या। कृपया इंटरनेट जाँचकर दोबारा कोशिश करें।','Your session expired. Please login again.':'आपका सेशन खत्म हो गया। कृपया दोबारा लॉगिन करें।','Forgot password?':'पासवर्ड भूल गए?','Change password':'पासवर्ड बदलें','Current password':'वर्तमान पासवर्ड','New password (min 8 characters)':'नया पासवर्ड (कम से कम 8 अक्षर)','Confirm new password':'नया पासवर्ड दोबारा लिखें','Save new password':'नया पासवर्ड सेव करें','Cancel':'रद्द करें','For your security, please set a new password to continue.':'सुरक्षा के लिए, आगे बढ़ने से पहले नया पासवर्ड बनाएं।','Passwords do not match.':'पासवर्ड मेल नहीं खाते।','Password changed':'पासवर्ड बदल गया','Request deletion of my data':'मेरा डेटा हटाने का अनुरोध','We will delete your data on request. Send the request?':'हम अनुरोध पर आपका डेटा हटा देंगे। अनुरोध भेजें?','Request sent. Sara Opticals will contact you.':'अनुरोध भेज दिया। सारा ऑप्टिकल्स आपसे संपर्क करेगा।','You are offline. Check your internet connection.':'आप ऑफ़लाइन हैं। इंटरनेट जाँचें।','Copy UPI ID':'UPI आईडी कॉपी करें','UPI ID copied':'UPI आईडी कॉपी हो गई','Payment':'भुगतान','Unverified':'अपुष्ट','Verified':'पुष्ट','Audit':'ऑडिट','Reset password':'पासवर्ड रीसेट','Payment is not verified yet. Continue?':'भुगतान की पुष्टि नहीं हुई है। आगे बढ़ें?','Create password * (min 8 characters)':'पासवर्ड बनाएं * (कम से कम 8 अक्षर)','Prices in ₹ per pair. Blank = not offered. Minimum order 0.5 pair.':'कीमतें ₹ प्रति जोड़ी। खाली = उपलब्ध नहीं। न्यूनतम ऑर्डर 0.5 जोड़ी।','Prices updated':'कीमतें अपडेट:','Order {a} is now {b}':'ऑर्डर {a} अब {b} है','Orders':'ऑर्डर','Orders ':'ऑर्डर','Shops':'दुकानें','Quotes':'कोटेशन','Summary':'सारांश','Status updated':'स्टेटस अपडेट हुआ','Notify on WhatsApp':'WhatsApp पर सूचित करें','Approve':'मंज़ूर','Block':'ब्लॉक','View card':'कार्ड देखें','Reply on WhatsApp':'WhatsApp पर जवाब दें','Mark done':'पूरा हुआ','Last 7 days':'पिछले 7 दिन','Last 30 days':'पिछले 30 दिन','All time':'पूरा समय','Revenue':'बिक्री','Top shops':'टॉप दुकानें','Top items':'टॉप आइटम','New':'नया','Confirmed':'पुष्टि','Dispatched':'भेजा गया','Delivered':'पहुँचा','Cancelled':'रद्द'};
+let LANG=LSG('sara_lang')||'en';
+const t=(k,v)=>{let s=(LANG==='hi'&&HI[k])||k;if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+function applyStatic(){document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.querySelectorAll('[data-tp]').forEach(e=>e.placeholder=t(e.dataset.tp));document.documentElement.lang=LANG==='hi'?'hi':'en';document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===LANG))}
+function setLang(l){LANG=l;LSS('sara_lang',l);applyStatic();if(typeof draw==='function'){draw();renderCart();if(!$('admp').hidden)admTab(ADM)}}
+/* ---------- prices (built-in copy; replaced by the live Prices tab after login) ---------- */
 const CRN=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','LOW REFLECTION: MARI-BLU','NIGHT DRIVE','O2'];
 const PGN=['HC','HMC','B.CUT','LOW REFLECTION: MARI-BLU','B.CUT BLUE'];
 const PON=['HC','HMC','B.CUT','B.CUT BLUE','B.CUT DUALCOAT','O2'];
 let K=[...new Set([...CRN,...PGN,...PON])];
 let M=[['cr','CR (Regular)',CRN],['pg','Photogrey',PGN],['po','Polycarbonate',PON]];
 const Z8=[0,0,0,0,0,0,0,0],Z5=[0,0,0,0,0],Z6=[0,0,0,0,0,0];
-// [type,label,[[maxSph,maxCyl]..],CR[8],PG[5],POLY[6]]  0 = not offered. Source: price sheet effective 15 May 2026
 let D=[
 ['Minus','-6.00/-2.00',[[6,2]],[70,100,100,150,150,270,450,260],[120,200,350,450,450],[0,120,250,300,300,350]],
 ['Minus','-8.00/-2.00',[[8,2]],[90,140,150,220,180,270,450,0],[300,400,0,0,0],[0,350,0,0,0,0]],
@@ -158,173 +232,324 @@ let D=[
 ['Cross Comp','Cross Comp -4.00 CYL',[[99,4]],[160,220,280,350,400,0,0,500],[350,400,0,0,0],[0,400,0,0,0,0]],
 ['Cross Comp','Cross Comp -6.00 CYL',[[99,6]],[300,380,550,0,0,0,0,0],Z5,Z6]
 ];
+
 const f=v=>v===0?'0.00':(v>0?'+':'')+v.toFixed(2);
-const sphEl=document.getElementById('sph'),cylEl=document.getElementById('cyl');
+const fmP=v=>(v>0?'+':v<0?'-':'')+Math.abs(v).toFixed(2);
+const tAx=a=>a>90?a-90:a+90;
+const sphEl=$('sph'),cylEl=$('cyl'),axEl=$('axis');
 for(let v=18;v>=-22;v-=.25)sphEl.add(new Option(v===0?'0.00 (Plano)':f(v),v));
 for(let v=0;v>=-6;v-=.25)cylEl.add(new Option(f(v),v));
+axEl.add(new Option('—',''));for(let a=1;a<=180;a++)axEl.add(new Option(a,a));
 sphEl.value='0';cylEl.value='0';
-const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null;
-let NOTE='',NOTE_SHORT='',PWR={};
-function match(){const sp=+sphEl.value,cy=+cylEl.value;NOTE='';NOTE_SHORT='';PWR={mode:'normal',sph:sp,cyl:cy,ns:null,nc:null};let t,s,c;
- if(sp>0&&cy<0){
-  if(-cy>sp){t='Cross Comp';s=99;c=-cy;PWR.mode='cross';NOTE=`<b>Cross compound</b> · SPH ${f(sp)} is plus and CYL ${f(cy)} is larger, so cross compound prices apply.`;NOTE_SHORT=' (Cross compound)'}
-  else{const ns=+(sp+cy).toFixed(2),nc=-cy;t='Plus';s=ns;c=nc;PWR.mode='converted';PWR.ns=ns;PWR.nc=nc;NOTE=`<b>Power converted</b> (transposed) · SPH ${f(sp)} / CYL ${f(cy)} → SPH ${f(ns)} / CYL ${f(nc)}`;NOTE_SHORT=` → converted SPH ${f(ns)} / CYL ${f(nc)}`}
- }else{t=sp>0?'Plus':'Minus';s=Math.abs(sp);c=Math.abs(cy)}
- return D.find(r=>r[0]===t&&r[2].some(([ms,mc])=>s<=ms&&c<=mc))}
-function chips(id,list,key){const el=document.getElementById(id);if(id!=='fm'){el.className='row';el.style.margin=0}else el.className='seg';
- el.innerHTML=list.map(v=>`<button class="chip${S[key]===v?' on':''}" data-v="${v}">${v}</button>`).join('');
+const S={a:'My power',t:'All',m:'All',k:'All',mx:1200};let sel=null,EYE='Both';
+let NOTE='',PWR={};
+function analyse(sp,cy){let t,s,c,mode='normal',ns=null,nc=null;
+ if(sp>0&&cy<0){if(-cy>sp){t='Cross Comp';s=99;c=-cy;mode='cross'}else{ns=+(sp+cy).toFixed(2);nc=-cy;t='Plus';s=ns;c=nc;mode='converted'}}
+ else{t=sp>0?'Plus':'Minus';s=Math.abs(sp);c=Math.abs(cy)}
+ return{t,s,c,mode,ns,nc}}
+function match(){const sp=+sphEl.value,cy=+cylEl.value,A=analyse(sp,cy);
+ PWR={mode:A.mode,sph:sp,cyl:cy,ns:A.ns,nc:A.nc,axis:cy!==0&&axEl.value?+axEl.value:null};NOTE='';
+ if(A.mode==='cross')NOTE=`<b>${t('Cross compound')}</b> · ${t('SPH {a} is plus and CYL {b} is larger, so cross compound prices apply.',{a:f(sp),b:f(cy)})}`;
+ else if(A.mode==='converted')NOTE=`<b>${t('Power converted (transposed)')}</b> · SPH ${f(sp)} / CYL ${f(cy)} → SPH ${f(A.ns)} / CYL ${f(A.nc)}`+(PWR.axis?` × ${tAx(PWR.axis)}°`:'');
+ return D.find(r=>r[0]===A.t&&r[2].some(([ms,mc])=>A.s<=ms&&A.c<=mc))}
+function dispPower(c){if(c.sph==null)return t('Power not specified');
+ let s=`SPH ${f(c.sph)} / CYL ${f(c.cyl)}`+(c.cyl!==0&&c.axis?` × ${c.axis}°`:'');
+ if(c.eye!=='Both')s+=' · '+(c.eye==='R'?t('Right eye'):t('Left eye'));
+ if(c.mode==='converted')s+=` → ${t('converted')} SPH ${f(c.ns)} / CYL ${f(c.nc)}`+(c.axis?` × ${tAx(c.axis)}°`:'');
+ else if(c.mode==='cross')s+=` (${t('Cross compound')})`;
+ return s}
+function chips(id,list,key){const el=$(id);if(id!=='fm'){el.className='row';el.style.margin=0}else el.className='seg';
+ el.innerHTML=list.map(v=>`<button class="chip${S[key]===v?' on':''}" data-v="${esc(v)}">${esc(t(v))}</button>`).join('');
  el.onclick=e=>{const v=e.target.dataset.v;if(v){S[key]=v;draw()}}}
 function offers(r){const o=[];M.forEach((m,mi)=>{if(S.m!=='All'&&S.m!==m[1])return;
  m[2].forEach((kn,i)=>{const p=r[3+mi][i];if(!p)return;if(S.k!=='All'&&S.k!==kn)return;if(S.mx<1200&&p>S.mx)return;o.push({m:m[0],mn:m[1],k:kn,p})})});return o}
 function draw(){
  chips('fa',['My power','All ranges'],'a');chips('fc',['All','Minus','Plus','Cross Comp'],'t');
  chips('fm',['All',...M.map(m=>m[1])],'m');chips('fk',['All',...K],'k');
- document.getElementById('rt').style.display=S.a==='All ranges'?'flex':'none';
- document.getElementById('mv').textContent=S.mx>=1200?'Any':'≤ ₹'+S.mx;
- let rows;const nt=document.getElementById('nt');nt.hidden=true;
+ $('rt').style.display=S.a==='All ranges'?'flex':'none';
+ $('axf').hidden=+cylEl.value===0;
+ $('mv').textContent=S.mx>=1200?'Any':'≤ ₹'+S.mx;
+ let rows;const nt=$('nt');nt.hidden=true;NOTE='';
  if(S.a==='My power'){const r=match();rows=r?[r]:[];if(NOTE){nt.hidden=false;nt.innerHTML=NOTE}}else rows=D.filter(r=>S.t==='All'||r[0]===S.t);
  let n=0,h='';
  rows.forEach(r=>{const o=offers(r);if(!o.length)return;n++;const mn=Math.min(...o.map(x=>x.p));
-  h+=`<div class="card ty-${r[0].replace(' ','')}"><div class="top"><div><div class="pw">${r[1]}</div><div class="from">from ₹${mn}</div></div><span class="badge">${r[0]}</span></div>`;
+  h+=`<div class="card ty-${r[0].replace(' ','')}"><div class="top"><div><div class="pw">${esc(r[1])}</div><div class="from">${t('from')} ₹${mn}</div></div><span class="badge">${esc(t(r[0]))}</span></div>`;
   M.forEach(m=>{const g=o.filter(x=>x.m===m[0]);if(!g.length)return;
-   h+=`<div class="grp g-${m[0]}"><div class="gn ${m[0]}">${m[1]}</div><div class="chips">`+g.map(x=>{const on=sel&&sel.r===r[1]&&sel.m===x.mn&&sel.k===x.k;
-    return `<button class="p${on?' on':x.p===mn?' min':''}" data-r="${r[1]}" data-m="${x.mn}" data-k="${x.k}" data-p="${x.p}"><span>${x.k}</span><b>₹${x.p}</b></button>`}).join('')+'</div></div>'});
+   h+=`<div class="grp g-${m[0]}"><div class="gn ${m[0]}">${esc(m[1])}</div><div class="chips">`+g.map(x=>{const on=sel&&sel.r===r[1]&&sel.m===x.mn&&sel.k===x.k;
+    return `<button class="p${on?' on':x.p===mn?' min':''}" data-r="${esc(r[1])}" data-m="${esc(x.mn)}" data-k="${esc(x.k)}" data-p="${x.p}"><span>${esc(x.k)}</span><b>₹${x.p}</b></button>`}).join('')+'</div></div>'});
   h+='</div>'});
- const msg=S.a==='My power'?(rows.length?'':'This power isn\'t on the price sheet — message us on WhatsApp for a quote.'):'No lenses match these filters.';
- document.getElementById('out').innerHTML=h||`<div class="empty">${msg}</div>`;
- document.getElementById('ct').textContent=S.a==='My power'?`Showing range for SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:n+' power ranges shown';
- document.getElementById('tip').hidden=!!sel||!h;updFt();document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{const same=sel&&sel.r===b.dataset.r&&sel.m===b.dataset.m&&sel.k===b.dataset.k;sel=same?null:{r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
- const ot=document.getElementById('ot');
- ot.innerHTML=sel?`<div class="sl"><div><b>${sel.m} · ${sel.k}</b><small>${pw()}</small></div><span class="pr">₹${sel.p}</span><button class="xq" id="xs" aria-label="Deselect">✕</button></div>`:'👆 Tap a price above to select it';ot.className=sel?'t':'t hl';document.getElementById('sheet').classList.toggle('empty',!sel);document.getElementById('add').disabled=!sel;}
-const MKEYS=['cr','pg','po'];let PSIG='';
+ let empty;
+ if(S.a==='My power'&&!rows.length)empty=`<div class="empty">${t('This power is not on our price list.')}<div class="qbox"><textarea id="qn" rows="2" placeholder="${esc(t('Note (optional)'))}"></textarea><button class="add" id="qreq" style="width:100%">${t('Request a quote')}</button></div></div>`;
+ else empty=`<div class="empty">${t('No lenses match these filters.')}</div>`;
+ $('out').innerHTML=h||empty;
+ $('ct').textContent=S.a==='My power'?`${t('Showing range for')} SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}`:`${n} ${t('power ranges shown')}`;
+ $('tip').hidden=!!sel||!h;updFt();
+ document.querySelectorAll('.p').forEach(b=>b.onclick=()=>{
+  if(S.a!=='My power'){toast(t('Switch to "My power" to select items for ordering'));return}
+  const same=sel&&sel.r===b.dataset.r&&sel.m===b.dataset.m&&sel.k===b.dataset.k;
+  sel=same?null:{r:b.dataset.r,m:b.dataset.m,k:b.dataset.k,p:b.dataset.p};draw()});
+ const ot=$('ot');
+ ot.innerHTML=sel?`<div class="sl"><div><b>${esc(sel.m)} · ${esc(sel.k)}</b><small>${esc(dispPower(curItem()))}</small></div><span class="pr">₹${sel.p}</span><button class="xq" id="xs" aria-label="Deselect">✕</button></div>`:t('👆 Tap a price above to select it');
+ ot.className=sel?'t':'t hl';$('sheet').classList.toggle('empty',!sel);$('add').disabled=!sel}
+function curItem(){return{sph:PWR.sph,cyl:PWR.cyl,axis:PWR.axis,eye:EYE,mode:PWR.mode,ns:PWR.ns,nc:PWR.nc}}
+/* quote request (power not on the price list) */
+$('out').onclick=async e=>{if(e.target.id!=='qreq')return;const b=e.target;b.disabled=true;
+ if(PWR.cyl!==0&&!PWR.axis){}
+ try{const r=await call({action:'quote',sph:PWR.sph,cyl:PWR.cyl,axis:PWR.axis,eye:EYE,note:($('qn')||{}).value||''});
+  if(r.ok){$('out').innerHTML=`<div class="empty">✅ ${t('Quote requested. We will contact you on WhatsApp.')}</div>`}else{b.disabled=false;toast(r.error||t('Network error. Please try again.'))}}
+ catch(x){b.disabled=false;toast(t('Network error. Please try again.'))}};
+/* live prices from the Google Sheet */
+const MKEYS=['cr','pg','po'];let PSIG='',cart=[],PRICE_UPDATED='';
 function applyPrices(d){
- const sig=JSON.stringify([d.materials,d.rows]);if(sig===PSIG){document.getElementById('pu').textContent='Prices updated '+d.updated;return}
+ const sig=JSON.stringify([d.materials,d.rows]);PRICE_UPDATED=d.updated||'';
+ if(sig===PSIG){$('pu').textContent=t('Prices updated')+' '+PRICE_UPDATED;return}
  PSIG=sig;
  M=d.materials.map((m,i)=>[MKEYS[i]||('m'+i),m.name,m.coatings]);
  K=[...new Set(M.flatMap(m=>m[2]))];
  D=d.rows.map(r=>[r[0],r[1],r[2],...r[3]]);
  if(S.m!=='All'&&!M.some(m=>m[1]===S.m))S.m='All';
  if(S.k!=='All'&&!K.includes(S.k))S.k='All';
- sel=null;document.getElementById('pu').textContent='Prices updated '+d.updated;draw();
- let ch=false;cart.forEach(c=>{const r=D.find(x=>x[1]===c.r),mi=M.findIndex(m=>m[1]===c.m);if(!r||mi<0)return;const ki=M[mi][2].indexOf(c.k);if(ki<0)return;const p=r[3+mi][ki];if(p&&p!==c.p){c.p=p;ch=true}});
- if(ch){renderCart();toast('Prices were updated in your cart')}}
-async function loadPrices(){if(!window.USER||!window.PW)return;
- try{const r=await call({action:'prices',mobile:USER.mobile,pw:PW});if(r&&r.ok&&r.rows&&r.rows.length)applyPrices(r)}catch(e){}
- if(!window.PI){window.PI=setInterval(loadPrices,120000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadPrices()})}}
+ sel=null;$('pu').textContent=t('Prices updated')+' '+PRICE_UPDATED;draw();
+ let ch=false;cart.forEach(c=>{const A=analyse(c.sph,c.cyl),r=D.find(x=>x[0]===A.t&&x[2].some(([ms,mc])=>A.s<=ms&&A.c<=mc)),mi=M.findIndex(m=>m[1]===c.m);if(!r||mi<0)return;const ki=M[mi][2].indexOf(c.k);if(ki<0)return;const p=r[3+mi][ki];if(p&&p!==c.p){c.p=p;c.r=r[1];ch=true}});
+ if(ch){NONCE=null;renderCart();toast(t('Prices were updated in your cart'))}}
+let PSIG_SERVER='';
+async function loadPrices(){if(!TOKEN)return;
+ try{const r=await call({action:'prices',sig:PSIG_SERVER||undefined},true);
+  if(r&&r.ok&&r.rows&&r.rows.length){PSIG_SERVER=r.sig||'';applyPrices(r)}else if(r&&r.ok&&r.same){$('pu').textContent=t('Prices updated')+' '+(r.updated||'')}}catch(e){}
+ if(!window.PI){window.PI=setInterval(()=>{if(!document.hidden){loadPrices();checkStatus()}},300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadPrices();checkStatus()}})}}
 let fOpen=false;
-function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);document.getElementById('ft').dataset.n=n||''}
-document.getElementById('ft').onclick=()=>{fOpen=!fOpen;document.getElementById('flt').hidden=!fOpen;updFt()};
+function updFt(){const n=(S.a!=='My power')+(S.t!=='All')+(S.m!=='All')+(S.k!=='All')+(S.mx<1200);$('ft').dataset.n=n||''}
+$('ft').onclick=()=>{fOpen=!fOpen;$('flt').hidden=!fOpen;updFt()};
 const ordEl=document.querySelector('.ord'),mainEl=document.querySelector('main');
 new ResizeObserver(()=>{mainEl.style.paddingBottom=(ordEl.offsetHeight+24)+'px'}).observe(ordEl);
-document.getElementById('mx').oninput=e=>{S.mx=+e.target.value;draw()};
+$('mx').oninput=e=>{S.mx=+e.target.value;draw()};
 sphEl.onchange=cylEl.onchange=()=>{sel=null;S.a='My power';draw()};
-let cart=[],name='',utr='',paid=false,isOpen=false,tt;
-const cartEl=document.getElementById('cart');
-const pw=()=>S.a==='My power'?`SPH ${f(+sphEl.value)} / CYL ${f(+cylEl.value)}${NOTE_SHORT}`:'Power not specified';
-document.getElementById('ot').onclick=e=>{if(e.target.id==='xs'){sel=null;draw()}};
-const pr=document.getElementById('pairs');
+axEl.onchange=()=>{draw()};
+$('eye').onclick=e=>{const b=e.target.closest('button');if(!b)return;EYE=b.dataset.e;document.querySelectorAll('#eye button').forEach(x=>x.classList.toggle('on',x===b));pr.value=EYE==='Both'?1:.5;draw()};
+/* ---------- cart ---------- */
+let name='',utr='',paid=false,isOpen=false,tt,NONCE=null,LASTORDER=null;const ORD={};
+const cartEl=$('cart');
+$('ot').onclick=e=>{if(e.target.id==='xs'){sel=null;draw()}};
+const pr=$('pairs');
 const getPairs=()=>{let v=parseFloat(pr.value);if(!(v>=0.5))v=0.5;return Math.round(v*2)/2};
-document.getElementById('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
-document.getElementById('pp').onclick=()=>{pr.value=getPairs()+0.5};
+$('pm').onclick=()=>{pr.value=Math.max(0.5,getPairs()-0.5)};
+$('pp').onclick=()=>{pr.value=getPairs()+0.5};
 pr.onchange=()=>{pr.value=getPairs()};
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
-document.getElementById('toast').onclick=()=>{document.getElementById('toast').hidden=true;isOpen=true;renderCart()};
-document.getElementById('add').onclick=()=>{if(!sel)return;const n=getPairs(),power=pw(),id=[power,sel.m,sel.k].join('|'),ex=cart.find(c=>c.id===id),lbl=`${sel.m} · ${sel.k}`;
- if(ex){ex.q+=n}else cart.push({id,power,r:sel.r,m:sel.m,k:sel.k,p:+sel.p,q:n,sph:S.a==='My power'?PWR.sph:null,cyl:S.a==='My power'?PWR.cyl:null,mode:PWR.mode,ns:PWR.ns,nc:PWR.nc});
- sel=null;pr.value=1;draw();renderCart();toast(`✓ Added to cart: ${lbl} × ${n} pair${n===1?'':'s'}. Tap to view cart`)};
-
-function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);document.getElementById('cn').textContent=cnt;
- cartEl.hidden=!isOpen;if(isOpen)document.getElementById('toast').hidden=true;document.body.style.overflow=isOpen?'hidden':'';if(!isOpen)return;
- const tot=cart.reduce((a,c)=>a+c.p*c.q,0),top=`<div class="cph"><button class="chip" data-a="back">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
- if(!cart.length){cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart</h2><div class="empty">Your cart is empty.<br>Select a power and price, then tap Add to cart.</div></div>`;return}
- const items=cart.map((c,i)=>`<div class="it"><div class="n">${i+1}</div><div class="bd"><div class="prod">${c.m} · ${c.k}</div><div class="pwr">${c.power}</div><div class="hint">₹${c.p} per pair</div><div class="qrow"><div class="qt"><button data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>${c.q} pair${c.q===1?'':'s'}</span><button data-i="${i}" data-d="0.5" aria-label="More">+</button></div><b>₹${c.p*c.q}</b></div><button class="rm" data-rm="${i}">Remove item</button></div></div>`).join('');
+function toast(m){const e=$('toast');e.textContent=m;e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,2800)}
+$('toast').onclick=()=>{if(window.TOAST_GO){window.TOAST_GO();window.TOAST_GO=null}else{closeAll();isOpen=true;renderCart()}$('toast').hidden=true};
+$('add').onclick=()=>{if(!sel)return;
+ const n=getPairs(),c={m:sel.m,k:sel.k,r:sel.r,p:+sel.p,q:n,sph:PWR.sph,cyl:PWR.cyl,axis:PWR.cyl!==0?PWR.axis:null,eye:EYE,mode:PWR.mode,ns:PWR.ns,nc:PWR.nc};
+ c.id=[c.sph,c.cyl,c.axis,c.eye,c.m,c.k].join('|');const ex=cart.find(x=>x.id===c.id);
+ if(ex)ex.q+=n;else cart.push(c);NONCE=null;
+ const lbl=`${sel.m} · ${sel.k}`;sel=null;pr.value=EYE==='Both'?1:.5;draw();renderCart();window.TOAST_GO=null;
+ toast(`✓ ${t('Added to cart')}: ${lbl} × ${n} ${n<=1?t('pair'):t('pairs')}. ${t('Tap to view cart')}`)};
+function renderCart(){const cnt=cart.reduce((a,c)=>a+c.q,0);$('cn').textContent=cnt;
+ cartEl.hidden=!isOpen;if(isOpen)$('toast').hidden=true;syncBody();if(!isOpen)return;
+ const tot=cart.reduce((a,c)=>a+c.p*c.q,0),top=`<div class="cph"><button class="chip" data-a="back">${t('← Back to catalog')}</button><div class="cth" style="padding:0">${t('Single Vision Order')}</div></div>`;
+ if(!cart.length){cartEl.innerHTML=`<div class="cpw">${top}<h2>${t('Your cart')}</h2><div class="empty">${t('Your cart is empty.')}<br>${t('Select a power and price, then tap Add to cart.')}</div></div>`;return}
+ const items=cart.map((c,i)=>`<div class="it"><div class="n">${i+1}</div><div class="bd"><div class="prod">${esc(c.m)} · ${esc(c.k)}</div><div class="pwr">${esc(dispPower(c))}</div><div class="hint">₹${c.p} ${t('per pair')}</div><div class="qrow"><div class="qt"><button data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>${c.q} ${c.q<=1?t('pair'):t('pairs')}</span><button data-i="${i}" data-d="0.5" aria-label="More">+</button></div><b>₹${c.p*c.q}</b></div><button class="rm" data-rm="${i}">${t('Remove item')}</button></div></div>`).join('');
  const q=`pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot.toFixed(2)}&cu=INR&tn=${encodeURIComponent('Single Vision Order')}`;
- const pay=UPI_ID?`<div class="cbx"><div class="cth">Step 1: Pay ₹${tot} by UPI</div><div class="upb"><a href="tez://upi/pay?${q}">Google Pay</a><a href="phonepe://pay?${q}">PhonePe</a><a href="paytmmp://pay?${q}">Paytm</a><a href="upi://pay?${q}">Other UPI app</a></div><div id="qr" data-q="upi://pay?${q}" style="margin:12px auto 0;width:150px"></div><div class="hint" style="text-align:center">Or scan this QR with any UPI app<br>UPI ID: <b>${UPI_ID}</b></div><div class="cth" style="margin-top:12px">Step 2: Confirm payment</div><label class="ck"><input type="checkbox" id="pd" ${paid?'checked':''}> I have completed the UPI payment of ₹${tot}</label><input id="utr" style="margin-top:8px" inputmode="numeric" maxlength="12" placeholder="12-digit UPI reference (optional, helps us confirm faster)" value="${utr}"></div>`:'';
- cartEl.innerHTML=`<div class="cpw">${top}<h2>Your cart (${cart.length} item${cart.length===1?'':'s'})</h2>${items}
-<div class="cbx"><div class="sumr"><span>Total pairs</span><b>${cnt}</b></div><div class="sumr" style="font-size:18px"><span>Total amount</span><b>₹${tot}</b></div></div>${pay}
-<div class="cbx"><div class="cth">${UPI_ID?'Step 3: ':''}Send order</div><label class="l" style="font-size:12px;color:var(--mu)">Optical shop name *</label><input id="nm" style="margin-top:4px" placeholder="Optical shop name (required)" required value="${name.replace(/"/g,'&quot;')}"><div class="err" id="oe"></div></div>
-<button class="clr" id="cl" style="display:block;margin:14px auto 0">Clear entire cart</button></div><div class="co"><div><small>Total</small><b>₹${tot}</b></div><button class="wa" id="po">Place order</button></div>`;mkQR()}
+ const pay=UPI_ID?`<div class="cbx"><div class="cth">${t('Step 1: Pay ₹{a} by UPI',{a:tot})}</div><div class="upb"><a href="tez://upi/pay?${q}">Google Pay</a><a href="phonepe://pay?${q}">PhonePe</a><a href="paytmmp://pay?${q}">Paytm</a><a href="upi://pay?${q}">UPI</a></div><div class="hint" style="text-align:center;margin-top:10px">${t('UPI ID')}: <b>${UPI_ID}</b> <button class="chip" id="cpupi" style="margin-left:6px">${t('Copy UPI ID')}</button></div><div class="cth" style="margin-top:12px">${t('Step 2: Confirm payment')}</div><label class="ck"><input type="checkbox" id="pd" ${paid?'checked':''}> ${t('I have completed the UPI payment of ₹{a}',{a:tot})}</label><input id="utr" inputmode="numeric" maxlength="12" placeholder="${esc(t('12-digit UPI reference (optional, helps us confirm faster)'))}" value="${esc(utr)}"></div>`:'';
+ cartEl.innerHTML=`<div class="cpw">${top}<h2>${t('Your cart')} (${cart.length})</h2>${items}
+<div class="cbx"><div class="sumr"><span>${t('Total pairs')}</span><b>${cnt}</b></div><div class="sumr" style="font-size:1.15em"><span>${t('Total amount')}</span><b>₹${tot}</b></div><div class="hint" style="margin-top:6px">${t('GST@{a}% will be charged extra on the above pricing.',{a:GST_RATE})}</div></div>${pay}
+<div class="cbx"><div class="cth">${UPI_ID?t('Step 3: Send order'):t('Send order')}</div><label class="l" style="font-size:10px;color:var(--mu)">${t('Optical shop name *')}</label><input id="nm" placeholder="${esc(t('Optical shop name (required)'))}" value="${esc(name)}"><div class="err" id="oe"></div></div>
+<button class="clr" id="cl">${t('Clear entire cart')}</button></div><div class="co"><div><small>${t('Total')}</small><b>₹${tot}</b></div><button class="wa" id="po">${t('Place order')}</button></div>`}
 cartEl.oninput=e=>{if(e.target.id==='nm')name=e.target.value;if(e.target.id==='utr')utr=e.target.value.replace(/\D/g,'');if(e.target.id==='pd')paid=e.target.checked};
 cartEl.onclick=e=>{const b=e.target;
  if(b.dataset.a==='back'){isOpen=false;renderCart()}
- else if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);renderCart()}
- else if(b.dataset.rm!==undefined){cart.splice(+b.dataset.rm,1);renderCart()}
- else if(b.id==='cl'){if(confirm('Remove all items from the cart?')){cart=[];renderCart()}}
- else if(b.id==='po'){placeOrder(b)}};
-function mkQR(){const el=document.getElementById('qr');if(!el||!window.QRCode)return;new QRCode(el,{text:el.dataset.q,width:150,height:150})}
-const fmP=v=>(v>0?'+':v<0?'-':'')+Math.abs(v).toFixed(2);
-function fpow(S,C){S=+S;C=+C;if(S===0&&C===0)return 'Plano';if(S===0)return fmP(C)+' cyl';if(C===0)return fmP(S)+' sph';return fmP(S)+'/'+fmP(C)}
-function sheetPower(c){if(c.sph==null)return 'Power not specified';let t=fpow(c.sph,c.cyl);if(c.mode==='converted')t+=' (converted '+fpow(c.ns,c.nc)+')';else if(c.mode==='cross')t+=' (cross compound)';return t}
-async function placeOrder(b){const E=document.getElementById('oe'),nm=document.getElementById('nm');E.textContent='';
- if(!name.trim()){nm.style.borderColor='#dc2626';nm.focus();E.textContent='Please enter your optical shop name.';return}
- if(UPI_ID&&!paid){E.textContent='Please complete the UPI payment and tick the confirmation box.';return}
- if(!window.USER||!window.PW){E.textContent='Please logout and login again.';return}
- const tot=cart.reduce((a,c)=>a+c.p*c.q,0),items=cart.map(c=>({power:sheetPower(c),product:(c.m==='CR (Regular)'?'CR':c.m)+' - '+c.k,pairs:c.q,price:c.p}));
- b.disabled=true;b.textContent='Placing order…';
- try{const r=await call({action:'order',mobile:USER.mobile,pw:PW,shop:name.trim(),items,total:tot,utr:utr.trim(),paid});
-  if(!r.ok){E.textContent=r.error||'Could not place order.';b.disabled=false;b.textContent='Place order';return}
-  let t=`*SINGLE VISION ORDER* (${r.id})\nOptical Shop: ${name.trim()}\n\n*Items:*\n`+items.map((c,i)=>`${i+1}. ${c.power}\n    Product: ${c.product}\n    Pairs: ${c.pairs}`).join('\n')+`\n\nTotal: ₹${tot}`;
-  cart=[];utr='';paid=false;document.getElementById('cn').textContent=0;
-  cartEl.innerHTML=`<div class="cpw"><div class="cbx" style="text-align:center;margin-top:30px"><div style="font-size:42px">✅</div><h2>Order placed</h2><div>Order ID: <b>${r.id}</b></div><div class="hint" style="margin-top:6px">Total ₹${tot}. Sara Opticals has received your order and will confirm shortly.</div><a class="wa" style="margin-top:14px" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(t)}">Also send a copy on WhatsApp (optional)</a><button class="chip" data-a="back" style="margin-top:12px">Back to catalog</button></div></div>`}
- catch(x){E.textContent='Network error. Your order was not placed. Please try again.';b.disabled=false;b.textContent='Place order'}}
-draw();
-</script>
-<script>
-const API='https://script.google.com/macros/s/AKfycbzSaih3gig3rz16rr87ZPp6Eg5r_VHTs2RtyF9G8rOOROoUf-H-hLDfOjXjEgV8trwd/exec'; // Google Apps Script backend
-const LS='sara_users',SS='sara_session',$=id=>document.getElementById(id);
-const getU=()=>{try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){return{}}};
-async function hs(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('sara|'+t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-async function call(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
-const MSG={not_found:'This mobile number is not registered. Please register first.',wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.'};
-function enter(u,pw){window.USER=u;window.PW=pw;setTimeout(loadPrices,0);name=u.shop;document.body.classList.remove('locked');$('acs').textContent=u.shop;$('aco').textContent=u.owner||'-';$('acm').textContent=u.mobile;try{localStorage.setItem(SS,JSON.stringify({m:u.mobile,pw}))}catch(e){}}
-async function doLogin(m,pw){
- if(API){try{return await call({action:'login',mobile:m,pw})}catch(e){return{ok:false,error:'Network error. Please check your internet and try again.'}}}
- const u=getU()[m];return u&&u.pw===pw?{ok:true,user:u}:{ok:false,error:'wrong'}}
+ else if(b.dataset.d){const c=cart[+b.dataset.i];c.q+=+b.dataset.d;if(c.q<0.5)cart.splice(+b.dataset.i,1);NONCE=null;renderCart()}
+ else if(b.dataset.rm!==undefined){cart.splice(+b.dataset.rm,1);NONCE=null;renderCart()}
+ else if(b.id==='cl'){if(confirm(t('Remove all items from the cart?'))){cart=[];NONCE=null;renderCart()}}
+ else if(b.id==='po'){placeOrder(b)}
+ else if(b.id==='pfopen'){openProforma(LASTORDER)}
+ else if(b.id==='cpupi'){try{navigator.clipboard.writeText(UPI_ID).then(()=>toast(t('UPI ID copied')))}catch(x){}}};
+async function placeOrder(b){const E=$('oe'),nm=$('nm');E.textContent='';
+ if(!name.trim()){nm.style.borderColor='#dc2626';nm.focus();E.textContent=t('Please enter your optical shop name.');return}
+ if(UPI_ID&&!paid){E.textContent=t('Please complete the UPI payment and tick the confirmation box.');return}
+ if(!TOKEN){E.textContent=t('Please logout and login again.');return}
+ const items=cart.map(c=>({lens:c.m,coating:c.k,sph:c.sph,cyl:c.cyl,axis:c.axis,eye:c.eye,pairs:c.q,price:c.p}));
+ if(!NONCE)NONCE=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random();
+ b.disabled=true;b.textContent=t('Placing order…');
+ try{const r=await call({action:'order',shop:name.trim(),items,utr:utr.trim(),paid,nonce:NONCE});
+  if(!r.ok){
+   if(r.error==='PRICE_CHANGED'&&r.prices){PSIG='';applyPrices(r.prices);NONCE=null;const E2=$('oe');if(E2)E2.textContent=t('Some prices have changed. Your cart was updated, please review it and place the order again.');return}
+   E.textContent=r.error||t('Could not place order.');b.disabled=false;b.textContent=t('Place order');return}
+  const tot=r.total;
+  LASTORDER={id:r.id,time:nowStr(),shop:name.trim(),mobile:USER.mobile,total:tot,pairs:cart.reduce((a,c)=>a+c.q,0),lines:cart.map(c=>({desc:(c.m==='CR (Regular)'?'CR':c.m)+' '+c.k+'  '+plainPower(c),pairs:c.q,rate:c.p,amount:c.p*c.q}))};ORD[r.id]=LASTORDER;
+  let wt=`*SINGLE VISION ORDER* (${r.id})\nOptical Shop: ${name.trim()}\nTotal: ₹${tot}`;
+  cart=[];utr='';paid=false;NONCE=null;$('cn').textContent=0;
+  cartEl.innerHTML=`<div class="cpw"><div class="cbx" style="text-align:center;margin-top:30px"><div style="font-size:42px">✅</div><h2>${t('Order placed')}</h2><div>${t('Order ID')}: <b>${esc(r.id)}</b></div><div class="hint" style="margin-top:6px">₹${tot}. ${t('Sara Opticals has received your order and will confirm shortly.')}</div><button class="add" id="pfopen" style="width:100%;margin-top:14px">${t('View proforma')}</button><a class="chip" style="margin-top:10px;display:inline-block" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(wt)}">${t('Also send a copy on WhatsApp (optional)')}</a><button class="chip" data-a="back" style="margin-top:12px">${t('Back to catalog')}</button></div></div>`}
+ catch(x){E.textContent=t('Network error. Your order was not placed. Please try again.');b.disabled=false;b.textContent=t('Place order')}}
+
+/* ---------- backend call + session ---------- */
+const SS='sara_session';let TOKEN=null;
+async function call(b,retry){
+ const body=JSON.stringify(TOKEN?{...b,token:TOKEN}:b);
+ for(let i=0;i<(retry?2:1);i++){
+  const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),25000);
+  try{const r=await fetch(API,{method:'POST',body,signal:ctl.signal});clearTimeout(tm);const j=await r.json();
+   if(j&&j.error==='AUTH'&&TOKEN){sessionExpired();return j}
+   if(j&&j.error==='MUSTCHANGE'){showChange(true);return j}
+   return j}
+  catch(e){clearTimeout(tm);if(i===(retry?1:0))throw e;await new Promise(r=>setTimeout(r,800))}}}
+function sessionExpired(){TOKEN=null;LSR(SS);window.USER=null;closeAll();document.body.classList.add('locked');$('le').textContent=t('Your session expired. Please login again.')}
+function enter(u,token,mustChange){TOKEN=token;window.USER=u;name=u.shop;document.body.classList.remove('locked');
+ $('acs').textContent=u.shop;$('aco').textContent=u.owner||'-';$('acm').textContent=u.mobile;$('tadm').hidden=!u.admin;
+ LSS(SS,JSON.stringify({token,user:u}));if(mustChange)showChange(true);setTimeout(()=>{loadPrices();checkStatus()},0)}
+async function doLogin(m,password){try{return await call({action:'login',mobile:m,password})}catch(e){return{ok:false,error:'NET'}}}
+const LOGIN_ERR={wrong:'Mobile number or password is incorrect.',pending:'Your registration is awaiting approval from Sara Opticals. We will confirm on WhatsApp.',blocked:'This account is blocked. Please contact Sara Opticals.',locked:'Too many attempts. Please wait 15 minutes and try again.',NET:'Network error. Please check your internet and try again.'};
 function tab(r){$('fl').hidden=r;$('fr').hidden=!r;$('done').hidden=true;$('tl').classList.toggle('on',!r);$('tr').classList.toggle('on',r)}
 $('tl').onclick=()=>tab(false);$('tr').onclick=()=>tab(true);
-$('lo').onclick=()=>{try{localStorage.removeItem(SS)}catch(e){}location.reload()};
-const op=$('ordp');
-function closeOrders(){op.hidden=true;document.body.style.overflow=''}
-$('mo').onclick=async()=>{op.hidden=false;document.body.style.overflow='hidden';
- const top=`<div class="cph"><button class="chip" id="ob">← Back to catalog</button><div class="cth" style="padding:0">Single Vision Order</div></div>`;
- op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2><div class="empty">Loading your orders…</div></div>`;$('ob').onclick=closeOrders;
- let r;try{r=await call({action:'myorders',mobile:USER.mobile,pw:PW})}catch(e){r={ok:false,error:'Network error. Please try again.'}}
- const esc=t=>String(t==null?'':t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
- const h=!r.ok?`<div class="empty">${esc(r.error)}</div>`:!r.orders.length?'<div class="empty">No orders yet.</div>':r.orders.map(o=>`<div class="cbx"><div class="top"><b>${esc(o.id)}</b><span class="badge">${esc(o.status)}</span></div><div class="hint">${esc(o.time)}${USER.admin?' · '+esc(o.shop):''}</div><div style="white-space:pre-line;margin:8px 0;font-size:14px">${esc(o.items)}</div><div class="sumr"><span>${esc(o.pairs)} pairs</span><b>₹${esc(o.total)}</b></div>${o.utr?`<div class="hint">UPI ref: ${esc(o.utr)}</div>`:''}</div>`).join('');
- op.innerHTML=`<div class="cpw">${top}<h2>My orders</h2>${h}</div>`;$('ob').onclick=closeOrders};
+$('lo').onclick=()=>{LSR(SS);location.reload()};
 let card='';
-$('rc').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);card=c.toDataURL('image/jpeg',.6);$('prev').src=card;$('prev').hidden=false};im.src=r.result};r.readAsDataURL(f)};
-$('fl').onsubmit=async e=>{e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent='Please wait…';
- const pw=await hs($('lp').value),r=await doLogin($('lm').value.trim(),pw);b.disabled=false;b.textContent='Login';
- if(r.ok){enter(r.user,pw)}else $('le').textContent=MSG[r.error]||r.error};
+$('rc').onchange=e=>{const fl=e.target.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);card=c.toDataURL('image/jpeg',.6);$('prev').src=card;$('prev').hidden=false};im.src=r.result};r.readAsDataURL(fl)};
+$('fl').onsubmit=async e=>{e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.disabled=true;b.textContent=t('Please wait…');
+ const r=await doLogin($('lm').value.trim(),$('lp').value);b.disabled=false;b.textContent=t('Login');
+ if(r.ok){$('lp').value='';enter(r.user,r.token,r.mustChange)}else $('le').textContent=t(LOGIN_ERR[r.error]||r.error||LOGIN_ERR.NET)};
 $('fr').onsubmit=async e=>{e.preventDefault();const v=id=>$(id).value.trim(),m=v('rm'),E=$('re'),b=e.target.querySelector('button[type=submit]');
- if(!v('rs')||!v('ro')||!v('rc2')){E.textContent='Please fill all required fields.';return}
- if(!/^[6-9]\d{9}$/.test(m)){E.textContent='Enter a valid 10-digit mobile number.';return}
- if(v('rg')&&!/^[0-9A-Z]{15}$/i.test(v('rg'))){E.textContent='GST number should be 15 characters.';return}
- if(!card){E.textContent='Please upload your visiting card photo.';return}
- if($('rp').value.length<6){E.textContent='Password must be at least 6 characters.';return}
- const pw=await hs($('rp').value),u={shop:v('rs'),owner:v('ro'),mobile:m,city:v('rc2'),addr:v('ra'),gst:v('rg').toUpperCase()};
- let status='Approved';b.disabled=true;b.textContent='Registering…';E.textContent='';
- try{if(API){const r=await call({action:'register',...u,pw,card});if(!r.ok){E.textContent=r.error;b.disabled=false;b.textContent='Register';return}status=r.status}
-  else{const all=getU();if(all[m]){E.textContent='This mobile number is already registered. Please login.';b.disabled=false;b.textContent='Register';return}all[m]={...u,pw};localStorage.setItem(LS,JSON.stringify(all))}}
- catch(x){E.textContent='Could not register. Please check your internet and try again.';b.disabled=false;b.textContent='Register';return}
- b.disabled=false;b.textContent='Register';$('fr').hidden=true;$('done').hidden=false;
- const t=`*NEW REGISTRATION - Sara Opticals catalog*\nShop: ${u.shop}\nOwner: ${u.owner}\nMobile: +91 ${m}\nCity: ${u.city}${u.addr?'\nAddress: '+u.addr:''}${u.gst?'\nGST: '+u.gst:''}`;
- $('dw').href=`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
- $('dm').textContent=status==='Approved'?'Welcome, '+u.shop+'! You can start browsing now.':'Thank you! Sara Opticals will verify your shop and approve your login shortly.';
- $('dc').style.display=status==='Approved'?'block':'none';$('dc').onclick=()=>enter(u,pw)};
-try{const x=JSON.parse(localStorage.getItem(SS)||'null');if(x)doLogin(x.m,x.pw).then(r=>{if(r.ok)enter(r.user,x.pw)})}catch(e){}
-</script>
-<script>
-const T={cat:$('tcat'),cart:$('tcart'),ord:$('mo'),acc:$('tacc')},accp=$('accp');
-function closeAll(){isOpen=false;renderCart();op.hidden=true;accp.hidden=true;document.body.style.overflow=''}
-function syncTabs(){const o=!cartEl.hidden?'cart':!op.hidden?'ord':!accp.hidden?'acc':'cat';Object.entries(T).forEach(([k,e])=>e.classList.toggle('on',k===o));document.body.classList.toggle('ov',o!=='cat')}
-[cartEl,op,accp].forEach(e=>new MutationObserver(syncTabs).observe(e,{attributes:true,attributeFilter:['hidden']}));
+ if(!v('rs')||!v('ro')||!v('rc2')){E.textContent=t('Please fill all required fields.');return}
+ if(!/^[6-9]\d{9}$/.test(m)){E.textContent=t('Enter a valid 10-digit mobile number.');return}
+ if(v('rg')&&!/^[0-9A-Z]{15}$/i.test(v('rg'))){E.textContent=t('GST number should be 15 characters.');return}
+ if(!card){E.textContent=t('Please upload your visiting card photo.');return}
+ if($('rp').value.length<8){E.textContent=t('Password must be at least 8 characters.');return}
+ if(!$('rtm').checked){E.textContent=t('Please accept the Terms and Privacy Policy.');return}
+ const pw=$('rp').value,u={shop:v('rs'),owner:v('ro'),mobile:m,city:v('rc2'),addr:v('ra'),gst:v('rg').toUpperCase()};
+ let status='Approved';b.disabled=true;b.textContent=t('Registering…');E.textContent='';
+ try{const r=await call({action:'register',...u,password:pw,card,terms:true,website:$('rweb').value});if(!r.ok){E.textContent=r.error;b.disabled=false;b.textContent=t('Register');return}status=r.status}
+ catch(x){E.textContent=t('Network error. Please try again.');b.disabled=false;b.textContent=t('Register');return}
+ b.disabled=false;b.textContent=t('Register');$('fr').hidden=true;$('done').hidden=false;
+ const wt=`*NEW REGISTRATION - Sara Opticals catalog*\nShop: ${u.shop}\nOwner: ${u.owner}\nMobile: +91 ${m}\nCity: ${u.city}${u.addr?'\nAddress: '+u.addr:''}${u.gst?'\nGST: '+u.gst:''}`;
+ $('dw').href=`https://wa.me/${WA}?text=${encodeURIComponent(wt)}`;
+ $('dm').textContent=status==='Approved'?'Welcome, '+u.shop+'!':'Thank you! Sara Opticals will verify your shop and approve your login shortly.';
+ $('dc').style.display=status==='Approved'?'block':'none';$('dc').onclick=async()=>{const r=await doLogin(u.mobile,pw);if(r.ok)enter(r.user,r.token,r.mustChange)}};
+/* ---------- overlays + tabs ---------- */
+const OV=['cart','ordp','admp','accp','legal','pf'].map($);
+const T={cat:$('tcat'),cart:$('tcart'),ord:$('tord'),adm:$('tadm'),acc:$('tacc')};
+function syncBody(){document.body.style.overflow=OV.some(o=>!o.hidden)?'hidden':''}
+function closeAll(){isOpen=false;OV.forEach(o=>o.hidden=true);if(typeof renderCart==='function'){const c=cart.reduce((a,x)=>a+x.q,0);$('cn').textContent=c}syncBody()}
+function syncTabs(){const o=!$('cart').hidden?'cart':!$('ordp').hidden?'ord':!$('admp').hidden?'adm':(!$('accp').hidden||!$('legal').hidden)?'acc':'cat';Object.entries(T).forEach(([k,e])=>e.classList.toggle('on',k===o));document.body.classList.toggle('ov',o!=='cat');syncBody()}
+OV.forEach(e=>new MutationObserver(syncTabs).observe(e,{attributes:true,attributeFilter:['hidden']}));
 T.cat.onclick=closeAll;
 T.cart.onclick=()=>{closeAll();isOpen=true;renderCart()};
-const origOrd=T.ord.onclick;T.ord.onclick=()=>{closeAll();origOrd()};
-T.acc.onclick=()=>{closeAll();accp.hidden=false;document.body.style.overflow='hidden'};
+T.ord.onclick=()=>{closeAll();showOrders()};
+T.acc.onclick=()=>{closeAll();$('accp').hidden=false};
+T.adm.onclick=()=>{closeAll();$('admp').hidden=false;admTab(ADM)};
 const cnEl=$('cn');const hideCn=()=>{cnEl.style.display=cnEl.textContent.trim()==='0'?'none':''};
-new MutationObserver(hideCn).observe(cnEl,{childList:true,characterData:true,subtree:true});hideCn();syncTabs();
+new MutationObserver(hideCn).observe(cnEl,{childList:true,characterData:true,subtree:true});hideCn();
+/* ---------- my orders + status-change alerts ---------- */
+const STAT=['New','Confirmed','Dispatched','Delivered','Cancelled'];
+const sbadge=s=>`<span class="badge st-${esc(s)}">${esc(t(s))}</span>`;
+function oCard(o,adm){ORD[o.id]=o;return `<div class="cbx"><div class="top"><b>${esc(o.id)}</b>${adm?`<select class="stsel" data-id="${esc(o.id)}">${STAT.map(s=>`<option${s===o.status?' selected':''}>${s}</option>`).join('')}</select>`:sbadge(o.status)}</div><div class="hint">${esc(o.time)}${adm?' · '+esc(o.shop)+' · '+esc(o.mobile):''}</div><div style="white-space:pre-line;margin:8px 0">${esc(o.items)}</div><div class="sumr"><span>${esc(o.pairs)} ${t('pairs')}</span><b>₹${esc(o.total)}</b></div><div class="sumr"><span>${t('Payment')}</span>${adm?`<select class="paysel" data-id="${esc(o.id)}">${['Unverified','Verified'].map(p=>`<option value="${p}"${p===(o.pay||'Unverified')?' selected':''}>${t(p)}</option>`).join('')}</select>`:`<span class="badge st-${o.pay==='Verified'?'Approved':'Pending'}">${t(o.pay||'Unverified')}</span>`}</div>${o.utr?`<div class="hint">UPI: ${esc(o.utr)}</div>`:''}<button class="chip pfb" data-pf="${esc(o.id)}" style="margin-top:8px">${t('Proforma')}</button>${adm?`<a class="chip wal" data-wa="${esc(o.mobile)}" data-id="${esc(o.id)}" data-shop="${esc(o.shop)}" data-st="${esc(o.status)}" href="#">${t('Notify on WhatsApp')}</a>`:''}</div>`}
+async function showOrders(){const op=$('ordp');op.hidden=false;
+ const top=`<div class="cph"><button class="chip" id="ob">${t('← Back to catalog')}</button><div class="cth" style="padding:0">${t('Single Vision Order')}</div></div>`;
+ op.innerHTML=`<div class="cpw">${top}<h2>${t('My orders')}</h2><div class="empty">${t('Loading your orders…')}</div></div>`;$('ob').onclick=closeAll;
+ let r;try{r=await call({action:'myorders'},true)}catch(e){r={ok:false,error:t('Network error. Please try again.')}}
+ if(r.ok&&!USER.admin)saveSeen(r.orders);
+ const h=!r.ok?`<div class="empty">${esc(r.error)}</div>`:!r.orders.length?`<div class="empty">${t('No orders yet.')}</div>`:r.orders.map(o=>oCard(o,false)).join('');
+ op.innerHTML=`<div class="cpw">${top}<h2>${t('My orders')}</h2>${h}</div>`;$('ob').onclick=closeAll}
+function saveSeen(list){const m={};list.forEach(o=>m[o.id]=o.status);LSS('sara_seen_'+USER.mobile,JSON.stringify(m))}
+async function checkStatus(){if(!window.USER||USER.admin)return;
+ try{const r=await call({action:'myorders'},true);if(!r.ok)return;
+  const old=JSON.parse(LSG('sara_seen_'+USER.mobile)||'null');
+  if(old){const ch=r.orders.filter(o=>old[o.id]&&old[o.id]!==o.status);
+   if(ch.length){const o=ch[0];window.TOAST_GO=()=>{closeAll();showOrders()};toast(t('Order {a} is now {b}',{a:o.id,b:t(o.status)}))}}
+  saveSeen(r.orders)}catch(e){}}
+/* ---------- proforma invoice ---------- */
+const nowStr=()=>new Date().toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+function plainPower(c){let p=fpowTxt(c.sph,c.cyl);if(c.cyl!==0&&c.axis)p+=' x '+c.axis;if(c.eye==='R')p+=' (R)';else if(c.eye==='L')p+=' (L)';return p}
+function fpowTxt(S,C){S=+S;C=+C;if(S===0&&C===0)return 'Plano';if(S===0)return fmP(C)+' cyl';if(C===0)return fmP(S)+' sph';return fmP(S)+'/'+fmP(C)}
+function proforma(o){
+ const lines=o.lines&&o.lines.length?o.lines:null;
+ const rows=lines?lines.map((l,i)=>`<tr><td>${i+1}</td><td>${esc(l.desc)}</td><td class="r">${(+l.pairs).toFixed(2)}</td><td class="r">${(+l.rate).toFixed(2)}</td><td class="r">${(+l.amount).toFixed(2)}</td></tr>`).join('')
+  :String(o.items||'').split('\n').map((x,i)=>`<tr><td>${i+1}</td><td colspan="4">${esc(x.replace(/^\d+\.\s*/,''))}</td></tr>`).join('');
+ const pairs=o.pairs!=null?(+o.pairs).toFixed(2):'';
+ return `<div class="pft"><b>${t('PROFORMA INVOICE')}</b></div>
+<div class="pfh"><b>${esc(SELLER.name)}</b><br>${esc(SELLER.addr)}<br>GSTIN: ${esc(SELLER.gstin)}</div>
+<div class="pfg"><div><span>${t('Billed to')}</span><b>${esc(o.shop||'')}</b></div><div><span>${t('Order No')}</span><b>${esc(o.id)}</b></div><div><span>${t('Date')}</span><b>${esc(o.time||'')}</b></div></div>
+<table class="pftb"><thead><tr><th>${t('S.N.')}</th><th>${t('Goods / Services supplied')}</th><th class="r">${t('Qty')} (PAIR)</th><th class="r">${t('Rate')}</th><th class="r">${t('Amount (₹)')}</th></tr></thead><tbody>${rows}</tbody>
+<tfoot><tr><td></td><td><b>${t('Grand Total')}</b></td><td class="r"><b>${pairs}</b></td><td></td><td class="r"><b>₹ ${(+o.total).toFixed(2)}</b></td></tr></tfoot></table>
+<div class="pfn">1. ${t('Final bill will be issued at the time of final order.')}<br>2. ${t('GST@{a}% will be charged extra on the above pricing.',{a:GST_RATE})}</div>`}
+function openProforma(o){if(!o)return;$('pfbody').innerHTML=proforma(o);$('pf').hidden=false}
+$('pfx').onclick=()=>{$('pf').hidden=true};$('pfp').onclick=()=>window.print();
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pf]');if(b){e.preventDefault();openProforma(ORD[b.dataset.pf])}});
+/* ---------- admin ---------- */
+let ADM='orders';
+const waLink=(mobile,msg)=>`https://wa.me/91${String(mobile).replace(/\D/g,'').slice(-10)}?text=${encodeURIComponent(msg)}`;
+function admTab(n){ADM=n;const p=$('admp');
+ const seg=`<div class="seg2" id="admseg">${[['orders','Orders'],['shops','Shops'],['quotes','Quotes'],['summary','Summary'],['audit','Audit']].map(([k,l])=>`<button data-k="${k}" class="${k===n?'on':''}">${t(l)}</button>`).join('')}</div>`;
+ p.innerHTML=`<div class="cpw"><h2>${t('Admin')}</h2>${seg}<div id="admbody"><div class="empty">…</div></div></div>`;
+ $('admseg').onclick=e=>{const k=e.target.dataset.k;if(k)admTab(k)};
+ ({orders:admOrders,shops:admShops,quotes:admQuotes,summary:admSummary,audit:admAudit})[n]()}
+async function admCall(b){try{return await call(b,/^(myorders|admin_(users|quotes|summary|audit))$/.test(b.action))}catch(e){return{ok:false,error:t(LOGIN_ERR.NET)}}}
+async function admOrders(){const r=await admCall({action:'myorders'});const B=$('admbody');
+ B.innerHTML=!r.ok?`<div class="empty">${esc(r.error)}</div>`:r.orders.map(o=>oCard(o,true)).join('')||`<div class="empty">${t('No orders yet.')}</div>`;
+ B.onchange=async e=>{const el=e.target;
+  if(el.classList.contains('paysel')){const x=await admCall({action:'admin_order_payment',id:el.dataset.id,pay:el.value});toast(x.ok?t('Status updated')+' ✓':x.error);return}
+  if(!el.classList.contains('stsel'))return;
+  const card=el.closest('.cbx'),pay=card.querySelector('.paysel');
+  if(['Confirmed','Dispatched'].includes(el.value)&&pay&&pay.value!=='Verified'&&!confirm(t('Payment is not verified yet. Continue?'))){const o=ORD[el.dataset.id];el.value=o?o.status:'New';return}
+  const x=await admCall({action:'admin_order_status',id:el.dataset.id,status:el.value});
+  if(x.ok){if(ORD[el.dataset.id])ORD[el.dataset.id].status=el.value;toast(t('Status updated')+' ✓');const a=card.querySelector('.wal');if(a){a.dataset.st=el.value;a.classList.add('on')}}else toast(x.error)};
+ B.onclick=e=>{const a=e.target.closest('.wal');if(!a)return;e.preventDefault();window.open(waLink(a.dataset.wa,`Hello ${a.dataset.shop}, your order ${a.dataset.id} is now ${a.dataset.st}. - Sara Opticals`),'_blank')}}
+async function admShops(){const r=await admCall({action:'admin_users'});const B=$('admbody');
+ B.innerHTML=!r.ok?`<div class="empty">${esc(r.error)}</div>`:r.users.map(u=>`<div class="cbx"><div class="top"><b>${esc(u.shop)}</b><span class="badge st-${esc(u.status)}">${esc(u.status)}</span></div><div class="hint">${esc(u.owner)} · ${esc(u.city)} · ${esc(u.mobile)}${u.gst?' · GST '+esc(u.gst):''}</div><div class="hint">${esc(u.time)}</div><div class="acts"><button class="chip" data-m="${esc(u.mobile)}" data-s="Approved">${t('Approve')}</button><button class="chip" data-m="${esc(u.mobile)}" data-s="Blocked">${t('Block')}</button><button class="chip" data-card="${esc(u.mobile)}">${t('View card')}</button><button class="chip" data-reset="${esc(u.mobile)}" data-shop="${esc(u.shop)}">${t('Reset password')}</button><a class="chip" target="_blank" rel="noopener" href="${waLink(u.mobile,'Hello '+u.shop+', this is Sara Opticals.')}">WhatsApp</a></div></div>`).join('');
+ B.onclick=async e=>{const b=e.target;
+  if(b.dataset.s){const x=await admCall({action:'admin_user_status',target:b.dataset.m,status:b.dataset.s});if(x.ok){toast(t('Status updated')+' ✓');admShops()}else toast(x.error)}
+  else if(b.dataset.reset){if(!confirm(t('Reset password')+': '+b.dataset.shop+'?'))return;const x=await admCall({action:'admin_reset_password',target:b.dataset.reset});if(x.ok){showInfo(`<b>${esc(b.dataset.shop)}</b><br>Temporary password:<br><span style="font-size:1.4em;letter-spacing:.05em"><b>${esc(x.temp)}</b></span><br><span class="hint">Shown only once. Share it with the shop on WhatsApp. They must set a new password at first login.</span><br><a class="chip" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px" href="${waLink(b.dataset.reset,'Hello, your Sara Opticals temporary password is: '+x.temp+'  Please login and set a new password.')}">WhatsApp</a>`)}else toast(x.error)}
+  else if(b.dataset.card){b.disabled=true;const x=await admCall({action:'admin_card',target:b.dataset.card});b.disabled=false;if(x.ok){$('imgv').src=x.image;$('imgm').hidden=false}else toast(x.error)}}}
+$('imgx').onclick=()=>{$('imgm').hidden=true;$('imgv').src=''};
+async function admQuotes(){const r=await admCall({action:'admin_quotes'});const B=$('admbody');
+ B.innerHTML=!r.ok?`<div class="empty">${esc(r.error)}</div>`:r.quotes.map(q=>`<div class="cbx"><div class="top"><b>${esc(q.id)}</b><span class="badge st-${q.status==='Done'?'Delivered':'New'}">${esc(q.status)}</span></div><div class="hint">${esc(q.time)} · ${esc(q.shop)} · ${esc(q.mobile)}</div><div style="margin:6px 0"><b>${esc(q.power)}</b></div>${q.note?`<div class="hint">${esc(q.note)}</div>`:''}<div class="acts"><a class="chip" target="_blank" rel="noopener" href="${waLink(q.mobile,'Hello '+q.shop+', about your quote request '+q.id+' for '+q.power+': ')}">${t('Reply on WhatsApp')}</a>${q.status!=='Done'?`<button class="chip" data-q="${esc(q.id)}">${t('Mark done')}</button>`:''}</div></div>`).join('')||`<div class="empty">—</div>`;
+ B.onclick=async e=>{const id=e.target.dataset.q;if(!id)return;const x=await admCall({action:'admin_quote_status',id,status:'Done'});if(x.ok)admQuotes();else toast(x.error)}}
+async function admAudit(){const r=await admCall({action:'admin_audit'});const B=$('admbody');
+ B.innerHTML=!r.ok?`<div class="empty">${esc(r.error)}</div>`:r.log.map(l=>`<div class="cbx"><div class="top"><b>${esc(l.action)}</b><span class="hint">${esc(l.time)}</span></div><div class="hint">${esc(l.actor)} · ${esc(l.target)} ${esc(l.detail)}</div></div>`).join('')||`<div class="empty">—</div>`}
+function showInfo(h){$('infot').innerHTML=h;$('infom').hidden=false}$('infox').onclick=()=>{$('infom').hidden=true;$('infot').innerHTML=''};
+async function admSummary(days){days=days==null?30:days;const B=$('admbody');
+ const r=await admCall({action:'admin_summary',days});
+ const sel=`<select id="sdays"><option value="7"${days==7?' selected':''}>${t('Last 7 days')}</option><option value="30"${days==30?' selected':''}>${t('Last 30 days')}</option><option value="0"${days==0?' selected':''}>${t('All time')}</option></select>`;
+ if(!r.ok){B.innerHTML=`<div class="empty">${esc(r.error)}</div>`;return}
+ B.innerHTML=`${sel}<div class="kpis"><div><small>${t('Orders')}</small><b>${r.orders}</b></div><div><small>${t('Total pairs')}</small><b>${r.pairs}</b></div><div><small>${t('Revenue')}</small><b>₹${r.revenue}</b></div></div>
+<div class="cbx"><div class="cth">${t('Top shops')}</div>${r.topShops.map(s=>`<div class="sumr"><span>${esc(s.shop)} (${s.orders})</span><b>₹${s.revenue}</b></div>`).join('')||'—'}</div>
+<div class="cbx"><div class="cth">${t('Top items')}</div>${r.topItems.map(s=>`<div class="sumr"><span>${esc(s.item)}</span><b>${s.pairs} ${t('pairs')}</b></div>`).join('')||'—'}</div>
+<div class="cbx"><div class="cth">Status</div>${Object.keys(r.statuses).map(k=>`<div class="sumr"><span>${esc(t(k))}</span><b>${r.statuses[k]}</b></div>`).join('')||'—'}</div>`;
+ $('sdays').onchange=e=>admSummary(+e.target.value)}
+/* ---------- password change, data deletion, offline ---------- */
+let chgForced=false;
+function showChange(forced){chgForced=!!forced;$('chg').hidden=false;$('cpc').hidden=chgForced;$('chgnote').textContent=chgForced?t('For your security, please set a new password to continue.'):'';['cp0','cp1','cp2'].forEach(i=>$(i).value='');$('cpe').textContent=''}
+$('cpc').onclick=()=>{$('chg').hidden=true};
+$('cpbtn').onclick=()=>showChange(false);
+$('cps').onclick=async()=>{const E=$('cpe');E.textContent='';
+ if($('cp1').value.length<8){E.textContent=t('Password must be at least 8 characters.');return}
+ if($('cp1').value!==$('cp2').value){E.textContent=t('Passwords do not match.');return}
+ const b=$('cps');b.disabled=true;
+ try{const r=await call({action:'change_password',current:$('cp0').value,next:$('cp1').value});b.disabled=false;
+  if(r.ok){TOKEN=r.token;const x=JSON.parse(LSG(SS)||'{}');x.token=r.token;LSS(SS,JSON.stringify(x));$('chg').hidden=true;chgForced=false;toast(t('Password changed')+' ✓')}
+  else if(r.error!=='AUTH')E.textContent=t(r.error)}catch(e){b.disabled=false;E.textContent=t(LOGIN_ERR.NET)}};
+$('delbtn').onclick=async()=>{if(!confirm(t('We will delete your data on request. Send the request?')))return;try{const r=await call({action:'delete_request'});toast(r.ok?t('Request sent. Sara Opticals will contact you.'):r.error)}catch(e){toast(t(LOGIN_ERR.NET))}};
+const offb=$('offb');const upOff=()=>{offb.hidden=navigator.onLine!==false};addEventListener('online',upOff);addEventListener('offline',upOff);upOff();
+/* ---------- account, language, install, legal ---------- */
+document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+const LEGAL_EN=`<b>Terms of use</b><br>• This app is for registered optical shops buying from Sara Opticals, Jaipur.<br>• Prices are per pair and may change; the price shown when you place the order is checked again by our system.<br>• An order is confirmed only after Sara Opticals confirms it. Payments made by UPI are verified manually.<br>• Lenses are made to the power, axis and eye you enter. Please check your details before ordering.<br><br><b>Privacy policy</b><br>• We store your shop name, owner name, mobile number, city, address, GST number (optional), visiting card photo, password (stored in scrambled form) and your order history.<br>• We use this only to verify your shop, process orders, contact you on WhatsApp or phone and improve our service. We do not sell your data.<br>• Your data is kept in Sara Opticals' private Google Sheet and Google Drive and is visible only to Sara Opticals.<br>• To see, correct or delete your data, message us on WhatsApp at +91 89492 14717.<br><br><i>Last updated: October 2026</i>`;
+const LEGAL_HI=`<b>उपयोग की शर्तें</b><br>• यह ऐप सारा ऑप्टिकल्स, जयपुर से खरीदने वाली पंजीकृत ऑप्टिकल दुकानों के लिए है।<br>• कीमतें प्रति जोड़ी हैं और बदल सकती हैं; ऑर्डर करते समय हमारा सिस्टम कीमत दोबारा जाँचता है।<br>• ऑर्डर तभी पक्का माना जाएगा जब सारा ऑप्टिकल्स उसकी पुष्टि कर दे। UPI भुगतान हाथ से जाँचे जाते हैं।<br>• लेंस आपके दिए पावर, एक्सिस और आँख के अनुसार बनते हैं। ऑर्डर से पहले जानकारी जाँच लें।<br><br><b>गोपनीयता नीति</b><br>• हम आपकी दुकान का नाम, मालिक का नाम, मोबाइल, शहर, पता, GST नंबर (वैकल्पिक), विज़िटिंग कार्ड फोटो, पासवर्ड (कूट रूप में) और ऑर्डर का इतिहास रखते हैं।<br>• इसका उपयोग केवल दुकान सत्यापन, ऑर्डर प्रक्रिया, WhatsApp/फोन पर संपर्क और सेवा सुधार के लिए होता है। हम आपका डेटा बेचते नहीं हैं।<br>• डेटा सारा ऑप्टिकल्स की निजी Google Sheet और Drive में रहता है, जिसे केवल सारा ऑप्टिकल्स देख सकता है।<br>• अपना डेटा देखने, सुधारने या हटाने के लिए WhatsApp पर +91 89492 14717 पर संदेश करें।`;
+function openLegal(){closeAll();$('legtxt').innerHTML=LANG==='hi'?LEGAL_HI:LEGAL_EN;$('legal').hidden=false}
+$('lgl').onclick=e=>{e.preventDefault();openLegalFromGate()};$('lg2').onclick=e=>{e.preventDefault();openLegal()};
+function openLegalFromGate(){$('legtxt').innerHTML=LANG==='hi'?LEGAL_HI:LEGAL_EN;$('legal').hidden=false;$('legb').onclick=()=>{$('legal').hidden=true}}
+$('legb').onclick=()=>{$('legal').hidden=true;if(window.USER){closeAll();$('accp').hidden=false}};
+let deferred=null;
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+function showInstall(){if(standalone){$('instbox').hidden=true;return}
+ const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+ $('insthint').textContent=deferred?'':(ios?'iPhone: tap the Share icon, then "Add to Home Screen".':'Open the browser menu (⋮) and choose "Install app" or "Add to Home screen".');
+ $('instbtn').hidden=!deferred}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;showInstall()});
+$('instbtn').onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;showInstall()};
+showInstall();
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!window.__NOSW){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+/* ---------- start ---------- */
+applyStatic();draw();renderCart();syncTabs();
+try{const x=JSON.parse(LSG(SS)||'null');
+ if(x&&x.token&&!x.pw){TOKEN=x.token;call({action:'me'}).then(r=>{if(r&&r.ok)enter({...x.user,...r.user},x.token,r.mustChange);else TOKEN=null}).catch(()=>{TOKEN=null})}
+ else if(x)LSR(SS)}catch(e){}
+
 </script>
 </body></html>
